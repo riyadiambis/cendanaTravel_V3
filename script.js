@@ -574,29 +574,52 @@ window.smoothScrollTo = gulungHalusKePosisi;
  * ============================================
  * FUNGSI: UBAH MODE GELAP/TERANG
  * ============================================
- * Fungsi ini mengubah tema website antara mode terang dan gelap
- * Preferensi user akan disimpan di localStorage
+ * Toggle antara dark mode dan light mode dengan smooth
+ * Preferensi disimpan di localStorage biar gak reset tiap reload
  */
 function ubahModeGelap() {
-    const badanDokumen = document.body;
-    const ikonTombolMode = document.querySelector('.dark-mode-toggle i');
-
-    // Cek apakah saat ini mode gelap
-    if (badanDokumen.getAttribute('data-theme') === 'dark') {
+    const body = document.body;
+    const tombolMode = document.querySelector('.dark-mode-toggle');
+    const ikonMode = document.querySelector('.dark-mode-toggle i');
+    
+    // Cek mode sekarang
+    const isDarkMode = body.classList.contains('dark-mode');
+    
+    if (isDarkMode) {
         // Ubah ke mode terang
-        badanDokumen.removeAttribute('data-theme');
-        if (ikonTombolMode) ikonTombolMode.className = 'icon icon-moon';
+        body.classList.remove('dark-mode');
+        body.removeAttribute('data-theme');
+        if (ikonMode) ikonMode.className = 'icon icon-moon';
         localStorage.setItem('theme', 'light');
-        console.log('🌞 Mode terang diaktifkan');
+        
+        // Animasi tombol biar gak kaku
+        if (tombolMode) {
+            tombolMode.style.transform = 'rotate(360deg) scale(1.1)';
+            setTimeout(() => {
+                tombolMode.style.transform = '';
+            }, 300);
+        }
     } else {
         // Ubah ke mode gelap
-        badanDokumen.setAttribute('data-theme', 'dark');
-        if (ikonTombolMode) ikonTombolMode.className = 'icon icon-sun';
+        body.classList.add('dark-mode');
+        body.setAttribute('data-theme', 'dark');
+        if (ikonMode) ikonMode.className = 'icon icon-sun';
         localStorage.setItem('theme', 'dark');
-        console.log('🌙 Mode gelap diaktifkan');
+        
+        // Debug: pastikan class sudah ditambahkan
+        console.log('🌙 Dark mode aktif, class:', body.className);
+        console.log('Background color:', window.getComputedStyle(body).backgroundColor);
+        
+        // Animasi tombol biar gak kaku
+        if (tombolMode) {
+            tombolMode.style.transform = 'rotate(-360deg) scale(1.1)';
+            setTimeout(() => {
+                tombolMode.style.transform = '';
+            }, 300);
+        }
     }
     
-    // Update gambar transportasi sesuai tema baru setelah 100ms
+    // Update gambar transportasi kalau ada
     setTimeout(() => {
         if (typeof muatDanTampilkanJenisTransportasi === 'function') {
             muatDanTampilkanJenisTransportasi();
@@ -611,26 +634,23 @@ function ubahModeGelap() {
  * ============================================
  * FUNGSI: ATUR MODE GELAP SAAT HALAMAN DIMUAT
  * ============================================
- * Fungsi ini membaca preferensi tema dari localStorage
- * dan mengatur tema website saat halaman pertama kali dimuat
+ * Baca preferensi dari localStorage dan terapkan
+ * Jalan otomatis pas halaman load pertama kali
  */
 function aturModeGelapSaatDimuat() {
-    const temaTersimpan = localStorage.getItem('theme');
-    const ikonTombolMode = document.querySelector('.dark-mode-toggle i');
-
-    // Jika user pernah memilih mode gelap, aktifkan
-    if (temaTersimpan === 'dark') {
-        document.body.setAttribute('data-theme', 'dark');
-        if (ikonTombolMode) {
-            ikonTombolMode.className = 'icon icon-sun';
-        }
-        console.log('🌙 Mode gelap diaktifkan dari preferensi');
+    const savedTheme = localStorage.getItem('theme');
+    const body = document.body;
+    const ikonMode = document.querySelector('.dark-mode-toggle i');
+    
+    // Terapkan tema yang tersimpan
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-mode');
+        body.setAttribute('data-theme', 'dark');
+        if (ikonMode) ikonMode.className = 'icon icon-sun';
     } else {
-        // Default: mode terang
-        if (ikonTombolMode) {
-            ikonTombolMode.className = 'icon icon-moon';
-        }
-        console.log('🌞 Mode terang (default)');
+        body.classList.remove('dark-mode');
+        body.removeAttribute('data-theme');
+        if (ikonMode) ikonMode.className = 'icon icon-moon';
     }
 }
 

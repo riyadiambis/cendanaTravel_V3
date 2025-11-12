@@ -31,32 +31,38 @@
 
 /**
  * ============================================
- * MODE GELAP YANG LEBIH NATURAL
+ * MODE GELAP - LEBIH KONSISTEN DAN NYAMAN
  * ============================================
+ * Ganti warna background pas dark mode aktif
+ * Pakai warna biru tua keabu-abuan biar gak terlalu kontras
  */
+body.dark-mode,
 [data-theme="dark"] {
-    /* Warna yang lebih natural untuk mode gelap */
-    --warna-utama: #2d3748;
-    --warna-kedua: #4299e1;
-    --warna-aksen: #ed64a6;
-    --warna-terang: #2d3748;
-    --warna-gelap: #f7fafc;
-    --warna-sukses: #48bb78;
-    --warna-peringatan: #ed8936;
-    --warna-bahaya: #f56565;
-    --warna-abu: #a0aec0;
-    --warna-abu-terang: #4a5568;
-
-    /* Background mode gelap yang lebih comfortable */
-    --bg-utama: #1a202c;           /* Dark blue-gray */
-    --bg-kedua: #2d3748;           /* Slightly lighter */
-    --bg-ketiga: #4a5568;          /* Medium gray */
-    --teks-utama: #f7fafc;         /* Off-white untuk mata */
-    --teks-kedua: #e2e8f0;         /* Light gray */
-    --warna-border: #4a5568;       /* Subtle border */
-    --bayangan-ringan: 0 1px 3px rgba(0, 0, 0, 0.2);
-    --bayangan-sedang: 0 4px 6px rgba(0, 0, 0, 0.2);
+    /* Background gelap yang nyaman di mata */
+    --bg-utama: #1a202c;           /* Dark blue-gray utama */
+    --bg-kedua: #2d3748;           /* Sedikit lebih terang */
+    --bg-ketiga: #374151;          /* Medium gray untuk card */
+    
+    /* Teks yang jelas terbaca di background gelap */
+    --teks-utama: #f1f5f9;         /* Off-white biar gak terlalu terang */
+    --teks-kedua: #cbd5e1;         /* Light gray untuk teks sekunder */
+    
+    /* Warna aksen tetap cerah biar keliatan */
+    --warna-utama: #1e3a5f;
+    --warna-kedua: #3b82f6;
+    --warna-aksen: #60a5fa;
+    --warna-sukses: #34d399;
+    --warna-peringatan: #fbbf24;
+    --warna-bahaya: #f87171;
+    
+    /* Border dan shadow yang subtle */
+    --warna-border: #374151;
+    --bayangan-ringan: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --bayangan-sedang: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --bayangan-besar: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
+
+/* Transisi smooth sudah diatur di global, gak perlu duplikat */
 
 /**
  * ============================================
@@ -95,8 +101,18 @@ html {
 body {
     background-color: var(--bg-utama);
     color: var(--teks-utama);
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: background-color 0.4s ease, color 0.4s ease;
     padding-top: 70px;
+}
+
+/* Transisi smooth untuk semua elemen pas ganti mode */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Kecuali untuk animasi dan transform biar gak bentrok */
+*:not(.hero-title):not(.hero-description):not(.gallery-item):not(.service-card) {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /**
@@ -207,12 +223,18 @@ header.scrolled {
     padding: 8px;
     border-radius: 6px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     font-size: 1rem;
 }
 
 .dark-mode-toggle:hover {
     background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+}
+
+/* Animasi icon saat diklik biar keliatan responsif */
+.dark-mode-toggle i {
+    transition: transform 0.3s ease;
 }
 
 /* Logo styling sudah dipindah ke atas */
@@ -2614,8 +2636,38 @@ footer::before {
     }
     
     /* Responsive untuk halaman galeri */
+    .gallery-hero {
+        padding: 100px 0 70px;
+        min-height: 40vh;
+    }
+    
+    .gallery-hero-title {
+        font-size: 2rem;
+    }
+    
+    .gallery-hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .gallery-section {
+        padding: 60px 0;
+    }
+    
+    .gallery-intro {
+        margin-bottom: 40px;
+    }
+    
+    .gallery-intro p {
+        font-size: 1rem;
+    }
+    
     .gallery-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .gallery-image {
+        height: 240px;
     }
     
     .gallery-modal {
@@ -3237,76 +3289,80 @@ footer::before {
  * dengan jarak yang nyaman dan efek hover yang halus
  */
 
-/* Section galeri dengan background netral */
+/**
+ * ============================================
+ * GALLERY SECTION - LEBIH SEDERHANA
+ * ============================================
+ */
 .gallery-section {
-    padding: 80px 0; /* Padding yang cukup untuk breathing room */
-    background: #f8fafc; /* Abu muda netral agar foto menonjol */
+    padding: 80px 0;
+    background: #f8fafc;
 }
 
-/* Grid tiga kolom dengan jarak 1rem antar gambar */
+/* Grid tiga kolom dengan gap yang seimbang */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Tiga kolom seimbang di desktop */
-    gap: 1rem; /* Jarak 1rem agar tidak menempel */
-    max-width: 1200px; /* Lebar maksimal agar tetap di tengah */
-    margin: 0 auto; /* Center alignment */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Item galeri dengan sudut membulat dan bayangan halus */
+/* Item galeri dengan hover effect sederhana */
 .gallery-item {
-    background: #ffffff; /* Background putih bersih */
-    border-radius: 12px; /* Sudut sedikit membulat untuk kesan ramah */
+    background: #ffffff;
+    border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
-    transition: all 0.3s ease; /* Transisi smooth untuk interaksi */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Bayangan halus untuk depth */
-    border: 1px solid #e2e8f0; /* Border subtle */
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
 }
 
-/* Efek hover - gambar naik sedikit dengan shadow lebih besar */
+/* Efek hover - naik sedikit dengan shadow */
 .gallery-item:hover {
-    transform: translateY(-4px); /* Naik sedikit, tidak terlalu dramatis */
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); /* Shadow lebih besar saat hover */
-    border-color: #cbd5e1; /* Border sedikit lebih gelap */
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 /* Container gambar dengan ukuran proporsional */
 .gallery-image {
     position: relative;
     width: 100%;
-    height: 280px; /* Tinggi yang proporsional, tidak terlalu besar */
+    height: 280px;
     overflow: hidden;
-    background: #f1f5f9; /* Background abu jika gambar belum load */
+    background: #f1f5f9;
 }
 
-/* Gambar dengan object-fit cover agar tetap proporsional */
+/* Gambar dengan transisi zoom ringan */
 .gallery-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Gambar tidak melebar, tetap proporsional */
-    transition: transform 0.3s ease; /* Transisi zoom smooth */
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
-/* Efek hover gambar - zoom ringan scale 1.05 */
+/* Zoom ringan saat hover */
 .gallery-item:hover .gallery-image img {
-    transform: scale(1.05); /* Zoom ringan, tidak berlebihan */
+    transform: scale(1.05);
 }
 
-/* Overlay gelap yang muncul saat hover */
+/* Overlay dengan nama destinasi yang muncul saat hover */
 .gallery-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* Overlay gelap semi-transparan */
+    background: rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    opacity: 0; /* Tersembunyi secara default */
-    transition: opacity 0.3s ease; /* Transisi smooth */
+    opacity: 0;
+    transition: opacity 0.3s ease;
     color: white;
+    padding: 20px;
 }
 
 /* Overlay muncul saat hover */
@@ -3314,7 +3370,7 @@ footer::before {
     opacity: 1;
 }
 
-/* Icon di overlay */
+/* Icon search */
 .gallery-overlay i {
     font-size: 2.2rem;
     margin-bottom: 8px;
@@ -3324,21 +3380,22 @@ footer::before {
 .gallery-overlay p {
     font-size: 0.9rem;
     text-align: center;
-    padding: 0 16px;
+    font-weight: 500;
 }
 
-/* Info di bawah gambar dengan padding yang nyaman */
+/* Info card di bawah gambar */
 .gallery-info {
-    padding: 18px 20px; /* Padding yang cukup tapi tidak berlebihan */
+    padding: 18px 20px;
+    background: white;
 }
 
-/* Judul foto dengan font yang jelas */
+/* Judul destinasi */
 .gallery-info h4 {
     margin: 0;
-    color: #1e293b; /* Gelap untuk readability */
+    color: var(--teks-utama);
     font-size: 1.05rem;
     font-weight: 600;
-    letter-spacing: -0.01em;
+    line-height: 1.4;
 }
 
 /* Pesan jika galeri kosong */
@@ -7927,4 +7984,980 @@ select:focus {
         width: 100%;
         justify-content: center;
     }
+}
+
+
+/**
+ * ============================================
+ * DARK MODE - STYLING LENGKAP UNTUK SEMUA ELEMEN
+ * ============================================
+ * Pastikan semua elemen berubah warna dengan konsisten
+ * Transisi smooth biar gak kaget pas ganti mode
+ */
+
+/* ===== CARD & CONTAINER - SEMUA YANG PUTIH JADI GELAP ===== */
+/* Ganti warna latar biar gak silau pas dark mode */
+body.dark-mode .service-card,
+body.dark-mode .transport-card,
+body.dark-mode .partner-card,
+body.dark-mode .gallery-item,
+body.dark-mode .faq-item,
+body.dark-mode .nav-card,
+body.dark-mode .stat-card,
+body.dark-mode .contact-info-box,
+body.dark-mode .contact-info-card,
+body.dark-mode .form-card,
+body.dark-mode .booking-modal,
+body.dark-mode .transport-booking-card,
+body.dark-mode .admin-card,
+body.dark-mode .admin-table {
+    background: #2d3748 !important;
+    border-color: #4a5568 !important;
+    color: #f1f5f9 !important;
+}
+
+/* Hover state untuk card di dark mode */
+body.dark-mode .service-card:hover,
+body.dark-mode .transport-card:hover,
+body.dark-mode .partner-card:hover,
+body.dark-mode .gallery-item:hover,
+body.dark-mode .contact-info-card:hover {
+    background: #374151 !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== SECTION BACKGROUNDS ===== */
+body.dark-mode .services,
+body.dark-mode .transport-types,
+body.dark-mode .gallery-section,
+body.dark-mode .faq-section,
+body.dark-mode .contact-section {
+    background: var(--bg-utama);
+}
+
+/* Section dengan background terang jadi gelap */
+body.dark-mode .professional-services,
+body.dark-mode .service-showcase {
+    background: linear-gradient(180deg, var(--bg-utama) 0%, var(--bg-kedua) 100%);
+}
+
+/* ===== TEXT & HEADINGS ===== */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: var(--teks-utama);
+}
+
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode li {
+    color: var(--teks-kedua);
+}
+
+/* Judul di card tetap jelas */
+body.dark-mode .service-card h3,
+body.dark-mode .transport-card h3,
+body.dark-mode .gallery-info h4,
+body.dark-mode .partner-info h4 {
+    color: var(--teks-utama);
+}
+
+/* ===== FOOTER ===== */
+body.dark-mode footer {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+body.dark-mode footer h3 {
+    color: white;
+}
+
+body.dark-mode footer p,
+body.dark-mode footer li,
+body.dark-mode footer a {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+body.dark-mode footer a:hover {
+    color: white;
+}
+
+body.dark-mode .footer-bottom {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== BUTTONS ===== */
+body.dark-mode .btn-transport,
+body.dark-mode .btn-wa-small {
+    background: var(--warna-kedua);
+    color: white;
+}
+
+body.dark-mode .btn-transport:hover,
+body.dark-mode .btn-wa-small:hover {
+    background: var(--warna-aksen);
+}
+
+/* Button secondary di dark mode */
+body.dark-mode .btn-hero-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+body.dark-mode .btn-hero-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ===== FORMS & INPUTS ===== */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background: var(--bg-kedua);
+    border-color: var(--warna-border);
+    color: var(--teks-utama);
+}
+
+body.dark-mode input:focus,
+body.dark-mode textarea:focus,
+body.dark-mode select:focus {
+    background: var(--bg-ketiga);
+    border-color: var(--warna-kedua);
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: var(--teks-kedua);
+    opacity: 0.6;
+}
+
+/* ===== MODAL ===== */
+body.dark-mode .gallery-modal,
+body.dark-mode .booking-modal,
+body.dark-mode .admin-login-modal {
+    background: var(--bg-kedua);
+    color: var(--teks-utama);
+}
+
+body.dark-mode .gallery-modal-overlay,
+body.dark-mode .booking-modal-overlay,
+body.dark-mode .admin-login-overlay {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+body.dark-mode .gallery-modal-info h3,
+body.dark-mode .booking-modal h3 {
+    color: var(--teks-utama);
+}
+
+body.dark-mode .gallery-modal-info p {
+    color: var(--teks-kedua);
+}
+
+/* ===== NAVIGATION ===== */
+body.dark-mode .nav-menu li a {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+body.dark-mode .nav-menu li a:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .nav-menu li a.active {
+    background: rgba(96, 165, 250, 0.25);
+}
+
+/* ===== FAQ ACCORDION ===== */
+body.dark-mode .faq-item {
+    background: var(--bg-kedua);
+    border-color: var(--warna-border);
+}
+
+body.dark-mode .faq-question {
+    color: var(--teks-utama);
+}
+
+body.dark-mode .faq-answer {
+    color: var(--teks-kedua);
+    background: var(--bg-utama);
+}
+
+body.dark-mode .faq-item.active {
+    border-color: var(--warna-kedua);
+}
+
+/* ===== CONTACT INFO ===== */
+body.dark-mode .contact-info-card {
+    background: var(--bg-kedua);
+    border-color: var(--warna-border);
+}
+
+body.dark-mode .contact-info-card:hover {
+    background: var(--bg-ketiga);
+}
+
+body.dark-mode .contact-info-card h3 {
+    color: var(--teks-utama);
+}
+
+body.dark-mode .contact-info-card p,
+body.dark-mode .contact-info-card a {
+    color: var(--teks-kedua);
+}
+
+/* ===== ADMIN TABLES ===== */
+body.dark-mode .admin-table {
+    background: var(--bg-kedua);
+}
+
+body.dark-mode .admin-table thead {
+    background: linear-gradient(135deg, var(--warna-utama), var(--warna-kedua));
+}
+
+body.dark-mode .admin-table td {
+    border-bottom-color: var(--warna-border);
+    color: var(--teks-utama);
+}
+
+body.dark-mode .admin-table tbody tr:hover {
+    background: var(--bg-ketiga);
+}
+
+body.dark-mode .table-description {
+    color: var(--teks-kedua);
+}
+
+/* ===== TRANSPORT TABS ===== */
+body.dark-mode .transport-tab {
+    background: var(--bg-kedua);
+    border-color: var(--warna-border);
+    color: var(--teks-utama);
+}
+
+body.dark-mode .transport-tab:hover,
+body.dark-mode .transport-tab.active {
+    background: var(--warna-kedua);
+    color: white;
+    border-color: var(--warna-kedua);
+}
+
+/* ===== EMPTY STATE ===== */
+body.dark-mode .no-data,
+body.dark-mode .empty-gallery,
+body.dark-mode .empty-state {
+    background: var(--bg-kedua);
+    border-color: var(--warna-border);
+    color: var(--teks-kedua);
+}
+
+/* ===== PAGE HEADER ===== */
+/* Header tetap dengan gradient biru, gak perlu diubah */
+body.dark-mode .page-header {
+    background: linear-gradient(135deg, var(--warna-utama) 0%, var(--warna-kedua) 100%);
+}
+
+/* ===== HERO SECTION ===== */
+/* Hero tetap dengan background image, gak perlu diubah */
+body.dark-mode .hero {
+    /* Background tetap sama, cuma pastikan teks tetap jelas */
+}
+
+/* ===== GALLERY OVERLAY ===== */
+/* Overlay tetap gelap di kedua mode biar teks keliatan */
+body.dark-mode .gallery-overlay {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* ===== BORDERS & DIVIDERS ===== */
+body.dark-mode hr {
+    border-color: var(--warna-border);
+}
+
+/* ===== SCROLLBAR (OPTIONAL) ===== */
+body.dark-mode::-webkit-scrollbar {
+    width: 12px;
+    background: var(--bg-utama);
+}
+
+body.dark-mode::-webkit-scrollbar-thumb {
+    background: var(--bg-ketiga);
+    border-radius: 6px;
+}
+
+body.dark-mode::-webkit-scrollbar-thumb:hover {
+    background: var(--warna-border);
+}
+
+/* ===== ADMIN DASHBOARD ===== */
+body.dark-mode .admin-container {
+    background: var(--bg-utama);
+}
+
+body.dark-mode .admin-header {
+    background: var(--bg-kedua);
+    border-bottom-color: var(--warna-border);
+}
+
+body.dark-mode .admin-nav a {
+    color: var(--teks-kedua);
+}
+
+body.dark-mode .admin-nav a:hover,
+body.dark-mode .admin-nav a.active {
+    color: var(--warna-kedua);
+    background: var(--bg-ketiga);
+}
+
+body.dark-mode .admin-card {
+    background: var(--bg-kedua);
+    border-color: var(--warna-border);
+}
+
+body.dark-mode .admin-card h3 {
+    color: var(--teks-utama);
+}
+
+/* ===== FORM LABELS ===== */
+body.dark-mode label {
+    color: var(--teks-utama);
+}
+
+/* ===== LINKS ===== */
+body.dark-mode a {
+    color: var(--warna-aksen);
+}
+
+body.dark-mode a:hover {
+    color: var(--warna-kedua);
+}
+
+/* ===== BADGES & TAGS ===== */
+body.dark-mode .badge,
+body.dark-mode .tag,
+body.dark-mode .table-badge {
+    background: var(--warna-kedua);
+    color: white;
+}
+
+/* ===== LOADING & SPINNER ===== */
+body.dark-mode .loading,
+body.dark-mode .spinner {
+    color: var(--teks-kedua);
+}
+
+/* ===== TOAST / NOTIFICATION ===== */
+body.dark-mode .toast,
+body.dark-mode .notification {
+    background: var(--bg-kedua);
+    border-color: var(--warna-border);
+    color: var(--teks-utama);
+}
+
+/* ===== DROPDOWN ===== */
+body.dark-mode .dropdown-menu {
+    background: var(--bg-kedua);
+    border-color: var(--warna-border);
+}
+
+body.dark-mode .dropdown-item {
+    color: var(--teks-utama);
+}
+
+body.dark-mode .dropdown-item:hover {
+    background: var(--bg-ketiga);
+}
+
+/* ===== TENTANG KAMI PAGE ===== */
+body.dark-mode .about-section {
+    background: var(--bg-utama);
+}
+
+body.dark-mode .about-content {
+    background: var(--bg-kedua);
+    color: var(--teks-utama);
+}
+
+body.dark-mode .about-content h2,
+body.dark-mode .about-content h3 {
+    color: var(--teks-utama);
+}
+
+body.dark-mode .about-content p {
+    color: var(--teks-kedua);
+}
+
+/* ===== PEMESANAN PAGE ===== */
+body.dark-mode .booking-form {
+    background: var(--bg-kedua);
+}
+
+body.dark-mode .booking-summary {
+    background: var(--bg-ketiga);
+    border-color: var(--warna-border);
+}
+
+/* ===== MAP OVERLAY ===== */
+body.dark-mode .map-overlay {
+    background: var(--bg-kedua);
+    color: var(--teks-utama);
+}
+
+body.dark-mode .map-overlay h4 {
+    color: var(--teks-utama);
+}
+
+/* ===== ICON COLORS ===== */
+body.dark-mode .icon {
+    color: var(--teks-kedua);
+}
+
+/* Icon di service card tetap dengan warna aksen */
+body.dark-mode .service-icon {
+    background: linear-gradient(135deg, var(--warna-kedua), var(--warna-aksen));
+}
+
+/* ===== SHADOW ADJUSTMENTS ===== */
+/* Shadow di dark mode lebih gelap biar keliatan */
+body.dark-mode .service-card,
+body.dark-mode .transport-card,
+body.dark-mode .gallery-item {
+    box-shadow: var(--bayangan-sedang);
+}
+
+body.dark-mode .service-card:hover,
+body.dark-mode .transport-card:hover,
+body.dark-mode .gallery-item:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+/**
+ * ============================================
+ * RESPONSIVE DARK MODE
+ * ============================================
+ */
+@media (max-width: 768px) {
+    /* Pastikan dark mode tetap bagus di mobile */
+    body.dark-mode .container {
+        background: transparent;
+    }
+    
+    body.dark-mode .mobile-menu {
+        color: white;
+    }
+}
+
+/**
+ * ============================================
+ * PRINT MODE - TETAP TERANG
+ * ============================================
+ * Pas print, paksa mode terang biar gak buang tinta
+ */
+@media print {
+    body.dark-mode {
+        background: white !important;
+        color: black !important;
+    }
+    
+    body.dark-mode * {
+        background: white !important;
+        color: black !important;
+        border-color: #ccc !important;
+    }
+}
+
+
+/**
+ * ============================================
+ * DARK MODE - PERBAIKAN FINAL BACKGROUND PUTIH
+ * ============================================
+ * Ganti warna putih biar gak silau di dark mode
+ * Pakai !important biar menang dari CSS default
+ */
+
+/* === BODY & HTML === */
+/* Ini buat pastiin background bener-bener gelap pas toggle */
+body.dark-mode {
+    background-color: #1a202c !important;
+    color: #f1f5f9 !important;
+}
+
+html.dark-mode,
+html:has(body.dark-mode) {
+    background-color: #1a202c !important;
+}
+
+/* === SEMUA SECTION === */
+/* Ganti background putih jadi gelap di semua section */
+body.dark-mode section {
+    background-color: #1a202c !important;
+    color: #f1f5f9 !important;
+}
+
+/* === CONTAINER & WRAPPER === */
+/* Container biasanya putih, ubah jadi transparan atau gelap */
+body.dark-mode .container,
+body.dark-mode .wrapper,
+body.dark-mode .content,
+body.dark-mode .main-content,
+body.dark-mode .page-content {
+    background-color: transparent !important;
+}
+
+/* === PROFESSIONAL SERVICES === */
+/* Section ini punya gradient putih, ubah jadi gelap */
+body.dark-mode .professional-services {
+    background: #1a202c !important;
+    background-image: none !important;
+}
+
+/* === SERVICES SECTION === */
+body.dark-mode .services {
+    background-color: #1a202c !important;
+}
+
+/* === TRANSPORT TYPES === */
+body.dark-mode .transport-types {
+    background-color: #1a202c !important;
+}
+
+/* === GALLERY SECTION === */
+body.dark-mode .gallery-section {
+    background-color: #1a202c !important;
+}
+
+/* === FAQ SECTION === */
+body.dark-mode .faq-section {
+    background-color: #1a202c !important;
+}
+
+/* === CONTACT SECTION === */
+body.dark-mode .contact-section,
+body.dark-mode .contact-main-section {
+    background-color: #1a202c !important;
+}
+
+/* === MAP SECTION === */
+body.dark-mode .map-section {
+    background-color: #1a202c !important;
+}
+
+/* === BOOKING SECTIONS === */
+body.dark-mode .booking-filter-section,
+body.dark-mode .booking-list-section {
+    background-color: #1a202c !important;
+}
+
+/* === ABOUT SECTION === */
+body.dark-mode .about-section {
+    background-color: #1a202c !important;
+}
+
+/* === SEMUA CARD === */
+/* Card yang putih jadi abu gelap */
+body.dark-mode .service-card,
+body.dark-mode .transport-card,
+body.dark-mode .partner-card,
+body.dark-mode .gallery-item,
+body.dark-mode .faq-item,
+body.dark-mode .nav-card,
+body.dark-mode .stat-card,
+body.dark-mode .contact-info-box,
+body.dark-mode .contact-info-card,
+body.dark-mode .form-card,
+body.dark-mode .transport-booking-card {
+    background-color: #2d3748 !important;
+    border-color: #4a5568 !important;
+    color: #f1f5f9 !important;
+}
+
+/* === CARD HOVER === */
+body.dark-mode .service-card:hover,
+body.dark-mode .transport-card:hover,
+body.dark-mode .partner-card:hover,
+body.dark-mode .gallery-item:hover,
+body.dark-mode .contact-info-card:hover {
+    background-color: #374151 !important;
+}
+
+/* === GALLERY INFO === */
+body.dark-mode .gallery-info {
+    background-color: #2d3748 !important;
+    color: #f1f5f9 !important;
+}
+
+/* === CONTACT INFO ITEM === */
+body.dark-mode .contact-info-item {
+    background-color: #374151 !important;
+    border-color: #4a5568 !important;
+}
+
+/* === FAQ ANSWER === */
+body.dark-mode .faq-answer {
+    background-color: #1f2937 !important;
+    color: #cbd5e1 !important;
+}
+
+/* === FORMS & INPUTS === */
+/* Input yang putih jadi abu gelap */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background-color: #374151 !important;
+    border-color: #4a5568 !important;
+    color: #f1f5f9 !important;
+}
+
+body.dark-mode input:focus,
+body.dark-mode textarea:focus,
+body.dark-mode select:focus {
+    background-color: #4a5568 !important;
+    border-color: #3b82f6 !important;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #9ca3af !important;
+}
+
+/* === MODAL === */
+/* Modal yang putih jadi gelap */
+body.dark-mode .gallery-modal,
+body.dark-mode .booking-modal,
+body.dark-mode .admin-login-modal {
+    background-color: #2d3748 !important;
+    color: #f1f5f9 !important;
+}
+
+body.dark-mode .gallery-modal-overlay,
+body.dark-mode .booking-modal-overlay,
+body.dark-mode .admin-login-overlay {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+}
+
+/* === ADMIN TABLE === */
+body.dark-mode .admin-table {
+    background-color: #2d3748 !important;
+}
+
+body.dark-mode .admin-table td {
+    background-color: #2d3748 !important;
+    border-bottom-color: #4a5568 !important;
+    color: #f1f5f9 !important;
+}
+
+body.dark-mode .admin-table tbody tr:hover td {
+    background-color: #374151 !important;
+}
+
+/* === FILTER TABS === */
+body.dark-mode .filter-tab,
+body.dark-mode .transport-tab {
+    background-color: #2d3748 !important;
+    border-color: #4a5568 !important;
+    color: #f1f5f9 !important;
+}
+
+body.dark-mode .filter-tab:hover,
+body.dark-mode .filter-tab.active,
+body.dark-mode .transport-tab:hover,
+body.dark-mode .transport-tab.active {
+    background-color: #3b82f6 !important;
+    color: white !important;
+}
+
+/* === TEXT COLORS === */
+/* Pastiin semua teks keliatan jelas */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: #f1f5f9 !important;
+}
+
+body.dark-mode p,
+body.dark-mode span:not(.icon),
+body.dark-mode li,
+body.dark-mode label {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode a {
+    color: #60a5fa !important;
+}
+
+body.dark-mode a:hover {
+    color: #3b82f6 !important;
+}
+
+/* === ADMIN SECTIONS === */
+body.dark-mode .admin-container,
+body.dark-mode .admin-content {
+    background-color: #1a202c !important;
+}
+
+body.dark-mode .admin-header {
+    background-color: #2d3748 !important;
+    border-bottom-color: #4a5568 !important;
+}
+
+body.dark-mode .admin-card {
+    background-color: #2d3748 !important;
+    border-color: #4a5568 !important;
+}
+
+/* === EMPTY STATE === */
+body.dark-mode .no-data,
+body.dark-mode .empty-gallery,
+body.dark-mode .empty-state {
+    background-color: #2d3748 !important;
+    border-color: #4a5568 !important;
+    color: #cbd5e1 !important;
+}
+
+/* === DROPDOWN === */
+body.dark-mode .dropdown-menu {
+    background-color: #2d3748 !important;
+    border-color: #4a5568 !important;
+}
+
+body.dark-mode .dropdown-item {
+    color: #f1f5f9 !important;
+}
+
+body.dark-mode .dropdown-item:hover {
+    background-color: #374151 !important;
+}
+
+/* === ALERT === */
+body.dark-mode .alert {
+    background-color: #2d3748 !important;
+    border-color: #4a5568 !important;
+    color: #f1f5f9 !important;
+}
+
+/* === BREADCRUMB === */
+body.dark-mode .breadcrumb {
+    background-color: #2d3748 !important;
+    color: #cbd5e1 !important;
+}
+
+/* === PAGINATION === */
+body.dark-mode .pagination-item {
+    background-color: #374151 !important;
+    color: #f1f5f9 !important;
+    border-color: #4a5568 !important;
+}
+
+/* === SIDEBAR === */
+body.dark-mode .sidebar {
+    background-color: #2d3748 !important;
+    border-right-color: #4a5568 !important;
+}
+
+/* === ACCORDION === */
+body.dark-mode .accordion-header {
+    background-color: #374151 !important;
+    color: #f1f5f9 !important;
+}
+
+body.dark-mode .accordion-body {
+    background-color: #2d3748 !important;
+    color: #cbd5e1 !important;
+}
+
+/* === SEARCH BOX === */
+body.dark-mode .search-box,
+body.dark-mode .search-input {
+    background-color: #374151 !important;
+    border-color: #4a5568 !important;
+    color: #f1f5f9 !important;
+}
+
+/* === BUTTON SECONDARY === */
+body.dark-mode .btn-secondary {
+    background-color: #374151 !important;
+    color: #f1f5f9 !important;
+    border-color: #4a5568 !important;
+}
+
+/* === LIST GROUP === */
+body.dark-mode .list-group-item {
+    background-color: #374151 !important;
+    border-color: #4a5568 !important;
+    color: #f1f5f9 !important;
+}
+
+/* === CODE & PRE === */
+body.dark-mode code,
+body.dark-mode pre {
+    background-color: #1f2937 !important;
+    color: #f1f5f9 !important;
+}
+
+/* === BLOCKQUOTE === */
+body.dark-mode blockquote {
+    background-color: #2d3748 !important;
+    border-left-color: #3b82f6 !important;
+    color: #cbd5e1 !important;
+}
+
+/* === HR / DIVIDER === */
+body.dark-mode hr,
+body.dark-mode .divider {
+    border-color: #4a5568 !important;
+    background-color: #4a5568 !important;
+}
+
+/* === TOOLTIP === */
+body.dark-mode .tooltip {
+    background-color: #1f2937 !important;
+    color: #f1f5f9 !important;
+}
+
+/* === BADGE === */
+body.dark-mode .badge {
+    background-color: #374151 !important;
+    color: #f1f5f9 !important;
+}
+
+/* === CALENDAR === */
+body.dark-mode .calendar {
+    background-color: #2d3748 !important;
+    border-color: #4a5568 !important;
+}
+
+body.dark-mode .calendar-day {
+    color: #f1f5f9 !important;
+}
+
+body.dark-mode .calendar-day:hover {
+    background-color: #374151 !important;
+}
+
+/* === CHIP / TAG === */
+body.dark-mode .chip,
+body.dark-mode .tag {
+    background-color: #374151 !important;
+    color: #f1f5f9 !important;
+}
+
+/* === AVATAR === */
+body.dark-mode .avatar {
+    background-color: #374151 !important;
+    border-color: #4a5568 !important;
+}
+
+/* === PROGRESS BAR === */
+body.dark-mode .progress-bar {
+    background-color: #374151 !important;
+}
+
+/* === STEPPER === */
+body.dark-mode .step {
+    background-color: #374151 !important;
+    color: #cbd5e1 !important;
+}
+
+/* === TIMELINE === */
+body.dark-mode .timeline-item {
+    background-color: #2d3748 !important;
+    border-color: #4a5568 !important;
+}
+
+/* === CHECKBOX & RADIO === */
+body.dark-mode input[type="checkbox"],
+body.dark-mode input[type="radio"] {
+    background-color: #374151 !important;
+    border-color: #4a5568 !important;
+}
+
+/* === FILE UPLOAD === */
+body.dark-mode input[type="file"] {
+    background-color: #374151 !important;
+    color: #f1f5f9 !important;
+}
+
+/* === RANGE SLIDER === */
+body.dark-mode input[type="range"] {
+    background-color: #374151 !important;
+}
+
+/* === SWITCH === */
+body.dark-mode .switch {
+    background-color: #374151 !important;
+}
+
+/**
+ * ============================================
+ * DARK MODE - ELEMEN YANG TETAP TERANG
+ * ============================================
+ * Beberapa elemen tetap dengan warna aslinya
+ */
+
+/* Header tetap dengan gradient biru */
+body.dark-mode header {
+    background: linear-gradient(135deg, #0f172a, #1e293b) !important;
+}
+
+/* Page header tetap dengan gradient biru */
+body.dark-mode .page-header {
+    background: linear-gradient(135deg, #0f2942, #2563eb) !important;
+}
+
+/* Hero tetap dengan background image */
+body.dark-mode .hero {
+    /* Background tetap, cuma pastiin teks keliatan */
+}
+
+/* Footer tetap gelap */
+body.dark-mode footer {
+    background: linear-gradient(135deg, #0f172a, #1e293b) !important;
+}
+
+/* Service icon tetap dengan gradient biru */
+body.dark-mode .service-icon {
+    background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
+}
+
+/* WhatsApp button tetap hijau */
+body.dark-mode .wa-header-btn,
+body.dark-mode .wa-float a,
+body.dark-mode .btn-wa-small {
+    background: #25D366 !important;
+    color: white !important;
+}
+
+body.dark-mode .wa-header-btn:hover,
+body.dark-mode .wa-float a:hover,
+body.dark-mode .btn-wa-small:hover {
+    background: #128C7E !important;
+}
+
+/* Button primary tetap biru */
+body.dark-mode .btn-hero-primary,
+body.dark-mode .btn-transport {
+    background: #2563eb !important;
+    color: white !important;
+}
+
+body.dark-mode .btn-hero-primary:hover,
+body.dark-mode .btn-transport:hover {
+    background: #1d4ed8 !important;
+}
+
+/**
+ * ============================================
+ * DARK MODE - TRANSISI SMOOTH
+ * ============================================
+ * Biar pergantian gak kaget di mata
+ */
+body.dark-mode,
+body.dark-mode *:not(.hero-title):not(.gallery-item):not(img) {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease !important;
 }

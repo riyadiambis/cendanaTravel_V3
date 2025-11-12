@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Dark Mode</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Test inline untuk memastikan dark mode bekerja */
+        .test-section {
+            padding: 40px;
+            margin: 20px;
+            background: white;
+            border: 1px solid #ddd;
+        }
+        
+        .test-card {
+            background: #fff;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header style="padding: 20px; background: #0f2942; color: white;">
+        <h1>Test Dark Mode</h1>
+        <button class="dark-mode-toggle" onclick="ubahModeGelap()" style="padding: 10px 20px; cursor: pointer;">
+            Toggle Dark Mode
+        </button>
+    </header>
+
+    <section class="test-section">
+        <h2>Section Test</h2>
+        <p>Ini adalah test section dengan background putih</p>
+        
+        <div class="test-card">
+            <h3>Card Test</h3>
+            <p>Ini adalah test card dengan background putih</p>
+        </div>
+        
+        <div class="service-card" style="padding: 20px; margin: 10px 0;">
+            <h3>Service Card</h3>
+            <p>Ini adalah service card</p>
+        </div>
+    </section>
+
+    <section class="professional-services">
+        <div class="container">
+            <h2>Professional Services Section</h2>
+            <p>Section ini harusnya berubah background-nya</p>
+        </div>
+    </section>
+
+    <script>
+        // Fungsi toggle dark mode sederhana
+        function ubahModeGelap() {
+            const body = document.body;
+            const isDark = body.classList.contains('dark-mode');
+            
+            if (isDark) {
+                body.classList.remove('dark-mode');
+                body.removeAttribute('data-theme');
+                console.log('Light mode');
+            } else {
+                body.classList.add('dark-mode');
+                body.setAttribute('data-theme', 'dark');
+                console.log('Dark mode');
+            }
+            
+            // Log untuk debugging
+            console.log('Body classes:', body.className);
+            console.log('Body background:', window.getComputedStyle(body).backgroundColor);
+        }
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            document.body.setAttribute('data-theme', 'dark');
+        }
+    </script>
+</body>
+</html>
