@@ -29,22 +29,26 @@ if (!isAdminLoggedIn()) {
     exit();
 }
 
-// Handle CRUD operations
+// Handle CRUD operations dengan POST-REDIRECT-GET Pattern
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
     $module = $_POST['module'] ?? '';
     
-    /* CRUD sederhana tanpa framework */
+    /* CRUD sederhana tanpa framework dengan PRG Pattern */
     
     // ============================================
     // HANDLE GENERAL INFO UPDATE
     // ============================================
     if ($action === 'update' && $module === 'general') {
         if (updateCompanyInfo($_POST)) {
-            echo "<script>alert('Informasi perusahaan berhasil diperbarui!');</script>";
+            $_SESSION['admin_message'] = 'Informasi perusahaan berhasil diperbarui!';
+            $_SESSION['admin_message_type'] = 'success';
         } else {
-            echo "<script>alert('Gagal memperbarui informasi perusahaan!');</script>";
+            $_SESSION['admin_message'] = 'Gagal memperbarui informasi perusahaan!';
+            $_SESSION['admin_message_type'] = 'error';
         }
+        header('Location: admin.php');
+        exit();
     }
     
     // ============================================
@@ -58,10 +62,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             
             if (addBanner($_POST, $imagePath)) {
-                echo "<script>alert('Banner berhasil ditambahkan!');</script>";
+                $_SESSION['admin_message'] = 'Banner berhasil ditambahkan!';
+                $_SESSION['admin_message_type'] = 'success';
             } else {
-                echo "<script>alert('Gagal menambahkan banner!');</script>";
+                $_SESSION['admin_message'] = 'Gagal menambahkan banner!';
+                $_SESSION['admin_message_type'] = 'error';
             }
+            header('Location: admin.php');
+            exit();
         }
         elseif ($action === 'update') {
             $imagePath = null;
@@ -70,17 +78,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             
             if (updateBanner($_POST['id'], $_POST, $imagePath)) {
-                echo "<script>alert('Banner berhasil diperbarui!');</script>";
+                $_SESSION['admin_message'] = 'Banner berhasil diperbarui!';
+                $_SESSION['admin_message_type'] = 'success';
             } else {
-                echo "<script>alert('Gagal memperbarui banner!');</script>";
+                $_SESSION['admin_message'] = 'Gagal memperbarui banner!';
+                $_SESSION['admin_message_type'] = 'error';
             }
+            header('Location: admin.php');
+            exit();
         }
         elseif ($action === 'delete') {
             if (deleteBanner($_POST['id'])) {
-                echo "<script>alert('Banner berhasil dihapus!');</script>";
+                $_SESSION['admin_message'] = 'Banner berhasil dihapus!';
+                $_SESSION['admin_message_type'] = 'success';
             } else {
-                echo "<script>alert('Gagal menghapus banner!');</script>";
+                $_SESSION['admin_message'] = 'Gagal menghapus banner!';
+                $_SESSION['admin_message_type'] = 'error';
             }
+            header('Location: admin.php');
+            exit();
         }
     }
     
@@ -91,10 +107,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($action === 'add') {
             $imagePath = uploadImage($_FILES['image'], 'uploads/gallery/');
             if ($imagePath && addGallery($_POST, $imagePath)) {
-                echo "<script>alert('Foto galeri berhasil ditambahkan!');</script>";
+                $_SESSION['admin_message'] = 'Foto galeri berhasil ditambahkan!';
+                $_SESSION['admin_message_type'] = 'success';
             } else {
-                echo "<script>alert('Gagal menambahkan foto galeri!');</script>";
+                $_SESSION['admin_message'] = 'Gagal menambahkan foto galeri!';
+                $_SESSION['admin_message_type'] = 'error';
             }
+            header('Location: admin.php');
+            exit();
         }
         elseif ($action === 'update') {
             $imagePath = null;
@@ -103,17 +123,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             
             if (updateGallery($_POST['id'], $_POST, $imagePath)) {
-                echo "<script>alert('Foto galeri berhasil diperbarui!');</script>";
+                $_SESSION['admin_message'] = 'Foto galeri berhasil diperbarui!';
+                $_SESSION['admin_message_type'] = 'success';
             } else {
-                echo "<script>alert('Gagal memperbarui foto galeri!');</script>";
+                $_SESSION['admin_message'] = 'Gagal memperbarui foto galeri!';
+                $_SESSION['admin_message_type'] = 'error';
             }
+            header('Location: admin.php');
+            exit();
         }
         elseif ($action === 'delete') {
             if (deleteGallery($_POST['id'])) {
-                echo "<script>alert('Foto galeri berhasil dihapus!');</script>";
+                $_SESSION['admin_message'] = 'Foto galeri berhasil dihapus!';
+                $_SESSION['admin_message_type'] = 'success';
             } else {
-                echo "<script>alert('Gagal menghapus foto galeri!');</script>";
+                $_SESSION['admin_message'] = 'Gagal menghapus foto galeri!';
+                $_SESSION['admin_message_type'] = 'error';
             }
+            header('Location: admin.php');
+            exit();
         }
     }
     
@@ -122,10 +150,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // ============================================
     elseif ($action === 'update' && $module === 'contact') {
         if (updateContactInfo($_POST)) {
-            echo "<script>alert('Informasi kontak berhasil diperbarui!');</script>";
+            $_SESSION['admin_message'] = 'Informasi kontak berhasil diperbarui!';
+            $_SESSION['admin_message_type'] = 'success';
         } else {
-            echo "<script>alert('Gagal memperbarui informasi kontak!');</script>";
+            $_SESSION['admin_message'] = 'Gagal memperbarui informasi kontak!';
+            $_SESSION['admin_message_type'] = 'error';
         }
+        header('Location: admin.php');
+        exit();
     }
     
     // ============================================
@@ -134,24 +166,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     elseif ($module === 'faq') {
         if ($action === 'add') {
             if (addFAQ($_POST)) {
-                echo "<script>alert('FAQ berhasil ditambahkan!');</script>";
+                $_SESSION['admin_message'] = 'FAQ berhasil ditambahkan!';
+                $_SESSION['admin_message_type'] = 'success';
             } else {
-                echo "<script>alert('Gagal menambahkan FAQ!');</script>";
+                $_SESSION['admin_message'] = 'Gagal menambahkan FAQ!';
+                $_SESSION['admin_message_type'] = 'error';
             }
+            header('Location: admin.php');
+            exit();
         }
         elseif ($action === 'update') {
             if (updateFAQ($_POST['id'], $_POST)) {
-                echo "<script>alert('FAQ berhasil diperbarui!');</script>";
+                $_SESSION['admin_message'] = 'FAQ berhasil diperbarui!';
+                $_SESSION['admin_message_type'] = 'success';
             } else {
-                echo "<script>alert('Gagal memperbarui FAQ!');</script>";
+                $_SESSION['admin_message'] = 'Gagal memperbarui FAQ!';
+                $_SESSION['admin_message_type'] = 'error';
             }
+            header('Location: admin.php');
+            exit();
         }
         elseif ($action === 'delete') {
             if (deleteFAQ($_POST['id'])) {
-                echo "<script>alert('FAQ berhasil dihapus!');</script>";
+                $_SESSION['admin_message'] = 'FAQ berhasil dihapus!';
+                $_SESSION['admin_message_type'] = 'success';
             } else {
-                echo "<script>alert('Gagal menghapus FAQ!');</script>";
+                $_SESSION['admin_message'] = 'Gagal menghapus FAQ!';
+                $_SESSION['admin_message_type'] = 'error';
             }
+            header('Location: admin.php');
+            exit();
         }
     }
 
@@ -1657,9 +1701,133 @@ $contactInfo = getContactInfo();
                 font-size: 1rem;
             }
         }
+
+        /* ============================================
+         * FLASH NOTIFICATION STYLES
+         * ============================================ */
+        .flash-notification {
+            position: fixed;
+            top: 90px;
+            right: 30px;
+            min-width: 350px;
+            max-width: 500px;
+            padding: 18px 24px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            border: 2px solid;
+        }
+
+        .flash-success {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.95) 0%, rgba(5, 150, 105, 0.95) 100%);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        .flash-error {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.95) 0%, rgba(220, 38, 38, 0.95) 100%);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        .flash-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .flash-content i {
+            font-size: 1.4rem;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        .flash-content span {
+            font-size: 0.95rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .flash-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .flash-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+
+        .flash-notification.hiding {
+            animation: slideOutRight 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @media (max-width: 768px) {
+            .flash-notification {
+                right: 15px;
+                left: 15px;
+                min-width: auto;
+                max-width: none;
+            }
+        }
     </style>
 </head>
 <body class="admin-body">
+    <!-- Notifikasi Flash Message -->
+    <?php if (isset($_SESSION['admin_message'])): ?>
+    <div class="flash-notification <?php echo $_SESSION['admin_message_type'] === 'success' ? 'flash-success' : 'flash-error'; ?>" id="flashNotification">
+        <div class="flash-content">
+            <i class="fas <?php echo $_SESSION['admin_message_type'] === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'; ?>"></i>
+            <span><?php echo htmlspecialchars($_SESSION['admin_message']); ?></span>
+        </div>
+        <button class="flash-close" onclick="closeFlashNotification()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <?php 
+        unset($_SESSION['admin_message']);
+        unset($_SESSION['admin_message_type']);
+    ?>
+    <?php endif; ?>
+
     <!-- Header -->
     <div class="admin-header">
         <div class="admin-logo">
@@ -3001,6 +3169,31 @@ $contactInfo = getContactInfo();
                     closeTransportModal();
                 }
             });
+        });
+
+        /**
+         * ============================================
+         * FLASH NOTIFICATION FUNCTIONS
+         * ============================================
+         */
+        function closeFlashNotification() {
+            const notification = document.getElementById('flashNotification');
+            if (notification) {
+                notification.classList.add('hiding');
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }
+        }
+
+        // Auto close notification after 5 seconds
+        document.addEventListener('DOMContentLoaded', function() {
+            const notification = document.getElementById('flashNotification');
+            if (notification) {
+                setTimeout(() => {
+                    closeFlashNotification();
+                }, 5000);
+            }
         });
     </script>
 </body>
