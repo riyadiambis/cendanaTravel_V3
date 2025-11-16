@@ -66,6 +66,42 @@ $companyInfoData = [
         </div>
     </section>
 
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-content">
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <i class="icon icon-whatsapp"></i>
+                    </div>
+                    <h3>Booking via WhatsApp</h3>
+                    <p>Pesan tiket dengan mudah melalui WhatsApp, cepat dan responsif</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <i class="icon icon-clock"></i>
+                    </div>
+                    <h3>Respon Cepat</h3>
+                    <p>Konfirmasi pesanan dalam hitungan menit</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h3>Layanan 24/7</h3>
+                    <p>Customer service siap membantu kapan saja</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <i class="fa-solid fa-dollar-sign"></i>
+                    </div>
+                    <h3>Harga Kompetitif</h3>
+                    <p>Dapatkan harga terbaik untuk semua rute perjalanan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Filter Section with Modern Design -->
     <section class="booking-filter-section">
         <div class="container">
@@ -126,42 +162,39 @@ $companyInfoData = [
         </div>
     </section>
 
-    <!-- Why Choose Us Section -->
-    <section class="trust-section">
+    <!-- FAQ Pemesanan Section -->
+    <section class="faq-booking-section">
         <div class="container">
-            <div class="section-header-trust">
-                <h2>Mengapa Pilih Kami?</h2>
-                <p>Kemudahan dan kenyamanan dalam setiap perjalanan Anda</p>
+            <div class="faq-booking-header">
+                <h2>Pertanyaan Seputar Pemesanan</h2>
+                <p>Jawaban untuk pertanyaan yang sering ditanyakan</p>
             </div>
-            <div class="trust-content">
-                <div class="trust-item">
-                    <div class="trust-icon">
-                        <i class="icon icon-whatsapp"></i>
+            
+            <div class="faq-booking-content">
+                <?php
+                require_once 'includes/faq_data.php';
+                $faqPemesanan = getFaqByCategory('Pemesanan');
+                
+                foreach ($faqPemesanan as $index => $faq):
+                ?>
+                <div class="faq-booking-item">
+                    <button class="faq-booking-question" onclick="toggleFaqBooking(<?php echo $index; ?>)">
+                        <span><?php echo htmlspecialchars($faq['question']); ?></span>
+                        <i class="icon icon-chevron-down faq-booking-icon" id="faq-icon-<?php echo $index; ?>"></i>
+                    </button>
+                    <div class="faq-booking-answer" id="faq-answer-<?php echo $index; ?>">
+                        <p><?php echo $faq['answer']; ?></p>
                     </div>
-                    <h3>Booking via WhatsApp</h3>
-                    <p>Pesan tiket dengan mudah melalui WhatsApp, cepat dan responsif</p>
                 </div>
-                <div class="trust-item">
-                    <div class="trust-icon">
-                        <i class="icon icon-clock"></i>
-                    </div>
-                    <h3>Respon Cepat</h3>
-                    <p>Konfirmasi pesanan dalam hitungan menit</p>
-                </div>
-                <div class="trust-item">
-                    <div class="trust-icon">
-                        <i class="fa-solid fa-headset"></i>
-                    </div>
-                    <h3>Layanan 24/7</h3>
-                    <p>Customer service siap membantu kapan saja</p>
-                </div>
-                <div class="trust-item">
-                    <div class="trust-icon">
-                        <i class="fa-solid fa-dollar-sign"></i>
-                    </div>
-                    <h3>Harga Kompetitif</h3>
-                    <p>Dapatkan harga terbaik untuk semua rute perjalanan</p>
-                </div>
+                <?php endforeach; ?>
+            </div>
+
+            <div class="faq-booking-cta">
+                <p>Punya pertanyaan lain?</p>
+                <a href="faq.php" class="btn-faq-more">
+                    <i class="icon icon-question-circle"></i>
+                    Lihat Semua FAQ
+                </a>
             </div>
         </div>
     </section>
@@ -293,6 +326,22 @@ $companyInfoData = [
     <!-- Scripts -->
     <script>
         window.COMPANY_WHATSAPP = '<?php echo htmlspecialchars($companyInfoData["whatsapp"]); ?>';
+        
+        // Toggle FAQ Accordion
+        function toggleFaqBooking(index) {
+            const item = document.getElementById('faq-answer-' + index).parentElement;
+            const allItems = document.querySelectorAll('.faq-booking-item');
+            
+            // Close all other items
+            allItems.forEach((otherItem, i) => {
+                if (i !== index && otherItem.classList.contains('active')) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            
+            // Toggle current item
+            item.classList.toggle('active');
+        }
     </script>
     <script src="config.js"></script>
     <script src="script.js"></script>

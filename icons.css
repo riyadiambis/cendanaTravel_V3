@@ -145,6 +145,22 @@
     content: "\f005";
 }
 
+.icon-star-fill::before {
+    content: "\f005";
+}
+
+.icon-star-half::before {
+    content: "\f089";
+}
+
+.icon-external::before {
+    content: "\f35d";
+}
+
+.icon-map::before {
+    content: "\f279";
+}
+
 .icon-ticket::before {
     content: "\f145";
 }
@@ -181,6 +197,31 @@
 
 .icon-chevron-right::before {
     content: "\f054";
+    font-weight: 900;
+}
+
+.icon-chevron-left::before {
+    content: "\f053";
+    font-weight: 900;
+}
+
+.icon-arrow-left::before {
+    content: "\f060";
+    font-weight: 900;
+}
+
+.icon-arrow-right::before {
+    content: "\f061";
+    font-weight: 900;
+}
+
+.icon-angle-left::before {
+    content: "\f104";
+    font-weight: 900;
+}
+
+.icon-angle-right::before {
+    content: "\f105";
     font-weight: 900;
 }
 
