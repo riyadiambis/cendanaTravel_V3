@@ -1,29 +1,16 @@
 <?php
-/**
- * ============================================
- * ADMIN DASHBOARD - CV. CENDANA TRAVEL
- * ============================================
- * 
- * Dashboard admin dengan CRUD lengkap untuk semua fitur
- * Dibuat dengan gaya coding mahasiswa - tanpa framework
- * Simple tapi works! 
- * 
- * Password: admin123
- * Username: admin
- */
+// Admin Dashboard - CV. Cendana Travel
+// Username: admin, Password: admin123
 
-// Enable error reporting untuk debugging
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Koneksi ke database dan inisialisasi  
 require_once 'config/database.php';
 require_once 'includes/functions.php';
 
-// Mulai session yang aman
 startSecureSession();
 
-// Cek apakah admin sudah login
+// cek login admin
 if (!isAdminLoggedIn()) {
     header('Location: index.php');
     exit();

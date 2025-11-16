@@ -1,114 +1,86 @@
-/**
- * ============================================
- * VARIABEL GLOBAL UNTUK MENYIMPAN DATA
- * ============================================
- * Variabel-variabel ini menyimpan data yang digunakan di seluruh aplikasi
- */
-let dataTransportasi = {};        // Menyimpan data layanan transportasi (pesawat, kapal, bus)
-let dataFasilitas = [];           // Menyimpan data fasilitas yang tersedia
-let transportTypesData = [];      // Menyimpan data jenis-jenis transportasi
-let companyInfoData = {};         // Menyimpan informasi perusahaan
+// Variabel global
+let dataTransportasi = {};   
+let dataFasilitas = [];      
+let transportTypesData = []; 
+let companyInfoData = {};
 
-/**
- * ============================================
- * FUNGSI: MUAT DATA DARI LOCAL STORAGE
- * ============================================
- * Fungsi ini membaca data yang sudah disimpan di browser (localStorage)
- * Jika data tidak ada, akan menggunakan data default dari config.js
- */
+// Muat data dari local storage
 function muatDataDariPenyimpanan() {
-    // Versi data saat ini - untuk update otomatis jika ada perubahan struktur data
     const versiSaatIni = '2.0'; 
     const versiTersimpan = localStorage.getItem('dataVersion');
     
-    // Jika versi berbeda, reset data perusahaan untuk update alamat
     if (versiTersimpan !== versiSaatIni) {
         localStorage.removeItem('companyInfoData');
         localStorage.setItem('dataVersion', versiSaatIni);
-        console.log('🔄 Data diperbarui ke versi', versiSaatIni);
+        console.log('Data diperbarui ke versi', versiSaatIni);
     }
     
-    // 1. MUAT DATA TRANSPORTASI
+    // muat data transportasi
     const dataTransportasiTersimpan = localStorage.getItem('dataTransportasi');
     if (dataTransportasiTersimpan) {
         try {
             dataTransportasi = JSON.parse(dataTransportasiTersimpan);
         } catch (error) {
-            console.error('❌ Error saat memuat data transportasi:', error);
+            console.error('Error saat memuat data:', error);
             dataTransportasi = DEFAULT_TRANSPORT_DATA;
         }
     } else {
         dataTransportasi = DEFAULT_TRANSPORT_DATA;
     }
 
-    // 2. MUAT DATA FASILITAS
+    // muat data fasilitas
     const dataFasilitasTersimpan = localStorage.getItem('dataFasilitas');
     if (dataFasilitasTersimpan) {
         try {
             dataFasilitas = JSON.parse(dataFasilitasTersimpan);
         } catch (error) {
-            console.error('❌ Error saat memuat data fasilitas:', error);
+            console.error('Error saat memuat data:', error);
             dataFasilitas = DEFAULT_FACILITIES_DATA;
         }
     } else {
         dataFasilitas = DEFAULT_FACILITIES_DATA;
     }
 
-    // 3. MUAT DATA JENIS TRANSPORTASI
+    // muat data jenis transportasi
     const dataJenisTransportasiTersimpan = localStorage.getItem('transportTypesData');
     if (dataJenisTransportasiTersimpan) {
         try {
             transportTypesData = JSON.parse(dataJenisTransportasiTersimpan);
         } catch (error) {
-            console.error('❌ Error saat memuat data jenis transportasi:', error);
+            console.error('Error saat memuat data:', error);
             transportTypesData = DEFAULT_TRANSPORT_TYPES;
         }
     } else {
         transportTypesData = DEFAULT_TRANSPORT_TYPES;
     }
 
-    // 4. MUAT INFORMASI PERUSAHAAN
+    // muat informasi perusahaan
     companyInfoData = COMPANY_CONFIG; 
     localStorage.setItem('companyInfoData', JSON.stringify(companyInfoData));
-    console.log('✅ Data perusahaan dimuat dengan alamat:', companyInfoData.address);
 }
 
 
-/**
- * ============================================
- * FUNGSI: SIMPAN DATA KE LOCAL STORAGE
- * ============================================
- * Fungsi ini menyimpan semua data ke browser (localStorage)
- * Data akan tetap tersimpan meskipun browser ditutup
- */
+// Simpan data ke local storage
 function simpanDataKePenyimpanan() {
     try {
         localStorage.setItem('dataTransportasi', JSON.stringify(dataTransportasi));
         localStorage.setItem('dataFasilitas', JSON.stringify(dataFasilitas));
         localStorage.setItem('transportTypesData', JSON.stringify(transportTypesData));
         localStorage.setItem('companyInfoData', JSON.stringify(companyInfoData));
-        console.log('✅ Data berhasil disimpan');
+        console.log('Data berhasil disimpan');
     } catch (error) {
-        console.error('❌ Error saat menyimpan data:', error);
+        console.error('Error saat menyimpan data:', error);
         alert('Gagal menyimpan data. Pastikan browser mendukung localStorage.');
     }
 }
 
 
-/**
- * ============================================
- * FUNGSI: PESAN VIA WHATSAPP
- * ============================================
- * Fungsi ini membuka WhatsApp dengan pesan yang sudah disiapkan
- * @param {string} namaProduk - Nama layanan atau produk yang ingin dipesan
- */
+// Kirim pesan via WhatsApp
 function pesanViaWhatsApp(namaProduk) {
-    // Ambil nomor WhatsApp dari data perusahaan
     const nomorWhatsApp = companyInfoData.whatsapp || "6282152069585";
     let pesan;
 
-    // Format pesan berdasarkan jenis input
-    // Jika sudah ada kata "dari" berarti sudah format lengkap
+    // cek format pesan
     if (typeof namaProduk === 'string' && namaProduk.includes('dari')) {
         pesan = namaProduk;
     } else {
@@ -124,39 +96,26 @@ function pesanViaWhatsApp(namaProduk) {
     window.open(urlWhatsApp, '_blank');
 }
 
-/**
- * ============================================
- * FUNGSI: HANDLE WHATSAPP BOOKING FORM
- * ============================================
- * Fungsi untuk menangani form pemesanan via WhatsApp
- * Mengambil data asal dan tujuan, lalu membuat pesan otomatis
- * untuk dikirim ke WhatsApp perusahaan
- */
+// Handle form booking WhatsApp
 function handleWhatsAppBooking(event) {
     event.preventDefault();
     
-    // Ambil data dari form
+    // ambil data dari form
     const origin = document.getElementById('origin').value.trim();
     const destination = document.getElementById('destination').value.trim();
     
-    // Validasi input
     if (!origin || !destination) {
         alert('Mohon lengkapi kota asal dan tujuan perjalanan!');
         return;
     }
-    
-    // Buat pesan WhatsApp
     const pesan = `Halo, saya ingin memesan tiket perjalanan:
 
-📍 Dari: ${origin}
-📍 Ke: ${destination}
+Dari: ${origin}
+Ke: ${destination}
 
 Mohon informasi jadwal, harga, dan ketersediaan tiket. Terima kasih!`;
     
-    // Ambil nomor WhatsApp dari data perusahaan
     const nomorWhatsApp = companyInfoData.whatsapp || "6285821841529";
-    
-    // Encode pesan dan buka WhatsApp
     const pesanTerencode = encodeURIComponent(pesan);
     const urlWhatsApp = `https://wa.me/${nomorWhatsApp}?text=${pesanTerencode}`;
     
@@ -167,7 +126,7 @@ Mohon informasi jadwal, harga, dan ketersediaan tiket. Terima kasih!`;
     document.getElementById('origin').value = '';
     document.getElementById('destination').value = '';
     
-    console.log('✅ Form WhatsApp booking berhasil disubmit');
+    console.log('Form booking berhasil disubmit');
 }
 
 
@@ -212,7 +171,7 @@ function muatDanTampilkanFasilitas() {
         kontainerFasilitas.appendChild(kartuFasilitas);
     });
     
-    console.log(`✅ ${dataFasilitas.length} fasilitas berhasil ditampilkan`);
+    console.log(`${dataFasilitas.length} fasilitas ditampilkan`);
 }
 
 
@@ -295,7 +254,7 @@ function muatDanTampilkanJenisTransportasi() {
         kontainerJenisTransportasi.appendChild(kartuTransportasi);
     });
     
-    console.log(`✅ ${jenisTransportasi.length} jenis transportasi berhasil ditampilkan`);
+    console.log(`${jenisTransportasi.length} jenis transportasi ditampilkan`);
 }
 
 /**

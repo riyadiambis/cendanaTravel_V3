@@ -1,15 +1,6 @@
-/**
- * ============================================
- * KONFIGURASI WEBSITE CV. CENDANA TRAVEL
- * ============================================
- * File ini berisi data default yang digunakan jika database kosong
- * Data dapat diubah melalui admin panel
- */
+// Konfigurasi website CV. Cendana Travel
 
-/**
- * Data Perusahaan
- * Informasi tentang perusahaan yang akan ditampilkan di website
- */
+// Data perusahaan
 const KONFIGURASI_PERUSAHAAN = {
     name: 'Cv. Cendana Travel',
     whatsapp: '6285821841529',
@@ -20,14 +11,9 @@ const KONFIGURASI_PERUSAHAAN = {
     description: 'Kami adalah penyedia layanan travel terpercaya dengan pengalaman lebih dari 10 tahun dalam melayani perjalanan Anda. Berawal dari lokasi sederhana di depan masjid, kini kami telah berkembang dengan kantor cabang di Jl. Cendana No.8, Tlk. Lerong Ulu, Kec. Sungai Kunjang, Kota Samarinda, Kalimantan Timur.'
 };
 
-// Alias untuk kompatibilitas dengan kode lama
 const COMPANY_CONFIG = KONFIGURASI_PERUSAHAAN;
 
-/**
- * Data Default Transportasi
- * Data ini akan digunakan jika database atau localStorage kosong
- * Struktur: { jenisTransportasi: [array layanan] }
- */
+// Data transportasi default
 const DATA_TRANSPORTASI_DEFAULT = {
     pesawat: [
         {
@@ -139,10 +125,7 @@ const DATA_TRANSPORTASI_DEFAULT = {
 // Alias untuk kompatibilitas
 const DEFAULT_TRANSPORT_DATA = DATA_TRANSPORTASI_DEFAULT;
 
-/**
- * Data Default Fasilitas
- * Daftar fasilitas yang tersedia di perusahaan
- */
+// Data fasilitas default
 const DATA_FASILITAS_DEFAULT = [
     {
         id: 1,
@@ -191,10 +174,7 @@ const DATA_FASILITAS_DEFAULT = [
 // Alias untuk kompatibilitas
 const DEFAULT_FACILITIES_DATA = DATA_FASILITAS_DEFAULT;
 
-/**
- * Data Default Jenis Transportasi
- * Definisi untuk setiap jenis transportasi (Pesawat, Kapal, Bus)
- */
+// Data jenis transportasi
 const DATA_JENIS_TRANSPORTASI_DEFAULT = [
     {
         key: 'pesawat',
@@ -225,12 +205,7 @@ const DATA_JENIS_TRANSPORTASI_DEFAULT = [
 // Alias untuk kompatibilitas
 const DEFAULT_TRANSPORT_TYPES = DATA_JENIS_TRANSPORTASI_DEFAULT;
 
-/**
- * ============================================
- * EKSPOR DATA UNTUK DIGUNAKAN DI FILE LAIN
- * ============================================
- * Data diekspor agar bisa digunakan di file JavaScript lainnya
- */
+// Ekspor data untuk Node.js
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         KONFIGURASI_PERUSAHAAN,

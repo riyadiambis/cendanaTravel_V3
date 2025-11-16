@@ -24,10 +24,7 @@ $companyInfoData = [
 </head>
 
 <body>
-    <!-- ============================================ -->
-    <!-- HEADER / NAVIGASI ATAS -->
-    <!-- ============================================ -->
-    <!-- Header yang tetap di atas saat scroll -->
+    <!-- Header -->
     <header>
         <div class="container header-container">
             <!-- Logo Perusahaan -->
@@ -65,10 +62,7 @@ $companyInfoData = [
         </div>
     </header>
 
-    <!-- ============================================ -->
-    <!-- BAGIAN HERO / BANNER UTAMA -->
-    <!-- ============================================ -->
-    <!-- Bagian pertama yang terlihat saat halaman dibuka -->
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-overlay">
             <div class="container">
@@ -110,10 +104,7 @@ $companyInfoData = [
         </div>
     </section>
 
-    <!-- ============================================ -->
-    <!-- BAGIAN LAYANAN PROFESIONAL -->
-    <!-- ============================================ -->
-    <!-- Menampilkan 3 card layanan profesional -->
+    <!-- Layanan Profesional -->
     <section class="professional-services" id="professional-services">
         <div class="container">
             <div class="section-header-professional">
@@ -157,10 +148,7 @@ $companyInfoData = [
 
 
 
-    <!-- ============================================ -->
-    <!-- BAGIAN SHOWCASE LAYANAN UNGGULAN -->
-    <!-- ============================================ -->
-    <!-- Menampilkan keunggulan perusahaan dengan foto dan narasi -->
+    <!-- Showcase Layanan -->
     <section class="service-showcase" id="service-showcase">
         <div class="showcase-overlay">
             <div class="container">
@@ -216,10 +204,7 @@ $companyInfoData = [
         </div>
     </section>
 
-    <!-- ============================================ -->
-    <!-- BAGIAN TENTANG & KONTAK -->
-    <!-- ============================================ -->
-    <!-- Menampilkan informasi perusahaan dan kontak dengan efek menarik -->
+    <!-- Tentang & Kontak -->
     <section class="about-contact" id="about-contact">
         <!-- Background dengan efek animasi -->
         <div class="contact-background">
@@ -347,10 +332,7 @@ $companyInfoData = [
         </div>
     </section>
 
-    <!-- ============================================ -->
-    <!-- FOOTER / BAGIAN BAWAH -->
-    <!-- ============================================ -->
-    <!-- Footer berisi informasi lengkap tentang perusahaan -->
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -471,13 +453,9 @@ $companyInfoData = [
         </div>
     </div>
 
-    <!-- ============================================ -->
-    <!-- JAVASCRIPT DATA -->
-    <!-- ============================================ -->
 
-    <!-- ============================================ -->
-    <!-- LOAD SCRIPT JAVASCRIPT -->
-    <!-- ============================================ -->
+
+
     <script src="config.js"></script>
     <script src="script.js"></script>
 </body>

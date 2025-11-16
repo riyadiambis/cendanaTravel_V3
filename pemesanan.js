@@ -1,18 +1,10 @@
-/**
- * ============================================
- * PEMESANAN.JS - CLEAN VERSION
- * ============================================
- * Rebuilt from scratch - 16 November 2025
- * No duplications, no timing issues
- */
+// Script untuk halaman pemesanan
 
 const bookingApp = {
     currentFilter: 'pesawat',
     servicesData: {},
     
-    /**
-     * Initialize the booking app
-     */
+    // inisialisasi aplikasi
     init() {
         console.log('🚀 Booking App Initializing...');
         
@@ -34,9 +26,7 @@ const bookingApp = {
         console.log('✅ Booking App Ready');
     },
     
-    /**
-     * Setup event listeners
-     */
+    // setup event listener
     setupEventListeners() {
         // Modal overlay click to close
         const modalOverlay = document.getElementById('bookingModal');
@@ -56,9 +46,7 @@ const bookingApp = {
         });
     },
     
-    /**
-     * Switch filter and render cards
-     */
+    // ganti filter dan tampilkan data
     switchFilter(type) {
         console.log(`🔄 Switching to: ${type}`);
         this.currentFilter = type;
@@ -78,9 +66,7 @@ const bookingApp = {
         this.renderCards(type);
     },
     
-    /**
-     * Update section title based on transport type
-     */
+    // update judul section
     updateSectionTitle(type) {
         const titles = {
             'pesawat': 'Pilihan Pesawat Terbaik',
@@ -102,9 +88,7 @@ const bookingApp = {
         }
     },
     
-    /**
-     * Render cards for specified type
-     */
+    // tampilkan card sesuai tipe
     renderCards(type) {
         console.log(`🔍 renderCards called with type: ${type}`);
         
@@ -150,10 +134,8 @@ const bookingApp = {
         console.log(`✅ Successfully rendered ${services.length} cards to DOM`);
     },
     
-    /**
-     * Create a single service card
-     */
-    createCard(service) {
+    // buat card untuk setiap layanan
+    createCard(service, type) {
         const card = document.createElement('div');
         card.className = 'transport-card';
         
@@ -192,9 +174,7 @@ const bookingApp = {
         return card;
     },
     
-    /**
-     * Get default logo path
-     */
+    // ambil logo default
     getDefaultLogo(type) {
         const logos = {
             'pesawat': 'uploads/pesawat/default-plane.png',
@@ -204,9 +184,7 @@ const bookingApp = {
         return logos[type] || 'uploads/default-transport.png';
     },
     
-    /**
-     * Get icon class for transport type
-     */
+    // ambil icon sesuai tipe
     getIconClass(type) {
         const icons = {
             'pesawat': 'icon-plane',
@@ -216,18 +194,14 @@ const bookingApp = {
         return icons[type] || 'icon-plane';
     },
     
-    /**
-     * Escape HTML to prevent XSS
-     */
+    // escape html
     escapeHtml(text) {
         const div = document.createElement('div');
         div.textContent = text;
         return div.innerHTML;
     },
     
-    /**
-     * Open booking modal
-     */
+    // buka modal booking
     openModal(serviceName, type) {
         console.log(`📋 Opening modal for: ${serviceName}`);
         
@@ -258,9 +232,7 @@ const bookingApp = {
         console.log('✅ Modal opened');
     },
     
-    /**
-     * Close booking modal
-     */
+    // tutup modal
     closeModal() {
         const modal = document.getElementById('bookingModal');
         if (modal) {
@@ -273,9 +245,7 @@ const bookingApp = {
         console.log('✖️ Modal closed');
     },
     
-    /**
-     * Submit booking form
-     */
+    // proses form booking
     submitForm(event) {
         event.preventDefault();
         
@@ -312,10 +282,8 @@ const bookingApp = {
         console.log('📱 Booking sent via WhatsApp');
     },
     
-    /**
-     * Generate WhatsApp message
-     */
-    generateWhatsAppMessage(data) {
+    // buat pesan whatsapp
+    generateWhatsAppMessage(formData) {
         let message = `*PEMESANAN TIKET - CV. CENDANA TRAVEL*\n\n`;
         message += `Halo Admin, saya ingin melakukan pemesanan:\n\n`;
         message += `*Jenis Layanan:* ${data.service}\n`;

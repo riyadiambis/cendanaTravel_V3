@@ -1,11 +1,6 @@
 <?php
-/**
- * ============================================
- * HALAMAN PEMESANAN - CV. CENDANA TRAVEL
- * ============================================
- * CLEAN VERSION - Rebuilt from scratch
- * Tanggal: 16 November 2025
- */
+// Halaman Pemesanan Tiket
+// CV. Cendana Travel
 
 $companyInfoData = [
     'name' => 'CV. Cendana Travel',
