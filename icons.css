@@ -267,6 +267,27 @@
     color: #25D366;
 }
 
+.icon-instagram::before {
+    font-family: 'Font Awesome 6 Brands';
+    font-weight: 400;
+    content: "\f16d";
+    color: inherit;
+}
+
+.icon-facebook::before {
+    font-family: 'Font Awesome 6 Brands';
+    font-weight: 400;
+    content: "\f09a";
+    color: inherit;
+}
+
+.icon-tiktok::before {
+    font-family: 'Font Awesome 6 Brands';
+    font-weight: 400;
+    content: "\e07b";
+    color: inherit;
+}
+
 .icon-camera::before {
     content: "\f030";
 }

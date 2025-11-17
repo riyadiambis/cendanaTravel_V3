@@ -1,11 +1,6 @@
-/**
- * ============================================
- * VARIABEL WARNA PROFESIONAL
- * ============================================
- * Palet warna yang lebih profesional dan natural
- */
+/* warna-warna buat website */
 :root {
-    /* Warna utama - professional dan modern */
+    /* warna utama */
     --warna-utama: #0f2942;
     --warna-kedua: #2563eb;
     --warna-aksen: #3b82f6;
@@ -17,7 +12,7 @@
     --warna-abu: #64748b;
     --warna-abu-terang: #94a3b8;
 
-    /* Mode Terang - Light Theme */
+    /* background sama teks */
     --bg-utama: #ffffff;
     --bg-kedua: #f8fafc;
     --bg-ketiga: #f1f5f9;
@@ -32,60 +27,37 @@
     --bayangan-sedang: 0 4px 12px rgba(0, 0, 0, 0.08);
     --bayangan-besar: 0 10px 40px rgba(0, 0, 0, 0.1);
     
-    /* Hover states untuk mode terang */
+    /* hover states */
     --hover-bg: #f1f5f9;
     --hover-border: #cbd5e1;
+
+    /* responsive font sizes */
+    --font-xs: clamp(0.75rem, 2vw, 0.875rem);
+    --font-sm: clamp(0.875rem, 2vw, 1rem);
+    --font-base: clamp(1rem, 2.5vw, 1.125rem);
+    --font-lg: clamp(1.125rem, 3vw, 1.25rem);
+    --font-xl: clamp(1.25rem, 3.5vw, 1.5rem);
+    --font-2xl: clamp(1.5rem, 4vw, 2rem);
+    --font-3xl: clamp(2rem, 5vw, 3rem);
+    --font-4xl: clamp(2.5rem, 6vw, 4rem);
+
+    /* responsive spacing */
+    --spacing-xs: clamp(0.5rem, 2vw, 0.75rem);
+    --spacing-sm: clamp(0.75rem, 2vw, 1rem);
+    --spacing-md: clamp(1rem, 3vw, 1.5rem);
+    --spacing-lg: clamp(1.5rem, 4vw, 2rem);
+    --spacing-xl: clamp(2rem, 5vw, 3rem);
+    --spacing-2xl: clamp(3rem, 6vw, 5rem);
+
+    /* container widths */
+    --container-sm: 640px;
+    --container-md: 768px;
+    --container-lg: 1024px;
+    --container-xl: 1280px;
+    --container-2xl: 1440px;
 }
 
-/**
- * ============================================
- * MODE GELAP - LEBIH KONSISTEN DAN NYAMAN
- * ============================================
- * Ganti warna background pas dark mode aktif
- * Pakai warna biru tua keabu-abuan biar gak terlalu kontras
- */
-/* Mode Gelap - Dark Theme */
-body.dark-mode,
-[data-theme="dark"] {
-    /* Background gelap yang nyaman */
-    --bg-utama: #1a1f2e;
-    --bg-kedua: #242b3d;
-    --bg-ketiga: #2d3748;
-    --bg-card: #242b3d;
-    --bg-sidebar: #1a1f2e;
-    --bg-header: #1a1f2e;
-    
-    /* Teks yang mudah dibaca */
-    --teks-utama: #f1f5f9;
-    --teks-kedua: #cbd5e1;
-    --teks-muted: #94a3b8;
-    
-    /* Warna aksen yang tetap cerah */
-    --warna-utama: #1e3a5f;
-    --warna-kedua: #3b82f6;
-    --warna-aksen: #60a5fa;
-    --warna-sukses: #34d399;
-    --warna-peringatan: #fbbf24;
-    --warna-bahaya: #f87171;
-    
-    /* Border dan shadow untuk dark mode */
-    --warna-border: #374151;
-    --bayangan-ringan: 0 1px 3px rgba(0, 0, 0, 0.4);
-    --bayangan-sedang: 0 4px 12px rgba(0, 0, 0, 0.5);
-    --bayangan-besar: 0 10px 40px rgba(0, 0, 0, 0.6);
-    
-    /* Hover states untuk mode gelap */
-    --hover-bg: #374151;
-    --hover-border: #4b5563;
-}
-
-/* Transisi smooth sudah diatur di global, gak perlu duplikat */
-
-/**
- * ============================================
- * RESET CSS DAN STYLING DASAR
- * ============================================
- */
+/* reset CSS dasar */
 
 /* Reset yang lebih minimal dan natural */
 * {
@@ -98,7 +70,7 @@ body.dark-mode,
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.7;
-    font-size: 16px;
+    font-size: var(--font-base);
     font-weight: 400;
     letter-spacing: -0.01em;
 }
@@ -112,10 +84,8 @@ html {
 }
 
 /**
- * ============================================
- * STYLING BODY - LEBIH SEDERHANA
- * ============================================
- */
+ *  * STYLING BODY - LEBIH SEDERHANA
+ *  */
 body {
     font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-color: var(--bg-utama);
@@ -150,92 +120,133 @@ body {
 }
 
 /**
- * ============================================
- * KONTAINER YANG LEBIH PROFESIONAL
- * ============================================
- */
+ *  * KONTAINER YANG LEBIH PROFESIONAL
+ *  */
 .container {
     width: 100%;
-    max-width: 1200px;
+    max-width: var(--container-xl);
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 clamp(1rem, 3vw, 2rem);
+}
+
+/* container variations */
+.container-fluid {
+    width: 100%;
+    padding: 0 clamp(1rem, 3vw, 2rem);
+}
+
+.container-sm {
+    max-width: var(--container-sm);
+}
+
+.container-md {
+    max-width: var(--container-md);
+}
+
+.container-lg {
+    max-width: var(--container-lg);
 }
 
 @media (max-width: 768px) {
     .container {
-        padding: 0 20px;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 425px) {
+    .container {
+        padding: 0 0.75rem;
     }
 }
 
 /**
- * ============================================
- * HEADER YANG LEBIH CLEAN
- * ============================================
- */
+ *  * HEADER PROFESIONAL & MODERN
+ *  */
 header {
-    background: linear-gradient(135deg, #0f172a, #1e293b);
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
     color: white;
-    padding: 18px 0;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    padding: 16px 0;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    backdrop-filter: blur(12px);
-    transition: all 0.3s ease;
+    backdrop-filter: blur(16px) saturate(180%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 header.scrolled {
-    padding: 14px 0;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-}
-
-/* Header tetap sama di dark mode */
-[data-theme="dark"] header {
-    background: linear-gradient(135deg, #0f172a, #1e293b);
+    padding: 12px 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%);
 }
 
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 24px;
+    gap: 32px;
+    position: relative;
 }
 
-/* Logo yang lebih profesional */
+/* logo responsive */
 .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 800;
     color: white;
     text-decoration: none;
-    transition: all 0.3s ease;
-    letter-spacing: -0.02em;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: -0.03em;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+}
+
+.logo::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logo:hover {
     color: #60a5fa;
-    transform: scale(1.02);
+    transform: translateY(-1px);
+    text-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
+}
+
+.logo:hover::before {
+    width: 100%;
 }
 
 .header-controls {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
 }
 
 /* WhatsApp button yang lebih profesional dengan hijau tua */
 .wa-header-btn {
     background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
     color: white;
-    padding: 12px 18px;
+    padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 18px);
     border-radius: 12px;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
     font-weight: 600;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     gap: 10px;
+    white-space: nowrap;
     box-shadow: 
         0 4px 12px rgba(37, 211, 102, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
@@ -273,16 +284,52 @@ header.scrolled {
     font-size: 1rem;
 }
 
-/* Dark mode toggle yang lebih minimal */
-.dark-mode-toggle {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+/* tombol hamburger menu mobile */
+.mobile-menu,
+.menu-toggle {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: white;
-    padding: 8px;
-    border-radius: 6px;
+    padding: 10px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1.1rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-toggle::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-toggle:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.menu-toggle:active {
+    transform: translateY(0);
 }
 
 /* Styling profesional untuk ikon WhatsApp SVG */
@@ -298,19 +345,7 @@ header.scrolled {
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
-/* Dark mode styling untuk ikon WhatsApp */
-[data-theme="dark"] .wa-icon {
-    fill: #ffffff;
-    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
-}
-
-[data-theme="dark"] .wa-header-btn:hover .wa-icon {
-    fill: #ffffff;
-    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-    transform: scale(1.1);
-}
-
-/* Styling untuk ikon WhatsApp di contact section */
+/* styling ikon whatsapp di contact */
 .wa-icon-contact {
     width: 20px;
     height: 20px;
@@ -323,71 +358,310 @@ header.scrolled {
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
-/* Dark mode untuk ikon WhatsApp di contact */
-[data-theme="dark"] .wa-icon-contact {
-    fill: #ffffff;
-    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.6));
+/* navigasi menu */
+nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
-[data-theme="dark"] .contact-detail:hover .wa-icon-contact {
-    fill: #ffffff;
-    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
-    transform: scale(1.15);
-}
-
-.dark-mode-toggle:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: scale(1.05);
-}
-
-/* Animasi icon saat diklik biar keliatan responsif */
-.dark-mode-toggle i {
-    transition: transform 0.3s ease;
-}
-
-/* Logo styling sudah dipindah ke atas */
-
-/* Navigasi yang lebih clean */
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 12px;
+    gap: 8px;
     align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li {
+    position: relative;
 }
 
 .nav-menu li a {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
-    font-weight: 500;
-    padding: 10px 18px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+}
+
+.nav-menu li a::before {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 2px;
 }
 
 .nav-menu li a:hover {
     color: white;
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.1);
     transform: translateY(-1px);
+}
+
+.nav-menu li a:hover::before {
+    width: 60%;
 }
 
 .nav-menu li a.active {
     color: white;
-    background: rgba(96, 165, 250, 0.2);
-    font-weight: 600;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(96, 165, 250, 0.2));
+    font-weight: 700;
+    box-shadow: 
+        0 2px 8px rgba(59, 130, 246, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
+.nav-menu li a.active::before {
+    width: 60%;
+}
+
+/* mobile menu button */
 .mobile-menu {
     display: none;
     font-size: 24px;
     cursor: pointer;
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================
+   RESPONSIVE HEADER & NAVBAR
+   ======================================== */
+
+/* Large Screens (Desktop 1440px+) */
+@media (min-width: 1441px) {
+    header {
+        padding: 18px 0;
+    }
+    
+    .logo {
+        font-size: 1.75rem;
+    }
+    
+    .nav-menu li a {
+        padding: 14px 24px;
+        font-size: 1rem;
+    }
+}
+
+/* Medium Desktop (1024px - 1440px) */
+@media (max-width: 1440px) {
+    .header-container {
+        gap: 24px;
+    }
+    
+    .nav-menu {
+        gap: 4px;
+    }
+    
+    .nav-menu li a {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Tablet Landscape (769px - 1024px) */
+@media (max-width: 1024px) {
+    header {
+        padding: 12px 0;
+    }
+    
+    .header-container {
+        gap: 16px;
+    }
+    
+    .logo {
+        font-size: 1.35rem;
+    }
+    
+    .nav-menu {
+        gap: 2px;
+    }
+    
+    .nav-menu li a {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .wa-header-btn {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .wa-header-btn span {
+        display: none;
+    }
+    
+    .wa-icon {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Tablet Portrait & Mobile (max 768px) */
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+    
+    header {
+        padding: 10px 0;
+    }
+    
+    .header-container {
+        gap: 12px;
+    }
+    
+    .logo {
+        font-size: 1.25rem;
+        z-index: 1001;
+    }
+    
+    /* hide desktop nav */
+    nav {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 280px;
+        height: calc(100vh - 60px);
+        background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+        padding: 24px 0;
+        transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 999;
+        overflow-y: auto;
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    nav.active {
+        left: 0;
+    }
+    
+    .nav-menu {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        padding: 0 16px;
+    }
+    
+    .nav-menu li {
+        width: 100%;
+    }
+    
+    .nav-menu li a {
+        width: 100%;
+        padding: 14px 16px;
+        font-size: 0.95rem;
+        border-radius: 8px;
+        justify-content: flex-start;
+    }
+    
+    .nav-menu li a::before {
+        left: 12px;
+        transform: none;
+        bottom: 50%;
+        width: 3px;
+        height: 0;
+        transform: translateY(50%);
+    }
+    
+    .nav-menu li a:hover::before,
+    .nav-menu li a.active::before {
+        width: 3px;
+        height: 60%;
+    }
+    
+    /* show mobile menu button */
+    .mobile-menu,
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .wa-header-btn {
+        padding: 10px;
+    }
+    
+    .wa-header-btn span {
+        display: none;
+    }
+    
+    /* overlay untuk close menu */
+    nav::before {
+        content: '';
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100vw;
+        height: calc(100vh - 60px);
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: -1;
+    }
+    
+    nav.active::before {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* Small Mobile (max 425px) */
+@media (max-width: 425px) {
+    header {
+        padding: 8px 0;
+    }
+    
+    .logo {
+        font-size: 1.1rem;
+    }
+    
+    .wa-header-btn,
+    .mobile-menu,
+    .menu-toggle {
+        width: 38px;
+        height: 38px;
+        padding: 8px;
+    }
+    
+    nav {
+        width: 260px;
+    }
+}
+
+/* Extra Small Mobile (max 375px) */
+@media (max-width: 375px) {
+    .logo {
+        font-size: 1rem;
+    }
+    
+    nav {
+        width: 240px;
+    }
 }
 
 /**
- * ============================================
- * PAGE HEADER - SESUAI GAMBAR
- * ============================================
- */
+ *  * PAGE HEADER - SESUAI GAMBAR
+ *  */
 .page-header {
     background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
     color: white;
@@ -417,24 +691,35 @@ header.scrolled {
 }
 
 .page-header h1 {
-    font-size: 2.5rem;
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
     font-weight: 800;
     margin-bottom: 12px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .page-header p {
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
     opacity: 0.95;
     max-width: 600px;
     margin: 0 auto;
 }
 
+/* responsive page header */
+@media (max-width: 768px) {
+    .page-header {
+        padding: 80px 0 40px;
+    }
+}
+
+@media (max-width: 425px) {
+    .page-header {
+        padding: 70px 0 30px;
+    }
+}
+
 /**
- * ============================================
- * HERO SECTION YANG LEBIH BESAR DAN MENARIK
- * ============================================
- */
+ *  * HERO SECTION YANG LEBIH BESAR DAN MENARIK
+ *  */
 .hero {
     background: linear-gradient(135deg, rgba(15, 41, 66, 0.95) 0%, rgba(37, 99, 235, 0.85) 100%), 
                 url('cendana/bannercendana.png') center center;
@@ -471,18 +756,7 @@ header.scrolled {
 .hero-content {
     text-align: left;
     max-width: 680px;
-    animation: fadeInUp 0.8s ease-out;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    /* Animation removed to prevent dark mode flash */
 }
 
 .hero-title {
@@ -503,8 +777,8 @@ header.scrolled {
 }
 
 .hero-description {
-    font-size: 1.2rem;
-    margin-bottom: 40px;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    margin-bottom: clamp(24px, 5vw, 40px);
     color: rgba(255, 255, 255, 0.95);
     line-height: 1.8;
     max-width: 580px;
@@ -513,14 +787,14 @@ header.scrolled {
 
 .hero-cta {
     display: flex;
-    gap: 20px;
-    margin-bottom: 56px;
+    gap: clamp(12px, 3vw, 20px);
+    margin-bottom: clamp(32px, 6vw, 56px);
     flex-wrap: wrap;
 }
 
 .btn-hero {
-    padding: 16px 32px;
-    font-size: 1.05rem;
+    padding: clamp(12px, 3vw, 16px) clamp(20px, 4vw, 32px);
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
     font-weight: 600;
     border-radius: 12px;
     text-decoration: none;
@@ -530,6 +804,7 @@ header.scrolled {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 2px solid transparent;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    min-width: 140px;
 }
 
 .btn-hero-primary {
@@ -559,19 +834,19 @@ header.scrolled {
 }
 
 .hero-stats {
-    display: flex;
-    gap: 32px;
-    flex-wrap: wrap;
-    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: clamp(16px, 4vw, 32px);
+    margin-top: clamp(32px, 5vw, 48px);
+    max-width: 600px;
 }
 
 .stat-card {
     background: rgba(255, 255, 255, 0.12);
-    padding: 24px 28px;
+    padding: clamp(16px, 3vw, 24px) clamp(18px, 3vw, 28px);
     border-radius: 16px;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    min-width: 140px;
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
 }
@@ -583,7 +858,7 @@ header.scrolled {
 }
 
 .stat-number {
-    font-size: 2.5rem;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
     font-weight: 800;
     color: white;
     margin-bottom: 8px;
@@ -592,9 +867,57 @@ header.scrolled {
 }
 
 .stat-label {
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
     color: rgba(255, 255, 255, 0.85);
     font-weight: 500;
+}
+
+/* responsive hero section */
+@media (max-width: 1024px) {
+    .hero {
+        padding: 140px 0 100px;
+        min-height: 75vh;
+    }
+    
+    .hero-content {
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 100px 0 80px;
+        min-height: auto;
+        background-attachment: scroll;
+    }
+    
+    .hero-content {
+        text-align: center;
+        max-width: 100%;
+    }
+    
+    .hero-cta {
+        justify-content: center;
+    }
+    
+    .hero-stats {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 425px) {
+    .hero {
+        padding: 80px 0 60px;
+    }
+    
+    .btn-hero {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    .hero-stats {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
 }
 
 .quick-nav {
@@ -637,10 +960,8 @@ header.scrolled {
 }
 
 /**
- * ============================================
- * SECTION TITLES - LEBIH PROFESIONAL
- * ============================================
- */
+ *  * SECTION TITLES - LEBIH PROFESIONAL
+ *  */
 .section-title {
     text-align: center;
     margin-bottom: 20px;
@@ -696,10 +1017,8 @@ header.scrolled {
 }
 
 /**
- * ============================================
- * BAGIAN JENIS TRANSPORTASI
- * ============================================
- */
+ *  * BAGIAN JENIS TRANSPORTASI
+ *  */
 .transport-types {
     padding: 80px 0;
     background: linear-gradient(135deg, var(--bg-ketiga) 0%, var(--bg-utama) 100%);
@@ -728,10 +1047,24 @@ header.scrolled {
 
 .transport-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 25px;
-    max-width: 800px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(16px, 3vw, 25px);
+    max-width: 1200px;
     margin: 0 auto;
+}
+
+/* responsive transport grid */
+@media (max-width: 1024px) {
+    .transport-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .transport-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
 }
 
 .transport-card {
@@ -746,7 +1079,7 @@ header.scrolled {
     overflow: hidden;
     position: relative;
     height: 100%;
-    min-height: 380px;
+    min-height: clamp(320px, 40vw, 380px);
 }
 
 .transport-card:hover {
@@ -1100,10 +1433,8 @@ header.scrolled {
 }
 
 /**
- * ============================================
- * TOMBOL "PESAN SEKARANG" - SESUAI VISUAL
- * ============================================
- */
+ *  * TOMBOL "PESAN SEKARANG" - SESUAI VISUAL
+ *  */
 .btn-book-now {
     background: #2563eb;
     color: white;
@@ -1166,15 +1497,11 @@ header.scrolled {
 }
 
 /**
- * ============================================
- * BAGIAN LAYANAN UNGGULAN
- * ============================================
- */
+ *  * BAGIAN LAYANAN UNGGULAN
+ *  */
 /**
- * ============================================
- * LAYANAN PROFESIONAL - LEBIH MENARIK
- * ============================================
- */
+ *  * LAYANAN PROFESIONAL - LEBIH MENARIK
+ *  */
 .professional-services {
     padding: 140px 0;
     background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
@@ -1268,18 +1595,25 @@ header.scrolled {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    gap: 56px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(28px, 5vw, 56px);
     max-width: 1300px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 clamp(16px, 3vw, 20px);
 }
 
-/* Responsive adjustments */
+/* responsive services grid */
 @media (max-width: 1200px) {
     .services-grid {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 40px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: clamp(24px, 4vw, 40px);
+    }
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: clamp(20px, 3vw, 28px);
     }
 }
 
@@ -1592,10 +1926,8 @@ header.scrolled {
 }
 
 /**
- * ============================================
- * TOMBOL WHATSAPP - LEBIH PROFESIONAL
- * ============================================
- */
+ *  * TOMBOL WHATSAPP - LEBIH PROFESIONAL
+ *  */
 .btn-wa-small {
     background: #25D366;
     color: white;
@@ -1619,10 +1951,8 @@ header.scrolled {
 }
 
 /**
- * ============================================
- * SERVICE SHOWCASE - LAYOUT DUA KOLOM MODERN
- * ============================================
- * Bagian showcase dengan foto di kiri dan narasi keunggulan di kanan
+ *  * SERVICE SHOWCASE - LAYOUT DUA KOLOM MODERN
+ *  * Bagian showcase dengan foto di kiri dan narasi keunggulan di kanan
  * Menggunakan background foto transportasi dengan overlay
  */
 .service-showcase {
@@ -1824,10 +2154,8 @@ header.scrolled {
 }
 
 /**
- * ============================================
- * GOOGLE REVIEWS & LOCATION SECTION
- * ============================================
- */
+ *  * GOOGLE REVIEWS & LOCATION SECTION
+ *  */
 .google-reviews-section {
     padding: 100px 0;
     background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
@@ -1835,12 +2163,10 @@ header.scrolled {
 }
 
 /**
- * ============================================
- * TESTIMONIALS SECTION
- * ============================================
- */
+ *  * TESTIMONIALS SECTION
+ *  */
 .testimonials-section {
-    padding: 100px 0;
+    padding: clamp(3rem, 10vw, 6.25rem) 0;
     background: #ffffff;
     position: relative;
     overflow: hidden;
@@ -1848,20 +2174,20 @@ header.scrolled {
 
 .testimonials-header {
     text-align: center;
-    margin-bottom: 60px;
-    padding: 0 20px;
+    margin-bottom: clamp(2rem, 6vw, 3.75rem);
+    padding: 0 var(--spacing-md);
 }
 
 .section-label {
     display: inline-block;
-    font-size: 1.1rem;
+    font-size: clamp(0.8125rem, 2vw, 1.1rem);
     font-weight: 700;
     letter-spacing: 0.15em;
     color: #2563eb;
     background: rgba(37, 99, 235, 0.1);
-    padding: 10px 24px;
+    padding: clamp(0.5rem, 1.5vw, 0.625rem) clamp(1rem, 3vw, 1.5rem);
     border-radius: 28px;
-    margin-bottom: 24px;
+    margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
     text-transform: uppercase;
 }
 
@@ -1875,7 +2201,7 @@ header.scrolled {
 }
 
 .testimonials-subtitle {
-    font-size: 1rem;
+    font-size: clamp(0.9375rem, 2vw, 1rem);
     line-height: 1.6;
     color: #64748b;
     font-weight: 400;
@@ -1884,7 +2210,7 @@ header.scrolled {
 }
 
 .testimonials-divider {
-    width: 120px;
+    width: clamp(80px, 15vw, 120px);
     height: 2px;
     background: linear-gradient(90deg, transparent, #2563eb, #3b82f6, transparent);
     margin: 0 auto;
@@ -1896,7 +2222,14 @@ header.scrolled {
     position: relative;
     max-width: 1300px;
     margin: 0 auto;
-    padding: 0 100px;
+    padding: 0 clamp(1rem, 10vw, 6.25rem);
+}
+
+/* Responsive padding for testimonials wrapper */
+@media (max-width: 768px) {
+    .testimonials-wrapper {
+        padding: 0 var(--spacing-md);
+    }
 }
 
 .testimonials-container {
@@ -1905,15 +2238,15 @@ header.scrolled {
 
 .testimonials-track {
     display: flex;
-    gap: 24px;
+    gap: clamp(1rem, 2.5vw, 1.5rem);
     transition: transform 0.4s ease;
 }
 
 .testimonial-card {
     flex: 0 0 calc(33.333% - 16px);
     background: #ffffff;
-    border-radius: 16px;
-    padding: 36px 28px;
+    border-radius: clamp(12px, 2vw, 16px);
+    padding: clamp(1.5rem, 4vw, 2.25rem) clamp(1rem, 3vw, 1.75rem);
     text-align: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
     transition: all 0.3s ease;
@@ -1927,15 +2260,32 @@ header.scrolled {
     border-color: #cbd5e1;
 }
 
+/* Responsive testimonial card sizing */
+@media (max-width: 1024px) {
+    .testimonial-card {
+        flex: 0 0 calc(50% - 12px);
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonial-card {
+        flex: 0 0 100%;
+    }
+    
+    .testimonial-card:hover {
+        transform: translateY(-2px);
+    }
+}
+
 .card-avatar {
-    margin-bottom: 20px;
+    margin-bottom: clamp(1rem, 2vw, 1.25rem);
     display: flex;
     justify-content: center;
 }
 
 .avatar {
-    width: 72px;
-    height: 72px;
+    width: clamp(60px, 8vw, 72px);
+    height: clamp(60px, 8vw, 72px);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1949,13 +2299,13 @@ header.scrolled {
 }
 
 .avatar span {
-    font-size: 1.8rem;
+    font-size: clamp(1.5rem, 3vw, 1.8rem);
     font-weight: 700;
     color: #ffffff;
 }
 
 .card-name {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
     font-weight: 600;
     color: #1e293b;
     margin-bottom: 8px;
@@ -2062,10 +2412,8 @@ header.scrolled {
 }
 
 /**
- * ============================================
- * TRUST BADGES SECTION
- * ============================================
- */
+ *  * TRUST BADGES SECTION
+ *  */
 .trust-badges {
     background: #ffffff;
     padding: 30px 0;
@@ -2106,26 +2454,9 @@ header.scrolled {
     border-color: #2563eb;
 }
 
-[data-theme="dark"] .trust-badges {
-    background: #0f172a;
-    border-bottom-color: #1e293b;
-}
-
-[data-theme="dark"] .badge-item {
-    background: #1e293b;
-    border-color: #334155;
-    color: #cbd5e1;
-}
-
-[data-theme="dark"] .badge-item:hover {
-    border-color: #3b82f6;
-}
-
 /**
- * ============================================
- * HOW TO ORDER SECTION
- * ============================================
- */
+ *  * HOW TO ORDER SECTION
+ *  */
 .how-to-order {
     padding: 80px 0;
     background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
@@ -2267,40 +2598,7 @@ header.scrolled {
 }
 
 /* Dark Mode */
-[data-theme="dark"] .how-to-order {
-    background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
-}
-
-[data-theme="dark"] .section-title-dark {
-    color: #f1f5f9;
-}
-
-[data-theme="dark"] .section-subtitle-dark {
-    color: #94a3b8;
-}
-
-[data-theme="dark"] .step-icon {
-    background: linear-gradient(135deg, #1e293b, #334155);
-    color: #60a5fa;
-}
-
-[data-theme="dark"] .step-item h3 {
-    color: #f1f5f9;
-}
-
-[data-theme="dark"] .step-item p {
-    color: #94a3b8;
-}
-
-[data-theme="dark"] .step-connector {
-    background: linear-gradient(90deg, #334155, #475569, #334155);
-}
-
-[data-theme="dark"] .step-connector::after {
-    color: #64748b;
-}
-
-/* Responsive */
+/* responsive */
 @media (max-width: 968px) {
     .steps-container {
         flex-wrap: wrap;
@@ -2350,10 +2648,8 @@ header.scrolled {
 }
 
 /**
- * ============================================
- * LOKASI & HUBUNGI KAMI SECTION
- * ============================================
- */
+ *  * LOKASI & HUBUNGI KAMI SECTION
+ *  */
 .location-contact-section {
     padding: 100px 0;
     background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #1e3a8a 100%);
@@ -2450,14 +2746,20 @@ header.scrolled {
 
 .location-maps {
     margin-bottom: 60px;
-    border-radius: 16px;
+    padding: 24px;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12), 
+                0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .location-maps iframe {
     display: block;
     width: 100%;
+    height: 450px;
+    border: none;
+    border-radius: 12px;
 }
 
 .contact-cards-grid {
@@ -2501,9 +2803,7 @@ header.scrolled {
 }
 
 .contact-info-card:hover .contact-card-icon {
-    background: linear-gradient(135deg, #2563eb, #3b82f6);
-    color: #ffffff;
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .contact-info-card h3 {
@@ -2538,54 +2838,7 @@ header.scrolled {
 }
 
 /* Dark Mode */
-[data-theme="dark"] .location-contact-section {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-}
-
-[data-theme="dark"] .shape {
-    background: rgba(59, 130, 246, 0.05);
-}
-
-[data-theme="dark"] .location-maps {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-[data-theme="dark"] .contact-info-card {
-    background: #1e293b;
-    border-color: #334155;
-}
-
-[data-theme="dark"] .contact-info-card:hover {
-    border-color: #475569;
-}
-
-[data-theme="dark"] .contact-card-icon {
-    background: linear-gradient(135deg, #1e293b, #334155);
-    color: #60a5fa;
-}
-
-[data-theme="dark"] .contact-info-card:hover .contact-card-icon {
-    background: linear-gradient(135deg, #2563eb, #3b82f6);
-    color: #ffffff;
-}
-
-[data-theme="dark"] .contact-info-card h3 {
-    color: #f1f5f9;
-}
-
-[data-theme="dark"] .contact-info-card p {
-    color: #94a3b8;
-}
-
-[data-theme="dark"] .contact-card-link {
-    color: #60a5fa;
-}
-
-[data-theme="dark"] .contact-card-link:hover {
-    color: #93c5fd;
-}
-
-/* Responsive */
+/* responsive */
 @media (max-width: 968px) {
     .location-contact-section {
         padding: 80px 0;
@@ -2619,68 +2872,7 @@ header.scrolled {
     }
 }
 
-/* Dark Mode */
-[data-theme="dark"] .testimonials-section {
-    background: #0f172a;
-}
-
-[data-theme="dark"] .section-label {
-    color: #60a5fa;
-    background: rgba(96, 165, 250, 0.1);
-}
-
-[data-theme="dark"] .testimonials-title {
-    color: #f1f5f9;
-}
-
-[data-theme="dark"] .testimonials-subtitle {
-    color: #94a3b8;
-}
-
-[data-theme="dark"] .testimonial-card {
-    background: #1e293b;
-    border-color: #334155;
-}
-
-[data-theme="dark"] .testimonial-card:hover {
-    border-color: #475569;
-}
-
-[data-theme="dark"] .card-name {
-    color: #f1f5f9;
-}
-
-[data-theme="dark"] .card-text {
-    color: #94a3b8;
-}
-
-[data-theme="dark"] .nav-btn {
-    background: #1e293b;
-    border-color: #334155;
-}
-
-[data-theme="dark"] .nav-btn span {
-    color: #94a3b8;
-}
-
-[data-theme="dark"] .nav-btn:hover {
-    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
-    border-color: #3b82f6;
-}
-
-[data-theme="dark"] .nav-btn:hover span {
-    color: #ffffff;
-}
-
-[data-theme="dark"] .testimonials-indicators .dot {
-    background: #334155;
-}
-
-[data-theme="dark"] .testimonials-indicators .dot:hover {
-    background: #475569;
-}
-
-/* Responsive */
+/* responsive */
 @media (max-width: 968px) {
     .testimonials-section {
         padding: 80px 0;
@@ -3092,62 +3284,6 @@ header.scrolled {
 }
 
 /* Dark Mode */
-[data-theme="dark"] .google-reviews-section {
-    background: linear-gradient(180deg, var(--bg-utama) 0%, var(--bg-kedua) 100%);
-}
-
-[data-theme="dark"] .rating-card,
-[data-theme="dark"] .customer-testimonials-wrapper,
-[data-theme="dark"] .google-maps-fullwidth {
-    background: var(--bg-card);
-    border-color: var(--warna-border);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-}
-
-[data-theme="dark"] .rating-score {
-    color: var(--teks-utama);
-}
-
-[data-theme="dark"] .testimonial-item {
-    background: var(--bg-kedua);
-    border-color: var(--warna-border);
-}
-
-[data-theme="dark"] .testimonial-item:hover {
-    background: var(--bg-ketiga);
-    border-color: rgba(148, 163, 184, 0.3);
-}
-
-[data-theme="dark"] .testimonials-list::-webkit-scrollbar-track {
-    background: var(--bg-kedua);
-}
-
-[data-theme="dark"] .testimonials-list::-webkit-scrollbar-thumb {
-    background: rgba(148, 163, 184, 0.3);
-}
-
-[data-theme="dark"] .testimonials-list::-webkit-scrollbar-thumb:hover {
-    background: rgba(148, 163, 184, 0.5);
-}
-
-[data-theme="dark"] .maps-header-full {
-    border-bottom-color: var(--warna-border);
-}
-
-[data-theme="dark"] .maps-actions-full {
-    background: var(--bg-kedua);
-}
-
-[data-theme="dark"] .btn-maps-call {
-    background: var(--bg-kedua);
-    border-color: var(--warna-border);
-    color: var(--teks-utama);
-}
-
-[data-theme="dark"] .btn-maps-call:hover {
-    background: var(--bg-ketiga);
-}
-
 /* Responsive */
 @media (max-width: 968px) {
     .reviews-top-section {
@@ -3263,10 +3399,8 @@ header.scrolled {
 }
 
 /**
- * ============================================
- * ABOUT & CONTACT - BAGIAN GABUNGAN MODERN
- * ============================================
- * Menggabungkan informasi perusahaan dan kontak dengan efek visual menarik
+ *  * ABOUT & CONTACT - BAGIAN GABUNGAN MODERN
+ *  * Menggabungkan informasi perusahaan dan kontak dengan efek visual menarik
  * Background gradasi dengan floating shapes dan animasi
  */
 .about-contact {
@@ -3377,264 +3511,21 @@ header.scrolled {
 }
 
 /* Dark mode support untuk cards */
-[data-theme="dark"] .info-card,
-[data-theme="dark"] .contact-card {
-    background: rgba(30, 41, 59, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 
-        0 20px 60px rgba(0, 0, 0, 0.3),
-        0 8px 24px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="dark"] .about-info h3,
-[data-theme="dark"] .contact-info-simple h3 {
-    background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: none;
-}
-
-[data-theme="dark"] .about-info p,
-[data-theme="dark"] .highlight-content strong,
-[data-theme="dark"] .contact-content strong {
-    color: #ffffff;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    font-weight: 600;
-}
-
-[data-theme="dark"] .contact-content p {
-    color: #e2e8f0;
-    opacity: 0.95;
-}
-
-[data-theme="dark"] .contact-intro {
-    color: #cbd5e1;
-    opacity: 0.9;
-}
-
-[data-theme="dark"] .maps-container {
-    background: rgba(30, 41, 59, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 
-        0 24px 80px rgba(0, 0, 0, 0.4),
-        0 8px 32px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="dark"] .maps-title {
-    background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: none;
-}
-
-[data-theme="dark"] .maps-container:hover .maps-title {
-    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-[data-theme="dark"] .maps-overlay {
-    background: rgba(45, 55, 72, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="dark"] .maps-info h4 {
-    color: white;
-}
-
-[data-theme="dark"] .maps-info p {
-    color: #cbd5e1;
-}
-
 /* Hover effect untuk dark mode - teks jadi hitam */
-[data-theme="dark"] .maps-container:hover .maps-info h4,
-body.dark-mode .maps-container:hover .maps-info h4 {
-    color: #000000 !important;
-}
-
-[data-theme="dark"] .maps-container:hover .maps-info p,
-body.dark-mode .maps-container:hover .maps-info p {
-    color: #000000 !important;
-}
-
 /* Body dark mode styling untuk maps-info */
-body.dark-mode .maps-info h4 {
-    color: white !important;
-}
-
-body.dark-mode .maps-info p {
-    color: #cbd5e1 !important;
-}
 
 /* Dark mode maps-overlay hover - background biru muda */
-[data-theme="dark"] .maps-container:hover .maps-overlay,
-body.dark-mode .maps-container:hover .maps-overlay {
-    background: rgba(147, 197, 253, 0.95) !important; /* Biru muda */
-    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3) !important;
-    border-color: rgba(59, 130, 246, 0.5) !important;
-}
-
 /* Dark mode support untuk ikon kontak dengan warna yang sama */
-[data-theme="dark"] .contact-detail:nth-child(1) .contact-icon {
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 50%, #075E54 100%);
-    border: 2px solid rgba(37, 211, 102, 0.3);
-    box-shadow: 
-        0 4px 12px rgba(37, 211, 102, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
-}
-
-[data-theme="dark"] .contact-detail:nth-child(2) .contact-icon {
-    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%);
-    border: 2px solid rgba(96, 165, 250, 0.3);
-    box-shadow: 
-        0 4px 12px rgba(96, 165, 250, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
-}
-
-[data-theme="dark"] .contact-detail:nth-child(3) .contact-icon {
-    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
-    border: 2px solid rgba(251, 191, 36, 0.3);
-    box-shadow: 
-        0 4px 12px rgba(251, 191, 36, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
-}
-
 /* Memperbaiki ikon di dark mode agar lebih terlihat */
-[data-theme="dark"] .contact-icon {
-    color: #ffffff !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    font-weight: 600;
-}
-
-[data-theme="dark"] .contact-icon i {
-    filter: brightness(1.5) contrast(1.3) drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));
-    font-size: 1.4rem;
-    color: #ffffff !important;
-    text-shadow: 0 0 4px rgba(255, 255, 255, 0.6), 0 1px 2px rgba(0, 0, 0, 0.8) !important;
-}
-
 /* Styling contact detail untuk dark mode */
-[data-theme="dark"] .contact-detail {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.1) 100%);
-    border: 1px solid rgba(59, 130, 246, 0.25);
-    backdrop-filter: blur(10px);
-}
-
-[data-theme="dark"] .contact-detail:hover {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(37, 99, 235, 0.15) 100%);
-    border-color: rgba(59, 130, 246, 0.35);
-    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.25);
-}
-
 /* Hover effects untuk dark mode */
-[data-theme="dark"] .contact-detail:hover .contact-icon {
-    transform: scale(1.1);
-    box-shadow: 
-        0 6px 16px rgba(59, 130, 246, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4);
-}
-
 /* Memperbaiki teks untuk dark mode */
-[data-theme="dark"] .contact-content strong {
-    color: #ffffff;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    font-weight: 700;
-}
-
-[data-theme="dark"] .contact-content p {
-    color: #e2e8f0;
-    opacity: 0.95;
-}
-
-[data-theme="dark"] .contact-intro {
-    color: #cbd5e1;
-    opacity: 0.9;
-}
-
 /* Ikon WhatsApp khusus untuk dark mode */
-[data-theme="dark"] .contact-detail:nth-child(1) .contact-icon i {
-    color: #ffffff !important;
-    filter: brightness(1.8) contrast(1.5) drop-shadow(0 0 4px rgba(255, 255, 255, 0.9)) !important;
-    text-shadow: 
-        0 0 6px rgba(255, 255, 255, 0.8),
-        0 1px 3px rgba(0, 0, 0, 0.9),
-        0 0 10px rgba(37, 211, 102, 0.6) !important;
-    font-weight: 900 !important;
-}
-
 /* Styling tambahan untuk semua ikon di dark mode */
-[data-theme="dark"] .contact-icon {
-    position: relative;
-}
-
-[data-theme="dark"] .contact-icon::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-    border-radius: 16px;
-    z-index: -1;
-}
-
 /* Tombol WhatsApp untuk dark mode - Styling Khusus */
-[data-theme="dark"] .btn-contact-wa {
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important;
-    border: 2px solid rgba(37, 211, 102, 0.4) !important;
-    box-shadow: 
-        0 6px 16px rgba(37, 211, 102, 0.5),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
-    color: #ffffff !important;
-    font-weight: 700 !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
-}
-
-[data-theme="dark"] .btn-contact-wa:hover {
-    background: linear-gradient(135deg, #128C7E 0%, #075E54 100%) !important;
-    box-shadow: 
-        0 10px 24px rgba(37, 211, 102, 0.6),
-        inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
-    border-color: rgba(37, 211, 102, 0.5) !important;
-}
-
 /* Global styling untuk semua ikon WhatsApp di dark mode */
-[data-theme="dark"] .icon-whatsapp,
-[data-theme="dark"] i[class*="whatsapp"] {
-    color: #ffffff !important;
-    filter: brightness(1.8) contrast(1.5) drop-shadow(0 0 4px rgba(255, 255, 255, 0.9)) !important;
-    text-shadow: 
-        0 0 6px rgba(255, 255, 255, 0.8),
-        0 1px 3px rgba(0, 0, 0, 0.9),
-        0 0 8px rgba(37, 211, 102, 0.7) !important;
-    font-weight: 900 !important;
-    -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.3);
-}
-
 /* Styling khusus untuk berbagai ukuran ikon WhatsApp */
-[data-theme="dark"] .icon-whatsapp.small,
-[data-theme="dark"] .wa-header-btn .icon-whatsapp {
-    filter: brightness(2) contrast(1.6) drop-shadow(0 0 3px rgba(255, 255, 255, 1)) !important;
-    text-shadow: 
-        0 0 4px rgba(255, 255, 255, 0.9),
-        0 1px 2px rgba(0, 0, 0, 1),
-        0 0 6px rgba(37, 211, 102, 0.8) !important;
-}
-
 /* Clean fallback untuk kompatibilitas dengan ikon lama */
-[data-theme="dark"] .icon-whatsapp,
-[data-theme="dark"] i[class*="whatsapp"] {
-    color: #ffffff !important;
-    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.6)) !important;
-    font-weight: 600 !important;
-}
-
 .about-contact-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -3994,8 +3885,6 @@ body.dark-mode .maps-container:hover .maps-overlay {
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
-
-
 /* Google Maps Section - Lebih Lebar dan Menarik */
 .google-maps-section {
     margin-top: 100px; /* perbesar margin atas untuk jarak lebih */
@@ -4266,10 +4155,8 @@ body.dark-mode .maps-container:hover .maps-overlay {
 }
 
 /**
- * ============================================
- * TOMBOL WHATSAPP BESAR
- * ============================================
- */
+ *  * TOMBOL WHATSAPP BESAR
+ *  */
 .btn-wa {
     background: linear-gradient(135deg, #25D366, #128C7E);
     color: white;
@@ -4417,11 +4304,6 @@ footer {
 }
 
 /* Footer tetap sama di dark mode */
-[data-theme="dark"] footer {
-    background: linear-gradient(135deg, var(--warna-utama), #1e3a5f);
-    color: #f1f5f9;
-}
-
 footer::before {
     content: '';
     position: absolute;
@@ -4434,9 +4316,40 @@ footer::before {
 
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 48px; /* Jarak yang lebih proporsional */
-    margin-bottom: 40px; /* Margin bottom yang lebih proporsional */
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(32px, 5vw, 48px);
+    margin-bottom: clamp(32px, 4vw, 40px);
+}
+
+/* responsive footer */
+@media (max-width: 1024px) {
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    footer {
+        padding: 48px 0 24px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    
+    .footer-section h3 {
+        font-size: 1.05rem;
+    }
+    
+    .footer-stats {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
 }
 
 .footer-section h3 {
@@ -4674,29 +4587,24 @@ footer::before {
     justify-content: center;
     width: 56px;
     height: 56px;
-    background: #128C7E;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
     color: white;
     border-radius: 50%;
-    font-size: 1.4rem;
-    box-shadow: 0 3px 12px rgba(18, 140, 126, 0.4);
+    font-size: 1.8rem;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
     transition: all 0.3s ease;
     text-decoration: none;
 }
 
-/* Ikon di WhatsApp float button untuk dark mode */
-[data-theme="dark"] .wa-float a i {
-    color: #ffffff !important;
-    filter: brightness(1.6) contrast(1.4) drop-shadow(0 0 4px rgba(255, 255, 255, 0.9)) !important;
-    text-shadow: 
-        0 0 5px rgba(255, 255, 255, 0.8),
-        0 1px 3px rgba(0, 0, 0, 0.9) !important;
-    font-weight: 900 !important;
+.wa-float a i {
+    color: white;
 }
 
+/* Ikon di WhatsApp float button - sama di semua mode */
 .wa-float a:hover {
-    transform: scale(1.1);
-    background: #0D7A6F;
-    box-shadow: 0 6px 20px rgba(18, 140, 126, 0.6);
+    transform: scale(1.15);
+    background: linear-gradient(135deg, #128C7E 0%, #0D7A6F 100%);
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.6);
 }
 
 /* Admin Login Modal Styles */
@@ -4923,15 +4831,24 @@ footer::before {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* Mobile Navigation */
+    nav {
+        order: 3;
+        width: 100%;
+    }
+    
     .nav-menu {
         display: none;
         position: absolute;
-        top: 70px;
+        top: 100%;
         left: 0;
         width: 100%;
-        background-color: var(--warna-utama);
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         flex-direction: column;
         padding: 20px;
+        gap: 8px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .nav-menu.active {
@@ -4939,20 +4856,40 @@ footer::before {
     }
 
     .nav-menu li {
-        margin: 10px 0;
+        width: 100%;
+    }
+    
+    .nav-menu li a {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 20px;
+        font-size: 1rem;
     }
 
     .mobile-menu {
-        display: block;
+        display: flex;
     }
     
-    /* Hide WhatsApp text on mobile */
+    .header-container {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    
+    /* Compact WhatsApp button on mobile */
     .wa-header-btn span {
         display: none;
     }
     
     .wa-header-btn {
-        padding: 8px;
+        padding: 10px;
+        width: 42px;
+        height: 42px;
+        justify-content: center;
+    }
+    
+    .wa-header-btn .wa-icon {
+        width: 20px;
+        height: 20px;
     }
 
     .hero {
@@ -5242,10 +5179,8 @@ footer::before {
 }
 
 /**
- * ============================================
- * ANIMASI FADE-IN DAN SLIDE
- * ============================================
- */
+ *  * ANIMASI FADE-IN DAN SLIDE
+ *  */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -5293,14 +5228,11 @@ footer::before {
 }
 
 /**
- * ============================================
- * HALAMAN PEMESANAN - DESAIN PROFESIONAL PREMIUM
- * ============================================
- * Inspired by Traveloka, Tiket.com, Booking.com
+ *  * HALAMAN PEMESANAN - DESAIN PROFESIONAL PREMIUM
+ *  * Inspired by Traveloka, Tiket.com, Booking.com
  * Modern, clean, and highly professional design
  */
 
-/* ===== HERO SECTION ===== */
 .booking-hero {
     background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #2563eb 100%);
     padding: 120px 0 100px;
@@ -5397,7 +5329,6 @@ footer::before {
     font-weight: 400;
 }
 
-/* ===== FILTER SECTION ===== */
 /* Booking Main Section - Integrated Trust & Filter */
 .booking-main-section {
     padding: 80px 0 60px;
@@ -5555,17 +5486,25 @@ footer::before {
 }
 
 .filter-tab {
-    padding: 24px 24px;
+    padding: clamp(1rem, 3vw, 1.5rem);
     background: #ffffff;
     border: 2px solid #e2e8f0;
-    border-radius: 16px;
+    border-radius: clamp(12px, 2vw, 16px);
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: clamp(0.75rem, 2vw, 1rem);
     position: relative;
     overflow: hidden;
+}
+
+/* Mobile responsive filter tabs */
+@media (max-width: 640px) {
+    .filter-tab {
+        flex-direction: row;
+        text-align: left;
+    }
 }
 
 .filter-tab::before {
@@ -5586,14 +5525,14 @@ footer::before {
 }
 
 .filter-tab-icon {
-    width: 56px;
-    height: 56px;
+    width: clamp(48px, 7vw, 56px);
+    height: clamp(48px, 7vw, 56px);
     background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
-    border-radius: 14px;
+    border-radius: clamp(10px, 1.8vw, 14px);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.6rem;
+    font-size: clamp(1.25rem, 3vw, 1.6rem);
     color: #64748b;
     transition: all 0.3s ease;
     flex-shrink: 0;
@@ -5606,7 +5545,7 @@ footer::before {
 
 .filter-tab-name {
     display: block;
-    font-size: 1.1rem;
+    font-size: clamp(0.9375rem, 2.5vw, 1.1rem);
     font-weight: 700;
     color: var(--teks-utama);
     margin-bottom: 4px;
@@ -5614,19 +5553,26 @@ footer::before {
 
 .filter-tab-desc {
     display: block;
-    font-size: 0.85rem;
+    font-size: clamp(0.8125rem, 1.8vw, 0.85rem);
     color: var(--teks-kedua);
     font-weight: 500;
+}
+
+/* Hide filter description on very small screens */
+@media (max-width: 480px) {
+    .filter-tab-desc {
+        display: none;
+    }
 }
 
 .filter-tab-badge {
     background: #e2e8f0;
     color: #64748b;
-    padding: 6px 12px;
+    padding: clamp(0.375rem, 1vw, 0.375rem) clamp(0.625rem, 2vw, 0.75rem);
     border-radius: 20px;
-    font-size: 0.85rem;
+    font-size: clamp(0.75rem, 1.8vw, 0.85rem);
     font-weight: 700;
-    min-width: 36px;
+    min-width: clamp(32px, 5vw, 36px);
     text-align: center;
     transition: all 0.3s ease;
 }
@@ -5676,19 +5622,18 @@ footer::before {
     color: white;
 }
 
-/* ===== BOOKING LIST SECTION ===== */
 .booking-list-section {
-    padding: 80px 0 100px;
+    padding: clamp(3rem, 8vw, 5rem) 0 clamp(4rem, 10vw, 6.25rem);
     background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
 }
 
 .section-header-booking {
     text-align: center;
-    margin-bottom: 56px;
+    margin-bottom: clamp(2rem, 5vw, 3.5rem);
 }
 
 .section-title-booking {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
     font-weight: 800;
     color: var(--teks-utama);
     margin-bottom: 12px;
@@ -5696,23 +5641,38 @@ footer::before {
 }
 
 .section-subtitle-booking {
-    font-size: 1rem;
+    font-size: clamp(0.875rem, 2vw, 1rem);
     color: var(--teks-kedua);
     font-weight: 500;
 }
 
 .transport-cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 32px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 3vw, 2rem);
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 var(--spacing-md);
 }
 
-/* ===== TRANSPORT CARD ===== */
+/* Responsive grid untuk booking cards */
+@media (max-width: 1024px) {
+    .transport-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: clamp(1rem, 2.5vw, 1.5rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .transport-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
 .transport-card {
     background: #ffffff;
-    border-radius: 20px;
+    border-radius: clamp(12px, 2vw, 20px);
     overflow: visible;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -5729,9 +5689,16 @@ footer::before {
     border-color: #cbd5e1;
 }
 
+/* Less hover effect on mobile */
+@media (max-width: 768px) {
+    .transport-card:hover {
+        transform: translateY(-4px);
+    }
+}
+
 /* Content card dengan padding yang nyaman */
 .transport-card-content {
-    padding: 0 24px 24px 24px;
+    padding: 0 clamp(1rem, 3vw, 1.5rem) clamp(1rem, 3vw, 1.5rem);
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -5739,11 +5706,10 @@ footer::before {
     text-align: center;
 }
 
-/* ===== PROFESSIONAL LOGO PRESENTATION ===== */
 .company-logo-wrapper {
     width: 100%;
-    height: 140px;
-    margin: 0 auto 20px;
+    height: clamp(100px, 15vw, 140px);
+    margin: 0 auto clamp(1rem, 2vw, 1.25rem);
     background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
     border-bottom: 1px solid #e2e8f0;
     display: flex;
@@ -5751,7 +5717,7 @@ footer::before {
     justify-content: center;
     overflow: hidden;
     position: relative;
-    padding: 24px;
+    padding: clamp(1rem, 3vw, 1.5rem);
 }
 
 /* Loading state dengan skeleton animation */
@@ -5821,9 +5787,8 @@ footer::before {
     display: none !important;
 }
 
-/* ===== CARD CONTENT STYLING ===== */
 .transport-card h3 {
-    font-size: 1.4rem;
+    font-size: clamp(1.125rem, 3vw, 1.4rem);
     font-weight: 800;
     color: var(--teks-utama);
     margin-bottom: 12px;
@@ -5835,8 +5800,8 @@ footer::before {
 /* Deskripsi/rute perjalanan - NO ICON */
 .transport-card .description {
     color: var(--teks-kedua);
-    margin-bottom: 20px;
-    font-size: 0.95rem;
+    margin-bottom: clamp(1rem, 2vw, 1.25rem);
+    font-size: clamp(0.875rem, 2vw, 0.95rem);
     line-height: 1.6;
     flex-grow: 1;
     text-align: center;
@@ -5844,6 +5809,12 @@ footer::before {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media (max-width: 640px) {
+    .transport-card .description {
+        min-height: auto;
+    }
 }
 
 .transport-card .description i {
@@ -5855,13 +5826,13 @@ footer::before {
     background: #dbeafe;
     color: #2563eb;
     font-weight: 800;
-    font-size: 1.15rem;
-    margin-bottom: 20px;
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
+    margin-bottom: clamp(1rem, 2vw, 1.25rem);
     letter-spacing: -0.01em;
     display: block;
     text-align: center;
-    padding: 14px 20px;
-    border-radius: 12px;
+    padding: clamp(0.75rem, 2vw, 0.875rem) clamp(1rem, 3vw, 1.25rem);
+    border-radius: clamp(8px, 1.5vw, 12px);
     border: 1px solid #bfdbfe;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
@@ -5880,13 +5851,13 @@ footer::before {
 /* Tombol "Pesan Sekarang" dengan warna hijau WhatsApp - sesuai screenshot */
 .btn-book-now {
     width: 100%;
-    padding: 12px 24px;
+    padding: clamp(0.75rem, 2vw, 0.875rem) clamp(1rem, 3vw, 1.5rem);
     background: #25D366;
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: clamp(8px, 1.5vw, 10px);
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: clamp(0.875rem, 2vw, 0.95rem);
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 2px 10px rgba(37, 211, 102, 0.3);
@@ -5894,6 +5865,7 @@ footer::before {
     align-items: center;
     justify-content: center;
     gap: 8px;
+    min-height: 48px; /* Touch-friendly pada mobile */
 }
 
 /* Efek hover tombol */
@@ -5909,11 +5881,16 @@ footer::before {
     box-shadow: 0 2px 8px rgba(37, 211, 102, 0.2);
 }
 
+/* Less hover effect on touch devices */
+@media (max-width: 768px) {
+    .btn-book-now:hover {
+        transform: none;
+    }
+}
+
 /**
- * ============================================
- * MODAL PEMESANAN - PROFESSIONAL DESIGN
- * ============================================
- * Modal yang muncul saat klik "Pesan Sekarang"
+ *  * MODAL PEMESANAN - PROFESSIONAL DESIGN
+ *  * Modal yang muncul saat klik "Pesan Sekarang"
  */
 .booking-modal-overlay {
     position: fixed;
@@ -5941,13 +5918,21 @@ footer::before {
 
 .booking-modal {
     background: #ffffff;
-    border-radius: 16px;
-    max-width: 500px;
+    border-radius: clamp(12px, 2vw, 16px);
+    max-width: clamp(350px, 90vw, 500px);
     width: 90%;
     max-height: 85vh;
     overflow-y: auto;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     animation: modalSlideUp 0.3s ease;
+}
+
+/* Mobile responsive modal */
+@media (max-width: 640px) {
+    .booking-modal {
+        width: 95%;
+        max-height: 90vh;
+    }
 }
 
 @keyframes modalSlideUp {
@@ -5962,23 +5947,19 @@ footer::before {
 }
 
 /* Dark mode: background card tetap terang agar form mudah dibaca */
-[data-theme="dark"] .booking-modal {
-    background: #ffffff;
-}
-
 .booking-modal-header {
-    padding: 24px 24px 20px;
+    padding: clamp(1rem, 3vw, 1.5rem) clamp(1rem, 3vw, 1.5rem) clamp(1rem, 2.5vw, 1.25rem);
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: #2563eb;
     color: white;
-    border-radius: 16px 16px 0 0;
+    border-radius: clamp(12px, 2vw, 16px) clamp(12px, 2vw, 16px) 0 0;
 }
 
 .booking-modal-header h3 {
     margin: 0;
-    font-size: 1.25rem;
+    font-size: clamp(1.0625rem, 2.5vw, 1.25rem);
     font-weight: 700;
     letter-spacing: -0.01em;
 }
@@ -5987,10 +5968,10 @@ footer::before {
     background: rgba(255, 255, 255, 0.15);
     border: none;
     color: white;
-    font-size: 1.5rem;
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
     cursor: pointer;
-    width: 36px;
-    height: 36px;
+    width: clamp(32px, 5vw, 36px);
+    height: clamp(32px, 5vw, 36px);
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -6006,12 +5987,12 @@ footer::before {
 }
 
 .booking-modal-body {
-    padding: 24px;
+    padding: clamp(1rem, 3vw, 1.5rem);
 }
 
 /* Form group dengan spacing yang baik */
 .booking-modal-body .form-group {
-    margin-bottom: 18px;
+    margin-bottom: clamp(1rem, 2vw, 1.125rem);
 }
 
 /* Label yang jelas dan mudah dibaca */
@@ -6020,7 +6001,7 @@ footer::before {
     margin-bottom: 8px;
     font-weight: 600;
     color: #1e293b;
-    font-size: 0.875rem;
+    font-size: clamp(0.8125rem, 1.8vw, 0.875rem);
 }
 
 /* Tanda bintang merah untuk field wajib */
@@ -6033,13 +6014,14 @@ footer::before {
 .booking-modal-body input,
 .booking-modal-body textarea {
     width: 100%;
-    padding: 11px 14px;
+    padding: clamp(0.625rem, 2vw, 0.6875rem) clamp(0.75rem, 2.5vw, 0.875rem);
     border: 1.5px solid #e2e8f0;
     border-radius: 8px;
-    font-size: 0.95rem;
+    font-size: clamp(0.875rem, 2vw, 0.95rem);
     transition: all 0.2s ease;
     background: #f8fafc;
     color: #1e293b;
+    min-height: 44px; /* Touch-friendly on mobile */
     font-family: inherit;
     box-sizing: border-box;
 }
@@ -6126,12 +6108,10 @@ footer::before {
 }
 
 /**
- * ============================================
- * TRUST SECTION - PROFESSIONAL BADGES
- * ============================================
- */
+ *  * TRUST SECTION - PROFESSIONAL BADGES
+ *  */
 .trust-section {
-    padding: 80px 0 30px;
+    padding: clamp(3rem, 8vw, 5rem) 0 clamp(1rem, 3vw, 1.875rem);
     background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
     position: relative;
     overflow: hidden;
@@ -6149,11 +6129,12 @@ footer::before {
 
 .section-header-trust {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: clamp(2rem, 6vw, 3.75rem);
+    padding: 0 var(--spacing-md);
 }
 
 .section-header-trust h2 {
-    font-size: 2.5rem;
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
     font-weight: 800;
     color: var(--teks-utama);
     margin-bottom: 12px;
@@ -6161,7 +6142,7 @@ footer::before {
 }
 
 .section-header-trust p {
-    font-size: 1.1rem;
+    font-size: clamp(0.9375rem, 2.5vw, 1.1rem);
     color: var(--teks-kedua);
     font-weight: 400;
 }
@@ -6169,16 +6150,31 @@ footer::before {
 .trust-content {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    gap: clamp(1rem, 2.5vw, 1.5rem);
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* Responsive trust badges grid */
+@media (max-width: 1024px) {
+    .trust-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .trust-content {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
 }
 
 .trust-item {
     text-align: center;
-    padding: 40px 28px;
+    padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 3vw, 1.75rem);
     background: #ffffff;
-    border-radius: 16px;
+    border-radius: clamp(12px, 2vw, 16px);
     transition: all 0.3s ease;
     border: 2px solid #e2e8f0;
     position: relative;
@@ -6188,11 +6184,12 @@ footer::before {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 16px;
+    border-radius: clamp(12px, 2vw, 16px);
     padding: 2px;
     background: linear-gradient(135deg, #3b82f6, #2563eb);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -6208,12 +6205,19 @@ footer::before {
     box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
 }
 
+/* Less hover effect on mobile */
+@media (max-width: 768px) {
+    .trust-item:hover {
+        transform: translateY(-3px);
+    }
+}
+
 .trust-icon {
-    width: 72px;
-    height: 72px;
-    margin: 0 auto 20px;
+    width: clamp(60px, 8vw, 72px);
+    height: clamp(60px, 8vw, 72px);
+    margin: 0 auto clamp(1rem, 2vw, 1.25rem);
     background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-    border-radius: 16px;
+    border-radius: clamp(12px, 2vw, 16px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6264,135 +6268,11 @@ footer::before {
 }
 
 /**
- * ============================================
- * DARK MODE SUPPORT FOR BOOKING PAGE
- * ============================================
- */
-[data-theme="dark"] .booking-hero {
-    background: linear-gradient(135deg, rgba(15, 41, 66, 0.95) 0%, rgba(37, 99, 235, 0.85) 100%), 
-                linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #2563eb 100%);
-}
-
-[data-theme="dark"] .booking-hero::before {
-    background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
-}
-
-[data-theme="dark"] .booking-filter-section {
-    background: var(--bg-utama);
-}
-
-[data-theme="dark"] .filter-container {
-    background: var(--bg-card);
-    border-color: var(--warna-border);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-}
-
-[data-theme="dark"] .filter-tab {
-    background: var(--bg-kedua);
-    border-color: var(--warna-border);
-}
-
-[data-theme="dark"] .filter-tab:hover {
-    background: rgba(51, 65, 85, 0.6);
-    border-color: rgba(148, 163, 184, 0.3);
-    transform: translateY(-2px);
-}
-
-[data-theme="dark"] .filter-tab-icon {
-    background: var(--bg-ketiga);
-    color: var(--teks-kedua);
-}
-
-[data-theme="dark"] .filter-tab-badge {
-    background: var(--bg-ketiga);
-    color: var(--teks-kedua);
-}
-
-[data-theme="dark"] .filter-tab.active {
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-    border-color: #2563eb;
-}
-
-[data-theme="dark"] .booking-list-section {
-    background: linear-gradient(180deg, #242b3d 0%, #1a1f2e 100%);
-}
-
-[data-theme="dark"] .transport-card {
-    background: var(--bg-card);
-    border-color: var(--warna-border);
-}
-
-[data-theme="dark"] .transport-card:hover {
-    border-color: var(--warna-kedua);
-}
-
-[data-theme="dark"] .trust-section {
-    background: linear-gradient(180deg, var(--bg-kedua) 0%, var(--bg-utama) 100%);
-}
-
-[data-theme="dark"] .trust-section::before {
-    background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.1), transparent);
-}
-
-[data-theme="dark"] .section-header-trust h2 {
-    color: var(--teks-utama);
-}
-
-[data-theme="dark"] .section-header-trust p {
-    color: var(--teks-kedua);
-}
-
-[data-theme="dark"] .trust-item {
-    background: var(--bg-card);
-    border-color: var(--warna-border);
-}
-
-[data-theme="dark"] .trust-item::before {
-    background: linear-gradient(135deg, #3b82f6, #60a5fa);
-}
-
-[data-theme="dark"] .trust-item:hover {
-    border-color: transparent;
-    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
-}
-
-[data-theme="dark"] .trust-icon {
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-}
-
-[data-theme="dark"] .company-logo-wrapper {
-    background: linear-gradient(135deg, var(--bg-kedua) 0%, var(--bg-ketiga) 100%);
-    border-bottom-color: var(--warna-border);
-}
-
-[data-theme="dark"] .company-logo-wrapper.loaded {
-    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-kedua) 100%);
-}
-
-[data-theme="dark"] .transport-card .company-logo {
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-}
-
-[data-theme="dark"] .transport-card:hover .company-logo {
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
-}
-
-[data-theme="dark"] .transport-card .price-range {
-    background: rgba(37, 99, 235, 0.15);
-    border-color: rgba(37, 99, 235, 0.3);
-}
-
-[data-theme="dark"] .transport-card:hover .price-range {
-    background: rgba(37, 99, 235, 0.25);
-    border-color: rgba(37, 99, 235, 0.4);
-}
-
+ *  * DARK MODE SUPPORT FOR BOOKING PAGE
+ *  */
 /**
- * ============================================
- * PESAN TIDAK ADA LAYANAN
- * ============================================
- */
+ *  * PESAN TIDAK ADA LAYANAN
+ *  */
 .no-services-message {
     grid-column: 1 / -1;
     text-align: center;
@@ -6434,10 +6314,8 @@ footer::before {
 }
 
 /**
- * ============================================
- * RESPONSIVE DESIGN - MOBILE & TABLET
- * ============================================
- */
+ *  * RESPONSIVE DESIGN - MOBILE & TABLET
+ *  */
 /* Tablet landscape (768px - 1024px) */
 @media screen and (max-width: 1024px) {
     .transport-cards-grid {
@@ -6962,10 +6840,8 @@ footer::before {
 }
 
 /**
- * ============================================
- * UTILITY CLASSES DAN PERBAIKAN KECIL
- * ============================================
- */
+ *  * UTILITY CLASSES DAN PERBAIKAN KECIL
+ *  */
 /* Smooth scroll untuk halaman */
 html {
     scroll-behavior: smooth;
@@ -7002,62 +6878,12 @@ html {
     outline-offset: 2px;
 }
 
-/* Animasi untuk render cards */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
+/* Animation removed to prevent dark mode flash */
 .transport-card {
-    animation: fadeInUp 0.4s ease-out backwards;
+    opacity: 1;
 }
-
-/* Staggered animation delay untuk multiple cards */
-.transport-card:nth-child(1) { animation-delay: 0.05s; }
-.transport-card:nth-child(2) { animation-delay: 0.1s; }
-.transport-card:nth-child(3) { animation-delay: 0.15s; }
-.transport-card:nth-child(4) { animation-delay: 0.2s; }
-.transport-card:nth-child(5) { animation-delay: 0.25s; }
-.transport-card:nth-child(6) { animation-delay: 0.3s; }
-.transport-card:nth-child(7) { animation-delay: 0.35s; }
-.transport-card:nth-child(8) { animation-delay: 0.4s; }
-.transport-card:nth-child(9) { animation-delay: 0.45s; }
 
 /* Dark mode compatibility untuk elements baru */
-body.dark-mode .transport-card,
-[data-theme="dark"] .transport-card {
-    background: var(--bg-card);
-    border-color: var(--warna-border);
-}
-
-body.dark-mode .company-logo,
-[data-theme="dark"] .company-logo {
-    background: var(--bg-kedua);
-}
-
-body.dark-mode .no-services-message,
-[data-theme="dark"] .no-services-message {
-    background: var(--bg-card);
-    border-color: var(--warna-border);
-    color: var(--teks-kedua);
-}
-
-/* Dark mode untuk modal */
-body.dark-mode .booking-modal,
-[data-theme="dark"] .booking-modal {
-    background: #ffffff;
-}
-
-/* Scrollbar styling untuk modal */
-.booking-modal::-webkit-scrollbar {
-    width: 8px;
-}
 
 .booking-modal::-webkit-scrollbar-track {
     background: #f1f5f9;
@@ -7073,46 +6899,8 @@ body.dark-mode .booking-modal,
 }
 
 /* Dark mode untuk section Layanan Profesional */
-body.dark-mode .professional-services,
-[data-theme="dark"] .professional-services {
-    background: linear-gradient(135deg, var(--bg-utama) 0%, var(--bg-kedua) 50%, var(--bg-ketiga) 100%);
-}
 
-body.dark-mode .section-title-professional,
-[data-theme="dark"] .section-title-professional {
-    background: linear-gradient(135deg, var(--teks-utama), #60a5fa, var(--teks-utama));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: var(--teks-utama);
-}
-
-body.dark-mode .section-description-professional,
-[data-theme="dark"] .section-description-professional {
-    color: var(--teks-kedua);
-}
-
-body.dark-mode .service-card,
-[data-theme="dark"] .service-card {
-    background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-kedua) 100%);
-    border-color: var(--warna-border);
-}
-
-body.dark-mode .service-card h3,
-[data-theme="dark"] .service-card h3 {
-    background: linear-gradient(135deg, var(--teks-utama), #60a5fa);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: var(--teks-utama);
-}
-
-body.dark-mode .service-card p,
-[data-theme="dark"] .service-card p {
-    color: var(--teks-kedua);
-}
-
-/* Print styles */
+/* print styles */
 @media print {
     .booking-modal-overlay,
     .wa-float,
@@ -7142,56 +6930,246 @@ body.dark-mode .service-card p,
 }
 
 /**
- * ============================================
- * HALAMAN GALERI - DESAIN RAPI DAN SEIMBANG
- * ============================================
- * Grid tiga kolom di desktop, satu kolom di mobile
+ *  * HALAMAN GALERI - DESAIN RAPI DAN SEIMBANG
+ *  * Grid tiga kolom di desktop, satu kolom di mobile
  * dengan jarak yang nyaman dan efek hover yang halus
  */
 
 /**
- * ============================================
- * GALLERY SECTION - LEBIH SEDERHANA
- * ============================================
- */
+ *  * GALLERY SECTION - LEBIH SEDERHANA
+ *  */
+/*    GALLERY HERO SECTION
+   ============================================ */
+.gallery-hero {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #2563eb 100%);
+    padding: 100px 0 80px;
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+.gallery-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.gallery-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.gallery-hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    margin-bottom: 28px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-hero-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    line-height: 1.7;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.95);
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 400;
+}
+
+/* Responsive Gallery Hero */
+@media (max-width: 768px) {
+    .gallery-hero {
+        padding: 70px 0 50px;
+    }
+    
+    .gallery-hero-title {
+        margin-bottom: 20px;
+    }
+}
+
+/*    GALLERY SECTION
+   ============================================ */
 .gallery-section {
     padding: 80px 0;
     background: #f8fafc;
 }
 
-/* Grid tiga kolom dengan gap yang seimbang */
+/* Filter Tabs */
+.gallery-filter-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-tab {
+    padding: 12px 24px;
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-tab:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.filter-tab.active {
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    border-color: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.filter-tab i {
+    font-size: 1.1rem;
+}
+
+/* Gallery Stats */
+.gallery-stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 50px;
+    padding: 30px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+/* responsive gallery grid */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    gap: clamp(1rem, 2.5vw, 1.5rem);
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Item galeri dengan hover effect sederhana */
-.gallery-item {
-    background: #ffffff;
-    border-radius: 12px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e2e8f0;
+/* responsive gallery */
+@media (max-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-/* Efek hover - naik sedikit dengan shadow */
+@media (max-width: 640px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+    
+    .gallery-filter-tabs {
+        gap: 8px;
+    }
+    
+    .filter-tab {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+    }
+    
+    .gallery-stats {
+        gap: 24px;
+        padding: 20px;
+        flex-wrap: wrap;
+    }
+}
+
+/* item galeri dengan animasi fadeInUp */
+.gallery-item {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* animasi fade in dari bawah */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* delay animasi buat setiap item */
+.gallery-item:nth-child(1) { animation-delay: 0.1s; }
+.gallery-item:nth-child(2) { animation-delay: 0.2s; }
+.gallery-item:nth-child(3) { animation-delay: 0.3s; }
+.gallery-item:nth-child(4) { animation-delay: 0.4s; }
+.gallery-item:nth-child(5) { animation-delay: 0.5s; }
+.gallery-item:nth-child(6) { animation-delay: 0.6s; }
+.gallery-item:nth-child(7) { animation-delay: 0.7s; }
+.gallery-item:nth-child(8) { animation-delay: 0.8s; }
+.gallery-item:nth-child(9) { animation-delay: 0.9s; }
+.gallery-item:nth-child(n+10) { animation-delay: 1s; }
+
+/* Efek hover - naik dengan shadow dan glow */
 .gallery-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(37, 99, 235, 0.15),
+                0 4px 16px rgba(0, 0, 0, 0.1);
+    border-color: rgba(37, 99, 235, 0.3);
 }
 
 /* Container gambar dengan ukuran proporsional */
 .gallery-image {
     position: relative;
     width: 100%;
-    height: 280px;
+    height: 320px;
     overflow: hidden;
     background: #f1f5f9;
+    border-radius: 12px;
 }
 
 /* Gambar dengan transisi zoom ringan */
@@ -7199,12 +7177,17 @@ body.dark-mode .service-card p,
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
 }
 
-/* Zoom ringan saat hover */
+/* Zoom smooth saat hover */
 .gallery-item:hover .gallery-image img {
-    transform: scale(1.05);
+    transform: scale(1.08);
+}
+
+.gallery-item:hover .gallery-image {
+    border-radius: 16px;
 }
 
 /* Overlay dengan nama destinasi yang muncul saat hover */
@@ -7228,6 +7211,45 @@ body.dark-mode .service-card p,
 /* Overlay muncul saat hover */
 .gallery-item:hover .gallery-overlay {
     opacity: 1;
+}
+
+/* Konten di dalam overlay */
+.gallery-overlay-content {
+    text-align: center;
+}
+
+.gallery-overlay-content h3 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+}
+
+/* Tombol view di overlay */
+.gallery-view-btn {
+    background: #ffffff;
+    color: #2563eb;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.gallery-view-btn:hover {
+    background: #2563eb;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.gallery-view-btn i {
+    font-size: 1rem;
 }
 
 /* Icon search */
@@ -7267,30 +7289,82 @@ body.dark-mode .service-card p,
     grid-column: 1 / -1; /* Span semua kolom */
 }
 
+.gallery-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 80px 20px;
+    color: #64748b;
+}
+
+.gallery-empty i {
+    font-size: 4rem;
+    margin-bottom: 16px;
+    opacity: 0.5;
+}
+
+.gallery-empty p {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
 /* Responsive: satu kolom di mobile */
 @media (max-width: 768px) {
     .gallery-grid {
-        grid-template-columns: 1fr; /* Satu kolom di mobile */
-        gap: 1.25rem; /* Gap sedikit lebih besar di mobile */
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
     }
     
     .gallery-image {
-        height: 240px; /* Tinggi lebih kecil di mobile */
+        height: 280px;
+    }
+    
+    .gallery-filter-tabs {
+        gap: 8px;
+    }
+    
+    .filter-tab {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+    }
+    
+    .gallery-stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .gallery-modal-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 1.4rem;
+    }
+    
+    .gallery-modal-prev {
+        left: 10px;
+    }
+    
+    .gallery-modal-next {
+        right: 10px;
     }
 }
 
 /* Responsive: dua kolom di tablet */
 @media (min-width: 769px) and (max-width: 1024px) {
     .gallery-grid {
-        grid-template-columns: repeat(2, 1fr); /* Dua kolom di tablet */
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery-image {
+        height: 300px;
     }
 }
 
 /**
- * ============================================
- * MODAL GALERI - POPUP GAMBAR YANG RAPI
- * ============================================
- * Modal untuk menampilkan gambar dalam ukuran besar
+ *  * MODAL GALERI - POPUP GAMBAR YANG RAPI
+ *  * Modal untuk menampilkan gambar dalam ukuran besar
  * dengan deskripsi yang jelas
  */
 
@@ -7311,38 +7385,45 @@ body.dark-mode .service-card p,
     backdrop-filter: blur(8px); /* Blur background untuk fokus */
 }
 
-/* Modal dengan background putih bersih */
+/* Modal aktif */
+.gallery-modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.gallery-modal-overlay.active .gallery-modal {
+    transform: scale(1);
+}
+
+/* Modal dengan gradient background */
 .gallery-modal {
-    background: #ffffff; /* Putih bersih */
-    border-radius: 16px; /* Sudut membulat yang konsisten */
-    max-width: 900px;
+    background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+    border-radius: 20px;
+    max-width: 950px;
     width: 90%;
     max-height: 90vh;
     overflow-y: auto;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); /* Shadow dramatis */
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
     transform: scale(0.9);
     transition: transform 0.3s ease;
     position: relative;
+    border: 1px solid rgba(37, 99, 235, 0.1);
 }
 
-/* Dark mode: background modal tetap terang */
-[data-theme="dark"] .gallery-modal {
-    background: #f8fafc;
-}
-
+/* Dark mode: background modal dengan gradient gelap */
 /* Tombol close di pojok kanan atas */
 .gallery-modal-close {
     position: absolute;
     top: 16px;
     right: 16px;
-    background: rgba(0, 0, 0, 0.7); /* Gelap semi-transparan */
+    background: rgba(0, 0, 0, 0.7);
     border: none;
     color: white;
     font-size: 1.4rem;
     cursor: pointer;
     width: 40px;
     height: 40px;
-    border-radius: 8px; /* Sudut membulat untuk konsistensi */
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7351,10 +7432,110 @@ body.dark-mode .service-card p,
     backdrop-filter: blur(10px);
 }
 
-/* Efek hover tombol close */
 .gallery-modal-close:hover {
     background: rgba(0, 0, 0, 0.9);
-    transform: scale(1.05); /* Sedikit membesar */
+    transform: scale(1.05);
+}
+
+/* Navigation arrows */
+.gallery-modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10001;
+    backdrop-filter: blur(10px);
+}
+
+.gallery-modal-prev {
+    left: 20px;
+}
+
+.gallery-modal-next {
+    right: 20px;
+}
+
+.gallery-modal-nav:hover {
+    background: rgba(37, 99, 235, 0.9);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Modal header with counter */
+.gallery-modal-header {
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.modal-title-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gallery-modal-counter {
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 24px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* Metadata section */
+.gallery-modal-metadata {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-radius: 12px;
+    border-left: 4px solid #2563eb;
+}
+
+.metadata-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.metadata-item i {
+    font-size: 1.3rem;
+    color: #2563eb;
+    margin-top: 2px;
+}
+
+.metadata-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.metadata-label {
+    font-size: 0.75rem;
+    color: #64748b;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.metadata-value {
+    font-size: 0.95rem;
+    color: #1e293b;
+    font-weight: 600;
 }
 
 /* Container gambar dengan tinggi proporsional */
@@ -7376,24 +7557,33 @@ body.dark-mode .service-card p,
 
 /* Info di bawah gambar dengan padding yang nyaman */
 .gallery-modal-info {
-    padding: 32px; /* Padding yang lega */
+    padding: 36px;
 }
 
 /* Judul gambar dengan font yang jelas */
 .gallery-modal-info h3 {
-    margin: 0 0 16px 0;
-    color: #1e293b; /* Gelap untuk readability */
-    font-size: 1.6rem;
-    font-weight: 700;
+    margin: 0;
+    color: #1e293b;
+    font-size: 1.75rem;
+    font-weight: 800;
     letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-/* Deskripsi gambar dengan line-height yang nyaman */
-.gallery-modal-info p {
-    color: #475569; /* Abu sedang */
-    line-height: 1.75; /* Line-height yang nyaman untuk dibaca */
+/* Deskripsi gambar dengan styling yang lebih baik */
+.gallery-modal-description {
+    color: #475569;
+    line-height: 1.8;
     margin: 0;
     font-size: 1.05rem;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    border-left: 3px solid #3b82f6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 /* Responsive modal di mobile */
@@ -7404,178 +7594,401 @@ body.dark-mode .service-card p,
     }
     
     .gallery-modal-image {
-        height: 300px; /* Tinggi lebih kecil di mobile */
+        height: 300px;
     }
     
     .gallery-modal-info {
-        padding: 24px; /* Padding lebih kecil di mobile */
+        padding: 24px;
     }
     
     .gallery-modal-info h3 {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
     
-    .gallery-modal-info p {
+    .gallery-modal-description {
         font-size: 0.95rem;
+        padding: 16px;
+    }
+    
+    .gallery-modal-metadata {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 16px;
+    }
+    
+    .metadata-item {
+        gap: 10px;
+    }
+    
+    .metadata-item i {
+        font-size: 1.1rem;
+    }
+    
+    .modal-title-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
     }
 }
 
 /**
- * ============================================
- * HALAMAN KONTAK - DESAIN PROFESIONAL MODERN
- * ============================================
- */
+ *  * HALAMAN KONTAK - DESAIN PROFESIONAL MODERN
+ *  */
+
+/* Contact Hero Section */
+.contact-hero {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #2563eb 100%);
+    padding: 100px 0 80px;
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+.contact-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.contact-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.contact-hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    margin-bottom: 28px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.contact-hero-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    line-height: 1.7;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.95);
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 400;
+}
+
+@media (max-width: 768px) {
+    .contact-hero {
+        padding: 70px 0 50px;
+    }
+}
 
 /* Bagian Kontak Utama */
 .contact-main-section {
-    padding: 90px 0 100px 0; /* tambah padding atas dan bawah untuk ruang lebih */
-    background: #f7f9fc; /* background abu terang biar card keliatan */
+    padding: clamp(3rem, 8vw, 5.625rem) 0 clamp(4rem, 10vw, 6.25rem);
+    background: #f7f9fc;
 }
 
-/* Grid Layout Dua Kolom - kiri info, kanan form */
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
+.contact-form-box-full {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto clamp(2rem, 5vw, 3.75rem);
+    padding: 0 var(--spacing-md);
+}
+
+.contact-info-horizontal {
+    background: #ffffff;
+    padding: clamp(2rem, 6vw, 3.75rem) clamp(1.5rem, 5vw, 3.125rem);
+    border-radius: clamp(12px, 2vw, 20px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* ===== KOLOM KIRI: INFORMASI KONTAK ===== */
-.contact-info-box {
-    background: #ffffff;
-    padding: 50px 38px; /* tambah padding vertikal untuk ruang lebih */
-    border-radius: 14px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07); /* nambah shadow dikit biar form gak nempel di background */
-    transition: box-shadow 0.3s ease;
-    min-height: 600px; /* pastikan tinggi minimum untuk semua konten */
-}
-
-.contact-info-box:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+.contact-info-header {
+    text-align: center;
+    margin-bottom: clamp(2rem, 5vw, 3.125rem);
 }
 
 .contact-info-header h2 {
-    font-size: 1.85rem;
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
     font-weight: 700;
-    color: #1a202c;
-    margin-bottom: 10px;
-    line-height: 1.3;
+    color: #1e3a8a;
+    margin-bottom: 12px;
 }
 
 .contact-info-header p {
-    font-size: 0.96rem;
+    font-size: clamp(0.9375rem, 2.5vw, 1.1rem);
     color: #64748b;
-    margin-bottom: 40px; /* tambah jarak untuk ruang lebih */
     line-height: 1.6;
 }
 
-.contact-items {
-    display: flex;
-    flex-direction: column;
-    gap: 24px; /* perbesar jarak antar item biar lebih lapang */
+.contact-items-horizontal {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(1rem, 3vw, 1.875rem);
 }
 
-.contact-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-    padding: 24px 20px; /* tambah padding vertikal untuk ruang lebih */
-    background: #f8fafc;
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    transition: all 0.25s ease;
-    min-height: 110px; /* pastikan tinggi minimum setiap item */
+/* Responsive untuk contact items */
+@media (max-width: 1024px) {
+    .contact-items-horizontal {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.contact-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-    border-color: rgba(52, 152, 219, 0.2);
-    background: #ffffff;
+@media (max-width: 640px) {
+    .contact-items-horizontal {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+.contact-item-card {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 3vw, 1.875rem);
+    border-radius: clamp(12px, 2vw, 20px);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.contact-item-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+/* Less hover effect on mobile */
+@media (max-width: 768px) {
+    .contact-item-card:hover {
+        transform: translateY(-5px);
+    }
+}
+
+.contact-item-card:hover .contact-item-icon {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
 .contact-item-icon {
-    width: 46px;
-    height: 46px;
-    border-radius: 11px;
+    width: clamp(60px, 8vw, 70px);
+    height: clamp(60px, 8vw, 70px);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.35rem;
+    font-size: clamp(1.75rem, 3vw, 2rem);
     color: white;
-    flex-shrink: 0;
+    margin: 0 auto clamp(1rem, 2vw, 1.25rem);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
 }
 
-.whatsapp-bg {
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+.contact-item-icon i {
+    font-size: clamp(1.875rem, 3.5vw, 2.2rem);
+    color: white !important;
+}
+
+.contact-item-icon i::before {
+    color: white !important;
 }
 
 .email-bg {
     background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
 }
 
-.address-bg {
-    background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+.instagram-bg {
+    background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    box-shadow: 0 4px 12px rgba(220, 39, 67, 0.3);
 }
 
-.hours-bg {
-    background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+.tiktok-bg {
+    background: linear-gradient(135deg, #000000 0%, #00f2ea 50%, #ff0050 100%);
+    box-shadow: 0 4px 12px rgba(0, 242, 234, 0.3);
+}
+
+.facebook-bg {
+    background: linear-gradient(135deg, #1877f2 0%, #0d5eba 100%);
+    box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);
 }
 
 .contact-item-text h4 {
-    font-size: 1.02rem;
+    font-size: 1.3rem;
     font-weight: 600;
-    color: #1a202c;
-    margin-bottom: 5px;
+    color: #1e293b;
+    margin-bottom: 8px;
 }
 
 .contact-item-text p {
-    font-size: 0.92rem;
+    font-size: 1rem;
     color: #64748b;
     line-height: 1.6;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
 }
 
-.contact-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 9px 16px;
-    background: #25D366;
+.social-link {
+    display: inline-block;
+    text-align: center;
+    padding: 12px 32px;
     color: white;
     text-decoration: none;
-    border-radius: 7px;
-    font-size: 0.87rem;
-    font-weight: 500;
-    transition: all 0.25s ease;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.3px;
+    min-width: 160px;
 }
 
-.contact-link:hover {
-    background: #128C7E;
-    transform: translateY(-1px);
-    box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+.social-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* ===== KOLOM KANAN: FORM PERMINTAAN ===== */
-.contact-form-box {
-    position: sticky;
-    top: 90px;
+/* Email Button */
+.social-link-email {
+    background: #3498db;
+    box-shadow: 0 2px 4px rgba(52, 152, 219, 0.2);
+}
+
+.social-link-email:hover {
+    background: #2980b9;
+    box-shadow: 0 6px 16px rgba(52, 152, 219, 0.35);
+}
+
+/* Instagram Button - Pink/Magenta brand color */
+.social-link-instagram {
+    background: #E4405F;
+    box-shadow: 0 2px 4px rgba(228, 64, 95, 0.2);
+}
+
+.social-link-instagram:hover {
+    background: #d31e40;
+    box-shadow: 0 6px 16px rgba(228, 64, 95, 0.35);
+}
+
+/* TikTok Button - Black background white text */
+.social-link-tiktok {
+    background: #000000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.social-link-tiktok:hover {
+    background: #000000;
+    box-shadow: 0 6px 16px rgba(0, 242, 234, 0.5);
+    border: 2px solid #00f2ea;
+}
+
+/* Facebook Button - Facebook Blue */
+.social-link-facebook {
+    background: #1877f2;
+    box-shadow: 0 2px 4px rgba(24, 119, 242, 0.2);
+}
+
+.social-link-facebook:hover {
+    background: #0d5eba;
+    box-shadow: 0 6px 16px rgba(24, 119, 242, 0.35);
 }
 
 .form-card {
-    background: #ffffff;
-    padding: 50px 38px; /* tambah padding vertikal untuk ruang lebih */
-    border-radius: 14px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07); /* shadow lembut biar keliatan mengapung */
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    transition: box-shadow 0.3s ease;
-    min-height: 600px; /* pastikan tinggi minimum sesuai dengan info box */
+    background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+    padding: 0;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(37, 99, 235, 0.15);
+    border: 2px solid rgba(37, 99, 235, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
 }
 
 .form-card:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 50px rgba(37, 99, 235, 0.2);
+    transform: translateY(-4px);
+}
+
+/* Form Header Premium dengan Icon */
+.form-header-premium {
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+    padding: 40px 35px;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.form-header-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="20" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="90" r="2.5" fill="rgba(255,255,255,0.1)"/></svg>');
+    opacity: 0.3;
+}
+
+.form-icon-badge {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.form-icon-badge i {
+    font-size: 2.2rem;
+    color: white;
+}
+
+.form-header-premium h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-header-premium p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 20px;
+}
+
+.form-features {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.feature-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.feature-tag i {
+    font-size: 0.9rem;
 }
 
 .form-header h2 {
@@ -7592,96 +8005,252 @@ body.dark-mode .service-card p,
     line-height: 1.6;
 }
 
-.request-form {
+/* Form Premium Styling */
+.request-form-premium {
+    padding: 35px;
     display: flex;
     flex-direction: column;
-    gap: 28px; /* perbesar jarak antar field untuk ruang lebih */
+    gap: 24px;
 }
 
-.input-group {
+.input-group-premium {
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
-.input-group label {
-    margin-bottom: 9px;
-    font-weight: 500;
-    color: #2d3748;
-    font-size: 0.92rem;
+.input-group-premium label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: #1e293b;
+    font-size: 0.95rem;
 }
 
-.req {
-    color: #e53e3e;
+.input-group-premium label i {
+    color: #2563eb;
+    font-size: 1.1rem;
 }
 
-.input-group input,
-.input-group textarea {
-    padding: 13px 17px; /* padding lega biar teks gak nempel */
-    border: 1px solid #cbd5e1;
-    border-radius: 9px;
-    font-size: 0.96rem;
-    transition: all 0.25s ease;
+.input-group-premium input,
+.input-group-premium textarea {
+    padding: 14px 18px;
+    border: 3px solid #94a3b8;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
     background: #ffffff;
-    color: #2d3748;
+    color: #1e293b;
     font-family: inherit;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-.input-group input:focus,
-.input-group textarea:focus {
+.input-group-premium input:focus,
+.input-group-premium textarea:focus {
     outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.12); /* efek focus halus */
+    border-color: #2563eb;
+    border-width: 3px;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2), 0 3px 10px rgba(0, 0, 0, 0.15);
+    background: #ffffff;
 }
 
-.input-group textarea {
+.input-group-premium textarea {
     resize: vertical;
-    min-height: 120px;
+    min-height: 140px;
     line-height: 1.6;
 }
 
-.submit-btn {
+.input-hint {
+    font-size: 0.8rem;
+    color: #64748b;
+    font-style: italic;
+}
+
+.req {
+    color: #ef4444;
+}
+
+/* Preview WhatsApp Message */
+.form-preview {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid #2563eb;
+}
+
+.preview-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+}
+
+.preview-label i {
+    color: #2563eb;
+}
+
+.preview-content {
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+}
+
+.preview-content strong {
+    color: #1e293b;
+}
+
+.preview-content em {
+    color: #94a3b8;
+    font-style: italic;
+}
+
+/* Submit Button WhatsApp Style */
+.submit-btn-whatsapp {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 9px;
-    padding: 15px 26px;
-    background: #3498db; /* biru konsisten kayak tombol pemesanan */
+    gap: 12px;
+    padding: 18px 32px;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
     color: white;
     border: none;
-    border-radius: 9px;
-    font-weight: 600;
-    font-size: 0.97rem;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.05rem;
     cursor: pointer;
-    transition: all 0.25s ease; /* transisi halus */
-    margin-top: 6px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
 }
 
-.submit-btn:hover {
-    background: #2980b9; /* hover gelap */
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+.submit-btn-whatsapp:hover {
+    background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
 }
 
-/* ===== BAGIAN PETA ===== */
+.submit-btn-whatsapp i:first-child {
+    font-size: 1.4rem;
+}
+
+.submit-btn-whatsapp i:last-child {
+    font-size: 1rem;
+}
+
+/* Form Footer Note */
+.form-footer-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    background: #f1f5f9;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+.form-footer-note i {
+    color: #3b82f6;
+    font-size: 1rem;
+}
+
+/* Dark Mode Support for Premium Form */
+/* Responsive Premium Form and Contact Info */
+@media (max-width: 768px) {
+    .form-header-premium {
+        padding: 30px 25px;
+    }
+    
+    .form-icon-badge {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .form-icon-badge i {
+        font-size: 1.8rem;
+    }
+    
+    .form-header-premium h2 {
+        font-size: 1.5rem;
+    }
+    
+    .form-features {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .feature-tag {
+        justify-content: center;
+    }
+    
+    .request-form-premium {
+        padding: 25px;
+    }
+    
+    .submit-btn-whatsapp {
+        padding: 16px 28px;
+        font-size: 1rem;
+    }
+    
+    .contact-info-horizontal {
+        padding: 40px 25px;
+    }
+    
+    .contact-info-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .contact-items-horizontal {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .contact-item-card {
+        padding: 30px 20px;
+    }
+    
+    .contact-item-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .contact-item-icon i {
+        font-size: 2rem;
+    }
+    
+    .contact-item-text h4 {
+        font-size: 1.1rem;
+    }
+}
+
 .map-section {
-    padding: 70px 0;
+    padding: clamp(2.5rem, 7vw, 4.375rem) 0;
     background: #ffffff;
 }
 
 .map-header {
     text-align: center;
-    margin-bottom: 42px;
+    margin-bottom: clamp(1.5rem, 4vw, 2.625rem);
+    padding: 0 var(--spacing-md);
 }
 
 .map-header h2 {
-    font-size: 1.85rem;
+    font-size: clamp(1.375rem, 4vw, 1.85rem);
     font-weight: 700;
     color: #1a202c;
     margin-bottom: 10px;
 }
 
 .map-header p {
-    font-size: 0.96rem;
+    font-size: clamp(0.875rem, 2vw, 0.96rem);
     color: #64748b;
 }
 
@@ -7689,31 +8258,48 @@ body.dark-mode .service-card p,
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    border-radius: 15px;
+    border-radius: clamp(10px, 2vw, 15px);
     overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08); /* shadow lembut */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Responsive map wrapper */
+@media (max-width: 768px) {
+    .map-wrapper {
+        margin: 0 var(--spacing-md);
+    }
 }
 
 .map-info-box {
     position: absolute;
-    top: 22px;
-    left: 22px;
+    top: clamp(12px, 3vw, 22px);
+    left: clamp(12px, 3vw, 22px);
     z-index: 10;
+}
+
+/* Hide map overlay on very small screens */
+@media (max-width: 480px) {
+    .map-info-box {
+        position: relative;
+        top: auto;
+        left: auto;
+        margin-bottom: 1rem;
+    }
 }
 
 .map-info-content {
     background: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur(12px);
-    padding: 22px;
-    border-radius: 12px;
+    padding: clamp(1rem, 3vw, 1.375rem);
+    border-radius: clamp(8px, 1.5vw, 12px);
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.14);
-    max-width: 290px;
+    max-width: clamp(250px, 40vw, 290px);
     border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .map-info-content h4 {
-    font-size: 0.98rem;
+    font-size: clamp(0.875rem, 2vw, 0.98rem);
     font-weight: 600;
     color: #1a202c;
     margin-bottom: 9px;
@@ -7723,23 +8309,24 @@ body.dark-mode .service-card p,
 }
 
 .map-info-content p {
-    font-size: 0.87rem;
+    font-size: clamp(0.8125rem, 1.8vw, 0.87rem);
     color: #64748b;
     line-height: 1.5;
-    margin-bottom: 15px;
+    margin-bottom: clamp(0.75rem, 2vw, 0.9375rem);
 }
 
 .map-btn {
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    padding: 10px 16px;
+    padding: clamp(0.625rem, 2vw, 0.625rem) clamp(0.875rem, 2.5vw, 1rem);
     background: #3498db;
     color: white;
     text-decoration: none;
     border-radius: 8px;
     font-weight: 500;
-    font-size: 0.87rem;
+    font-size: clamp(0.8125rem, 1.8vw, 0.87rem);
+    min-height: 44px; /* Touch-friendly */
     transition: all 0.25s ease;
     width: 100%;
     justify-content: center;
@@ -7751,34 +8338,35 @@ body.dark-mode .service-card p,
     box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .contact-main-section {
-        padding: 50px 0 70px 0; /* kurangi padding untuk mobile */
+        padding: 50px 0 70px 0;
     }
     
-    .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 35px;
+    .contact-items-horizontal {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
     }
     
-    .contact-info-box,
+    .contact-info-horizontal {
+        padding: 50px 30px;
+    }
+    
+    .contact-info-header h2 {
+        font-size: 2rem;
+    }
+    
+    .contact-item-card {
+        padding: 35px 25px;
+    }
+    
     .form-card {
-        padding: 35px 22px; /* sesuaikan dengan padding desktop yang baru */
-        min-height: auto; /* hapus min-height untuk mobile agar fleksibel */
+        padding: 0;
     }
     
-    .contact-form-box {
-        position: static;
-    }
-    
-    .contact-item {
-        padding: 20px 16px; /* sesuaikan dengan padding desktop yang baru */
-        min-height: 90px; /* kurangi min-height untuk mobile */
-    }
-    
-    .contact-items {
-        gap: 18px; /* kurangi gap untuk mobile */
+    .request-form-premium {
+        padding: 30px 25px;
+        gap: 20px;
     }
     
     .map-info-box {
@@ -7791,14 +8379,8 @@ body.dark-mode .service-card p,
         max-width: 100%;
     }
     
-    .contact-info-header h2,
-    .form-header h2,
     .map-header h2 {
         font-size: 1.5rem;
-    }
-    
-    .request-form {
-        gap: 18px;
     }
 }
 
@@ -7809,10 +8391,8 @@ body.dark-mode .service-card p,
 }
 
 /**
- * ============================================
- * ADMIN ACCESS ICON (FOOTER) - KIRI BAWAH
- * ============================================
- * Dipindahkan ke kiri bawah biar gak bentrok sama WhatsApp float
+ *  * ADMIN ACCESS ICON (FOOTER) - KIRI BAWAH
+ *  * Dipindahkan ke kiri bawah biar gak bentrok sama WhatsApp float
  */
 .admin-access {
     position: fixed;
@@ -7935,16 +8515,6 @@ body.dark-mode .service-card p,
 }
 
 /* Dark mode hover */
-[data-theme="dark"] .sidebar-menu li a:hover:not(.active) {
-    background: rgba(52, 152, 219, 0.2);
-    color: var(--warna-kedua);
-}
-
-[data-theme="dark"] .sidebar-menu li.active a:hover {
-    background: linear-gradient(135deg, var(--warna-kedua), #3498db);
-    color: white;
-}
-
 .admin-main {
     flex: 1;
     margin-left: 280px;
@@ -8072,22 +8642,22 @@ body.dark-mode .service-card p,
 }
 
 /**
- * ============================================
- * TOMBOL UTAMA (PRIMARY)
- * ============================================
- */
+ *  * TOMBOL UTAMA (PRIMARY)
+ *  */
 .btn-primary {
     background: linear-gradient(135deg, var(--warna-kedua), #2980b9);
     color: white;
     border: none;
-    padding: 12px 24px;
-    border-radius: 10px;
+    padding: clamp(0.75rem, 2vw, 0.875rem) clamp(1rem, 3vw, 1.5rem);
+    border-radius: clamp(8px, 1.5vw, 10px);
     font-weight: 600;
+    font-size: clamp(0.875rem, 2vw, 1rem);
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
     position: relative;
     overflow: hidden;
+    min-height: 44px; /* Touch-friendly */
 }
 
 .btn-primary::before {
@@ -8119,10 +8689,8 @@ body.dark-mode .service-card p,
 }
 
 /**
- * ============================================
- * TOMBOL SUKSES (SUCCESS)
- * ============================================
- */
+ *  * TOMBOL SUKSES (SUCCESS)
+ *  */
 .btn-success {
     background: linear-gradient(135deg, var(--warna-sukses), #219a52);
     color: white;
@@ -8166,20 +8734,20 @@ body.dark-mode .service-card p,
 }
 
 /**
- * ============================================
- * TOMBOL SEKUNDER (SECONDARY)
- * ============================================
- */
+ *  * TOMBOL SEKUNDER (SECONDARY)
+ *  */
 .btn-secondary {
     background: var(--bg-kedua);
     color: var(--teks-utama);
     border: 2px solid var(--warna-border);
-    padding: 12px 24px;
-    border-radius: 10px;
+    padding: clamp(0.75rem, 2vw, 0.875rem) clamp(1rem, 3vw, 1.5rem);
+    border-radius: clamp(8px, 1.5vw, 10px);
     font-weight: 600;
+    font-size: clamp(0.875rem, 2vw, 1rem);
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-height: 44px; /* Touch-friendly */
 }
 
 .btn-secondary:hover {
@@ -8192,6 +8760,14 @@ body.dark-mode .service-card p,
 
 .btn-secondary:active {
     transform: translateY(0);
+}
+
+/* Less hover effect on mobile */
+@media (max-width: 768px) {
+    .btn-primary:hover,
+    .btn-secondary:hover {
+        transform: none;
+    }
 }
 
 .btn-logout {
@@ -8897,33 +9473,6 @@ ial styling for Add Service button */
 }
 
 /* Dark mode adjustments for admin */
-[data-theme="dark"] .file-upload-container {
-    background: linear-gradient(135deg, var(--bg-ketiga) 0%, var(--bg-kedua) 100%);
-    border-color: var(--warna-border);
-}
-
-[data-theme="dark"] .file-upload-container:hover {
-    background: linear-gradient(135deg, var(--bg-kedua) 0%, var(--bg-ketiga) 100%);
-}
-
-[data-theme="dark"] .file-upload-preview {
-    background: var(--bg-kedua);
-    border-color: var(--warna-border);
-}
-
-[data-theme="dark"] .admin-table {
-    background: var(--bg-kedua);
-    border-color: var(--warna-border);
-}
-
-[data-theme="dark"] .admin-table td {
-    border-color: var(--warna-border);
-}
-
-[data-theme="dark"] .admin-table tr:hover {
-    background: linear-gradient(135deg, var(--bg-ketiga), var(--bg-kedua));
-}
-
 /* Notification Styles */
 .notification {
     position: fixed;
@@ -8989,9 +9538,6 @@ ial styling for Add Service button */
         opacity: 0;
     }
 }
-
-/* 
-===== ADMIN PANEL STYLES ===== */
 
 /* Admin List Items */
 .admin-list {
@@ -9585,26 +10131,6 @@ ial styling for Add Service button */
 }
 
 /* Dark Mode Adjustments */
-[data-theme="dark"] .file-upload-area {
-    background: var(--bg-ketiga);
-    border-color: var(--warna-border);
-}
-
-[data-theme="dark"] .file-upload-area:hover {
-    background: var(--bg-kedua);
-}
-
-[data-theme="dark"] .image-preview {
-    background: var(--bg-ketiga);
-    border-color: var(--warna-border);
-}
-
-[data-theme="dark"] .admin-list-item:hover {
-    background: var(--bg-kedua);
-}
-
-/*
- ===== FINAL ENHANCEMENTS STYLING ===== */
 
 /* Search functionality styling */
 .search-container {
@@ -9862,26 +10388,6 @@ ial styling for Add Service button */
 }
 
 /* Dark mode enhancements */
-[data-theme="dark"] .search-input {
-    background: var(--bg-ketiga);
-    border-color: var(--warna-border);
-    color: var(--teks-utama);
-}
-
-[data-theme="dark"] .search-input:focus {
-    background: var(--bg-kedua);
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-}
-
-[data-theme="dark"] .admin-table tbody tr:hover {
-    background: var(--bg-ketiga);
-}
-
-[data-theme="dark"] .no-results-message td {
-    background: var(--bg-ketiga) !important;
-    border-color: var(--warna-border) !important;
-}
-
 /* Loading states */
 .loading-overlay {
     position: fixed;
@@ -9938,10 +10444,6 @@ ial styling for Add Service button */
     font-weight: bold;
     font-size: 1.2rem;
 }
-
-/* ===== FINAL ADMIN PANEL STYLING COMPLETE ===== */
-/*
- ===== ENHANCED ADMIN UI - MORE USER FRIENDLY ===== */
 
 /* Better form styling */
 .admin-form .form-group {
@@ -10011,10 +10513,8 @@ ial styling for Add Service button */
 }
 
 /**
- * ============================================
- * TOMBOL ADMIN FORM (Menggunakan style yang sama dengan tombol utama)
- * ============================================
- */
+ *  * TOMBOL ADMIN FORM (Menggunakan style yang sama dengan tombol utama)
+ *  */
 .admin-form .btn-primary {
     background: linear-gradient(135deg, var(--warna-kedua), #2980b9);
     color: white;
@@ -10313,24 +10813,6 @@ ial styling for Add Service button */
 }
 
 /* Dark mode enhancements */
-[data-theme="dark"] .destination-form {
-    background: var(--bg-ketiga);
-    border-color: var(--warna-border);
-}
-
-[data-theme="dark"] .admin-table {
-    background: var(--bg-ketiga);
-    border-color: var(--warna-border);
-}
-
-[data-theme="dark"] .admin-table tbody tr:hover {
-    background: var(--bg-kedua);
-}
-
-[data-theme="dark"] .file-upload-info {
-    background: rgba(52, 152, 219, 0.2);
-}
-
 /* Responsive improvements */
 @media (max-width: 768px) {
     .admin-section .section-header {
@@ -10361,7 +10843,6 @@ ial styling for Add Service button */
     }
 }
 
-/* ===== ADMIN UI ENHANCEMENTS COMPLETE ===== */
 * Empty state styling for admin lists */ .empty-state {
     text-align: center;
     padding: 60px 20px;
@@ -10388,16 +10869,6 @@ ial styling for Add Service button */
 }
 
 /* Dark mode for empty state */
-[data-theme="dark"] .empty-state {
-    color: var(--teks-kedua);
-}
-
-[data-theme="dark"] .empty-state h3 {
-    color: var(--teks-utama);
-}
-
-
-/* ===== ADMIN STYLES ===== */
 
 .admin-body {
     background-color: var(--warna-latar);
@@ -10694,10 +11165,8 @@ ial styling for Add Service button */
 }
 
 /**
- * ============================================
- * TOMBOL UTAMA UNTUK MODAL (Menggunakan style yang sama)
- * ============================================
- */
+ *  * TOMBOL UTAMA UNTUK MODAL (Menggunakan style yang sama)
+ *  */
 /* Style sudah didefinisikan di atas, tidak perlu duplikasi */
 
 .btn-logout {
@@ -10926,87 +11395,8 @@ ial styling for Add Service button */
 }
 
 /* Dark Mode Support for Admin - Comprehensive */
-body.dark-mode .admin-body,
-[data-theme="dark"] .admin-body {
-    background-color: var(--bg-utama);
-    color: var(--teks-utama);
-}
 
-body.dark-mode .admin-container,
-[data-theme="dark"] .admin-container {
-    background-color: var(--bg-utama);
-}
-
-body.dark-mode .admin-sidebar,
-[data-theme="dark"] .admin-sidebar {
-    background-color: var(--bg-sidebar);
-    border-right-color: var(--warna-border);
-    color: var(--teks-utama);
-}
-
-body.dark-mode .admin-content,
-[data-theme="dark"] .admin-content {
-    background-color: var(--bg-utama);
-    color: var(--teks-utama);
-}
-
-body.dark-mode .admin-section,
-body.dark-mode .admin-form,
-body.dark-mode .admin-table,
-[data-theme="dark"] .admin-section,
-[data-theme="dark"] .admin-form,
-[data-theme="dark"] .admin-table {
-    background-color: var(--bg-card);
-    border-color: var(--warna-border);
-    color: var(--teks-utama);
-}
-
-body.dark-mode .quick-action-card,
-[data-theme="dark"] .quick-action-card {
-    background-color: var(--bg-card);
-    border-color: var(--warna-border);
-    color: var(--teks-utama);
-}
-
-body.dark-mode .file-upload-info,
-body.dark-mode .file-upload-preview,
-[data-theme="dark"] .file-upload-info,
-[data-theme="dark"] .file-upload-preview {
-    background-color: var(--bg-card);
-    border-color: var(--warna-border);
-    color: var(--teks-utama);
-}
-
-body.dark-mode .form-group input,
-body.dark-mode .form-group select,
-body.dark-mode .form-group textarea,
-[data-theme="dark"] .form-group input,
-[data-theme="dark"] .form-group select,
-[data-theme="dark"] .form-group textarea {
-    background-color: var(--bg-card);
-    border-color: var(--warna-border);
-    color: var(--teks-utama);
-}
-
-body.dark-mode .admin-table tbody tr:hover,
-[data-theme="dark"] .admin-table tbody tr:hover {
-    background-color: var(--hover-bg);
-}
-
-body.dark-mode .sidebar-menu li a,
-[data-theme="dark"] .sidebar-menu li a {
-    color: var(--teks-utama);
-}
-
-body.dark-mode .sidebar-menu li a:hover,
-body.dark-mode .sidebar-menu li a.active,
-[data-theme="dark"] .sidebar-menu li a:hover,
-[data-theme="dark"] .sidebar-menu li a.active {
-    background-color: var(--hover-bg);
-    color: var(--warna-aksen);
-}
-
-/* Responsive Design for Admin */
+/* responsive design admin */
 @media (max-width: 768px) {
     .admin-container {
         flex-direction: column;
@@ -11115,208 +11505,20 @@ body.dark-mode .sidebar-menu li a.active,
     }
 }
 
-
 /* Dark mode untuk admin body */
-[data-theme="dark"] .admin-body {
-    background-color: var(--bg-utama);
-    color: var(--teks-utama);
-}
-
 /* Dark mode untuk admin sidebar */
-[data-theme="dark"] .admin-sidebar {
-    background: var(--bg-kedua);
-    border-right-color: var(--warna-border);
-}
-
-[data-theme="dark"] .sidebar-menu li a {
-    color: var(--teks-kedua);
-}
-
-[data-theme="dark"] .sidebar-menu li a:hover,
-[data-theme="dark"] .sidebar-menu li.active a {
-    background: var(--bg-ketiga);
-    color: var(--teks-utama);
-}
-
 /* Dark mode untuk admin main content */
-[data-theme="dark"] .admin-main {
-    background-color: var(--bg-utama);
-}
-
-[data-theme="dark"] .admin-section {
-    background: var(--bg-kedua);
-    color: var(--teks-utama);
-}
-
 /* Dark mode untuk form */
-[data-theme="dark"] .admin-form {
-    background: var(--bg-ketiga);
-    border-color: var(--warna-border);
-}
-
-[data-theme="dark"] .form-group label {
-    color: var(--teks-utama);
-}
-
-[data-theme="dark"] .form-group input,
-[data-theme="dark"] .form-group textarea,
-[data-theme="dark"] .form-group select {
-    background: var(--bg-kedua);
-    color: var(--teks-utama);
-    border-color: var(--warna-border);
-}
-
-[data-theme="dark"] .form-group input:focus,
-[data-theme="dark"] .form-group textarea:focus,
-[data-theme="dark"] .form-group select:focus {
-    background: var(--bg-utama);
-    border-color: var(--warna-kedua);
-}
-
-[data-theme="dark"] .form-group input::placeholder,
-[data-theme="dark"] .form-group textarea::placeholder {
-    color: var(--teks-kedua);
-    opacity: 0.6;
-}
-
 /* Dark mode untuk table */
-[data-theme="dark"] .admin-table {
-    background: var(--bg-kedua);
-}
-
-[data-theme="dark"] .admin-table td {
-    color: var(--teks-utama);
-    border-bottom-color: var(--warna-border);
-}
-
-[data-theme="dark"] .admin-table tr:hover {
-    background: var(--bg-ketiga);
-}
-
-[data-theme="dark"] .table-title {
-    color: var(--teks-utama);
-}
-
-[data-theme="dark"] .table-description {
-    color: var(--teks-kedua);
-}
-
 /* Dark mode untuk modal */
-[data-theme="dark"] .modal-overlay {
-    background: rgba(0, 0, 0, 0.8);
-}
-
-[data-theme="dark"] .modal {
-    background: var(--bg-kedua);
-    color: var(--teks-utama);
-}
-
-[data-theme="dark"] .modal-header {
-    border-bottom-color: var(--warna-border);
-}
-
-[data-theme="dark"] .modal-header h3 {
-    color: var(--teks-utama);
-}
-
 /* Dark mode untuk alert/notification */
-[data-theme="dark"] .alert {
-    background: var(--bg-ketiga);
-    color: var(--teks-utama);
-    border-color: var(--warna-border);
-}
-
-[data-theme="dark"] .alert-success {
-    background: rgba(52, 211, 153, 0.1);
-    border-color: var(--warna-sukses);
-    color: var(--warna-sukses);
-}
-
-[data-theme="dark"] .alert-error {
-    background: rgba(248, 113, 113, 0.1);
-    border-color: var(--warna-bahaya);
-    color: var(--warna-bahaya);
-}
-
 /* Dark mode untuk section header */
-[data-theme="dark"] .section-header h1,
-[data-theme="dark"] .section-header h2 {
-    color: var(--teks-utama);
-}
-
-[data-theme="dark"] .section-subtitle {
-    color: var(--teks-kedua);
-}
-
 /* Dark mode untuk quick actions */
-[data-theme="dark"] .quick-action-card {
-    background: var(--bg-ketiga);
-    color: var(--teks-utama);
-}
-
-[data-theme="dark"] .quick-action-card:hover {
-    background: var(--bg-kedua);
-    transform: translateY(-5px);
-}
-
-[data-theme="dark"] .quick-action-card h3 {
-    color: var(--teks-utama);
-}
-
-[data-theme="dark"] .quick-action-card p {
-    color: var(--teks-kedua);
-}
-
 /* Dark mode untuk company info form */
-[data-theme="dark"] .company-info-form {
-    background: var(--bg-kedua);
-}
-
-[data-theme="dark"] .company-info-form h2 {
-    color: var(--teks-utama);
-}
-
 /* Dark mode untuk file upload */
-[data-theme="dark"] .file-upload-container {
-    background: var(--bg-kedua);
-    border-color: var(--warna-border);
-}
-
-[data-theme="dark"] .file-upload-info p {
-    color: var(--teks-kedua);
-}
-
-[data-theme="dark"] .file-upload-preview {
-    background: var(--bg-ketiga);
-    border-color: var(--warna-border);
-}
-
 /* Dark mode untuk empty state */
-[data-theme="dark"] .empty-state {
-    color: var(--teks-kedua);
-}
-
-[data-theme="dark"] .empty-state h3 {
-    color: var(--teks-utama);
-}
-
 /* Dark mode untuk code/pre elements */
-[data-theme="dark"] code {
-    background: var(--bg-ketiga);
-    color: var(--warna-kedua);
-}
-
-[data-theme="dark"] pre {
-    background: var(--bg-ketiga);
-    color: var(--teks-utama);
-    border-color: var(--warna-border);
-}
-
 /* Dark mode untuk small text */
-[data-theme="dark"] small {
-    color: var(--teks-kedua);
-}
-
 /* Perbaikan styling untuk modal yang lebih baik */
 .modal-overlay {
     position: fixed;
@@ -11530,233 +11732,1129 @@ select:focus {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-[data-theme="dark"] .table-image {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
 /**
- * ============================================
- * HALAMAN FAQ
- * ============================================
- */
-.faq-section {
-    padding: 60px 0;
-    background: var(--bg-utama);
-    min-height: 60vh;
-}
+ *  * HALAMAN FAQ
+ *  */
+/**
+ *  * FAQ PAGE - PROFESSIONAL STYLING
+ *  */
 
-/* FAQ Search */
-.faq-search-container {
-    max-width: 800px;
-    margin: 0 auto 40px;
-}
-
-.faq-search-box {
+/* FAQ Hero Section - Sama dengan Hero Lainnya */
+.faq-hero {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #2563eb 100%);
+    padding: 120px 0 100px;
     position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+.faq-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.faq-hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: white;
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.faq-hero-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.95);
+    max-width: 750px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* FAQ Trust Section - Mirip Trust Section di Booking */
+.faq-trust-section {
+    padding: 70px 0;
+    background: linear-gradient(135deg, var(--bg-utama) 0%, var(--bg-ketiga) 100%);
+    position: relative;
+}
+
+.faq-trust-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.faq-trust-item {
+    text-align: center;
+    padding: 32px 24px;
+    background: var(--bg-card);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--warna-border);
+}
+
+.faq-trust-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    border-color: var(--warna-kedua);
+}
+
+.faq-trust-icon {
+    width: 68px;
+    height: 68px;
+    background: linear-gradient(135deg, var(--warna-kedua), var(--warna-aksen));
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    background: var(--bg-kedua);
-    border: 2px solid var(--warna-border);
-    border-radius: 50px;
-    padding: 15px 25px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.faq-search-box:focus-within {
-    border-color: var(--warna-kedua);
-    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.2);
-}
-
-.faq-search-box i {
-    font-size: 1.3rem;
-    color: var(--teks-kedua);
-    margin-right: 15px;
-}
-
-.faq-search-box input {
-    flex: 1;
-    border: none;
-    outline: none;
-    background: transparent;
-    color: var(--teks-utama);
-    font-size: 1rem;
-    font-family: inherit;
-}
-
-.faq-search-box input::placeholder {
-    color: var(--teks-kedua);
-}
-
-/* FAQ Categories */
-.faq-categories {
-    display: flex;
     justify-content: center;
-    gap: 15px;
-    margin-bottom: 50px;
-    flex-wrap: wrap;
-}
-
-.faq-category-btn {
-    padding: 12px 24px;
-    background: var(--bg-kedua);
-    border: 2px solid var(--warna-border);
-    border-radius: 25px;
-    cursor: pointer;
+    margin: 0 auto 20px;
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
     transition: all 0.3s ease;
-    font-weight: 500;
+}
+
+.faq-trust-item:hover .faq-trust-icon {
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: 0 12px 32px rgba(37, 99, 235, 0.35);
+}
+
+.faq-trust-icon i {
+    font-size: 1.8rem;
+    color: white;
+}
+
+.faq-trust-item h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
     color: var(--teks-utama);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+}
+
+.faq-trust-item p {
     font-size: 0.95rem;
+    color: var(--teks-kedua);
+    line-height: 1.6;
+    margin: 0;
 }
 
-.faq-category-btn:hover {
+/* FAQ Main Section */
+.faq-main-section {
+    padding: 80px 0 100px;
+    background: linear-gradient(135deg, var(--bg-ketiga) 0%, var(--bg-utama) 50%, var(--bg-kedua) 100%);
+    position: relative;
+}
+
+.faq-main-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.faq-main-section > .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* FAQ Filter Header */
+.faq-filter-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.faq-filter-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--teks-utama);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+.faq-filter-subtitle {
+    font-size: 1.05rem;
+    color: var(--teks-kedua);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* FAQ Filter Container - Mirip Filter di Booking */
+.faq-filter-container {
+    margin-bottom: 60px;
+}
+
+.faq-filter-tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.faq-filter-tab {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    background: var(--bg-card);
+    border: 2px solid var(--warna-border);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    position: relative;
+    overflow: hidden;
+}
+
+.faq-filter-tab::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
     background: var(--warna-kedua);
-    color: white;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.faq-filter-tab:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-color: var(--warna-aksen);
+}
+
+.faq-filter-tab:hover::before {
+    transform: scaleY(1);
+}
+
+.faq-filter-tab.active {
+    background: linear-gradient(135deg, var(--warna-kedua), var(--warna-aksen));
     border-color: var(--warna-kedua);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
 }
 
-.faq-category-btn.active {
+.faq-filter-tab.active::before {
+    background: white;
+    transform: scaleY(1);
+}
+
+.faq-filter-tab.active .faq-filter-tab-icon {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.faq-filter-tab.active .faq-filter-tab-name,
+.faq-filter-tab.active .faq-filter-tab-desc {
+    color: white;
+}
+
+.faq-filter-tab.active .faq-filter-tab-badge {
+    background: white;
+    color: var(--warna-kedua);
+}
+
+.faq-filter-tab-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--warna-kedua), var(--warna-aksen));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.faq-filter-tab-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.faq-filter-tab-content {
+    flex: 1;
+    text-align: left;
+}
+
+.faq-filter-tab-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--teks-utama);
+    display: block;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+}
+
+.faq-filter-tab-desc {
+    font-size: 0.9rem;
+    color: var(--teks-kedua);
+    display: block;
+}
+
+.faq-filter-tab-badge {
+    width: 36px;
+    height: 36px;
     background: var(--warna-kedua);
     color: white;
-    border-color: var(--warna-kedua);
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
 }
 
-/* FAQ Accordion */
-.faq-accordion {
+/* FAQ Content Section */
+.faq-content-section {
     max-width: 1000px;
     margin: 0 auto;
 }
 
-.faq-category-group {
-    margin-bottom: 50px;
+.faq-section-header {
+    text-align: center;
+    margin-bottom: 48px;
+    padding: 0 20px;
 }
 
-.faq-category-title {
-    font-size: 1.8rem;
-    font-weight: 700;
+.faq-section-title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 800;
     color: var(--teks-utama);
-    margin-bottom: 30px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding-bottom: 15px;
-    border-bottom: 3px solid var(--warna-kedua);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
 }
 
-.faq-category-title i {
-    font-size: 1.5rem;
-    color: var(--warna-kedua);
+.faq-section-subtitle {
+    font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+    color: var(--teks-kedua);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
 }
 
-.faq-item {
-    background: var(--bg-kedua);
-    border-radius: 12px;
-    margin-bottom: 18px;
+/* responsive faq */
+@media (max-width: 768px) {
+    .faq-filter-tabs {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .faq-filter-tab {
+        padding: 16px 20px;
+    }
+    
+    .faq-filter-tab-icon {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .faq-filter-tab-name {
+        font-size: 0.95rem;
+    }
+    
+    .faq-filter-tab-desc {
+        font-size: 0.85rem;
+    }
+    
+    .faq-accordion-question {
+        padding: 18px 20px;
+        gap: 12px;
+    }
+    
+    .faq-question-text {
+        font-size: 0.95rem;
+    }
+    
+    .faq-answer-content {
+        padding: 20px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 425px) {
+    .faq-section-header {
+        margin-bottom: 32px;
+    }
+    
+    .faq-filter-tab {
+        padding: 14px 16px;
+    }
+    
+    .faq-question-number {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+    }
+    
+    .faq-accordion-item {
+        margin-bottom: 12px;
+    }
+}
+
+/* FAQ Accordion Container */
+.faq-accordion-container {
+    animation: fadeIn 0.5s ease;
+}
+
+/* Animation removed from .faq-category-group to prevent dark mode flash */
+
+.faq-accordion-item {
+    background: var(--bg-card);
+    border-radius: 16px;
+    margin-bottom: 16px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 2px solid var(--warna-border);
 }
 
-.faq-item:hover {
+.faq-accordion-item:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-    border-color: rgba(52, 152, 219, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-color: #cbd5e1;
 }
 
-.faq-question {
+.faq-accordion-item.active {
+    border-color: var(--warna-kedua);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.15);
+}
+
+.faq-accordion-question {
     width: 100%;
-    padding: 22px 24px;
+    padding: 24px 28px;
     background: transparent;
     border: none;
     text-align: left;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     gap: 20px;
-    transition: background 0.25s ease;
+    transition: all 0.3s ease;
 }
 
-.faq-question:hover {
-    background: rgba(52, 152, 219, 0.04);
+.faq-accordion-question:hover {
+    background: linear-gradient(135deg, rgba(248, 250, 252, 0.8), rgba(241, 245, 249, 0.8));
 }
 
-.faq-item.active .faq-question {
-    background: rgba(52, 152, 219, 0.08);
+.faq-accordion-item.active .faq-accordion-question {
+    background: linear-gradient(135deg, rgba(239, 246, 255, 0.9), rgba(219, 234, 254, 0.9));
+}
+
+.faq-question-number {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--warna-kedua), var(--warna-aksen));
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    transition: all 0.3s ease;
+}
+
+.faq-accordion-item:hover .faq-question-number {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
 }
 
 .faq-question-text {
     flex: 1;
-    font-size: 1.08rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: var(--teks-utama);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    line-height: 1.5;
-}
-
-.faq-question-text i {
-    font-size: 1.2rem;
-    color: var(--warna-kedua);
-    flex-shrink: 0;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
 }
 
 .faq-chevron {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     color: var(--teks-kedua);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     flex-shrink: 0;
+    margin-top: 4px;
 }
 
-.faq-chevron.rotated {
+.faq-accordion-item.active .faq-chevron {
     transform: rotate(180deg);
+    color: var(--warna-kedua);
 }
 
-.faq-answer {
+.faq-accordion-answer {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-    opacity: 0;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.faq-item.active .faq-answer {
-    opacity: 1;
+.faq-accordion-item.active .faq-accordion-answer {
+    border-top: 2px solid var(--warna-border);
 }
 
 .faq-answer-content {
-    padding: 0 24px 22px 24px;
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-}
-
-.faq-answer-content i {
-    font-size: 1.1rem;
-    color: var(--warna-kedua);
-    margin-top: 4px;
-    flex-shrink: 0;
+    padding: 28px;
+    color: var(--teks-kedua);
+    font-size: 1rem;
+    line-height: 1.8;
+    background: linear-gradient(135deg, rgba(248, 250, 252, 0.5), rgba(241, 245, 249, 0.3));
 }
 
 .faq-answer-content p {
-    flex: 1;
-    color: #6b7280;
-    line-height: 1.75;
-    font-size: 0.98rem;
-    margin: 0;
+    color: var(--teks-kedua);
+    line-height: 1.8;
+    font-size: 1rem;
+    margin: 0 0 12px 0;
 }
 
-/* FAQ No Results */
-.faq-no-results {
+.faq-answer-content p:last-child {
+    margin-bottom: 0;
+}
+
+.faq-answer-content strong {
+    color: var(--teks-utama);
+    font-weight: 700;
+}
+
+/* FAQ Help CTA - Enhanced Design */
+.faq-help-cta {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    border-radius: 24px;
+    padding: 64px 48px;
+    margin-top: 80px;
+    box-shadow: 0 16px 48px rgba(37, 211, 102, 0.3);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.faq-help-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.faq-help-content {
     text-align: center;
-    padding: 60px 20px;
-    background: var(--bg-kedua);
-    border-radius: 15px;
-    margin-top: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.faq-help-icon {
+    width: 110px;
+    height: 110px;
+    background: white;
+    backdrop-filter: blur(12px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 28px;
+    border: none;
+    box-shadow: 
+        0 12px 32px rgba(0, 0, 0, 0.2),
+        0 0 0 8px rgba(255, 255, 255, 0.1),
+        inset 0 2px 4px rgba(255, 255, 255, 0.5);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.faq-help-icon::before {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.faq-help-cta:hover .faq-help-icon {
+    transform: scale(1.15) rotate(-8deg);
+    box-shadow: 
+        0 16px 48px rgba(0, 0, 0, 0.3),
+        0 0 0 12px rgba(255, 255, 255, 0.15),
+        inset 0 4px 8px rgba(255, 255, 255, 0.6);
+}
+
+.faq-help-cta:hover .faq-help-icon::before {
+    opacity: 1;
+}
+
+.faq-help-icon i {
+    font-size: 3.2rem;
+    color: #25D366;
+    filter: drop-shadow(0 4px 8px rgba(37, 211, 102, 0.3));
+    transition: all 0.3s ease;
+}
+
+.faq-help-cta:hover .faq-help-icon i {
+    transform: scale(1.1);
+    filter: drop-shadow(0 6px 12px rgba(37, 211, 102, 0.5));
+}
+
+.faq-help-content h3 {
+    font-size: 2.4rem;
+    margin-bottom: 16px;
+    color: white;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.faq-help-content p {
+    font-size: 1.15rem;
+    margin: 0;
+    opacity: 0.95;
+    max-width: 650px;
+    line-height: 1.7;
+    color: white;
+}
+
+.faq-help-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-faq-primary {
+    padding: 18px 40px;
+    background: white;
+    color: #128C7E;
+    border: none;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-faq-primary:hover {
+    background: #f0fdf4;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+    color: #0d7a6f;
+}
+
+.btn-faq-primary i {
+    font-size: 1.2rem;
+}
+
+.btn-faq-secondary {
+    padding: 18px 40px;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-faq-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-4px);
+    backdrop-filter: blur(10px);
+}
+
+.btn-faq-secondary i {
+    font-size: 1.1rem;
+}
+
+/* FAQ Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* FAQ Category Group Visibility */
+.faq-category-group {
+    display: none;
+}
+
+.faq-category-group.active {
+    display: block;
+}
+
+/**
+ *  * FAQ DARK MODE
+ *  */
+
+/**
+ *  * FAQ RESPONSIVE DESIGN
+ *  */
+
+/* Tablet Landscape - 1024px */
+@media (max-width: 1024px) {
+    .faq-hero {
+        padding: 100px 0 80px;
+    }
+    
+    .faq-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .faq-hero-subtitle {
+        font-size: 1.15rem;
+    }
+    
+    .faq-trust-section {
+        padding: 60px 0;
+    }
+    
+    .faq-trust-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    
+    .faq-main-section {
+        padding: 70px 0 80px;
+    }
+    
+    .faq-filter-tabs {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    
+    .faq-filter-title {
+        font-size: 1.75rem;
+    }
+    
+    .faq-section-title {
+        font-size: 1.75rem;
+    }
+    
+    .faq-help-cta {
+        padding: 56px 40px;
+        margin-top: 70px;
+    }
+    
+    .faq-help-content h3 {
+        font-size: 2.1rem;
+    }
+}
+
+/* Tablet Portrait - 768px */
+@media (max-width: 768px) {
+    .faq-hero {
+        padding: 80px 0 60px;
+    }
+    
+    .faq-hero-title {
+        font-size: 2rem;
+        margin-bottom: 16px;
+    }
+    
+    .faq-hero-subtitle {
+        font-size: 1.05rem;
+    }
+    
+    .faq-trust-section {
+        padding: 50px 0;
+    }
+    
+    .faq-trust-content {
+        gap: 20px;
+    }
+    
+    .faq-trust-item {
+        padding: 28px 20px;
+    }
+    
+    .faq-trust-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 16px;
+    }
+    
+    .faq-trust-icon i {
+        font-size: 1.6rem;
+    }
+    
+    .faq-trust-item h3 {
+        font-size: 1.05rem;
+    }
+    
+    .faq-trust-item p {
+        font-size: 0.9rem;
+    }
+    
+    .faq-main-section {
+        padding: 60px 0 70px;
+    }
+    
+    .faq-filter-header {
+        margin-bottom: 32px;
+    }
+    
+    .faq-filter-title {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
+    
+    .faq-filter-subtitle {
+        font-size: 1rem;
+    }
+    
+    .faq-filter-container {
+        margin-bottom: 50px;
+    }
+    
+    .faq-filter-tabs {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .faq-filter-tab {
+        padding: 18px 20px;
+        gap: 14px;
+    }
+    
+    .faq-filter-tab-icon {
+        width: 52px;
+        height: 52px;
+    }
+    
+    .faq-filter-tab-icon i {
+        font-size: 1.4rem;
+    }
+    
+    .faq-filter-tab-name {
+        font-size: 1rem;
+    }
+    
+    .faq-filter-tab-desc {
+        font-size: 0.85rem;
+    }
+    
+    .faq-filter-tab-badge {
+        width: 34px;
+        height: 34px;
+        font-size: 0.9rem;
+    }
+    
+    .faq-section-header {
+        margin-bottom: 40px;
+    }
+    
+    .faq-section-title {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
+    
+    .faq-section-subtitle {
+        font-size: 1rem;
+    }
+    
+    .faq-accordion-item {
+        margin-bottom: 14px;
+        border-radius: 14px;
+    }
+    
+    .faq-accordion-question {
+        padding: 20px 22px;
+        gap: 16px;
+    }
+    
+    .faq-question-number {
+        width: 30px;
+        height: 30px;
+        font-size: 0.85rem;
+    }
+    
+    .faq-question-text {
+        font-size: 1rem;
+    }
+    
+    .faq-chevron {
+        font-size: 1rem;
+    }
+    
+    .faq-answer-content {
+        padding: 24px;
+        font-size: 0.95rem;
+    }
+    
+    .faq-help-cta {
+        padding: 48px 32px;
+        margin-top: 60px;
+        border-radius: 20px;
+        gap: 28px;
+    }
+    
+    .faq-help-icon {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 24px;
+    }
+    
+    .faq-help-icon i {
+        font-size: 3rem;
+    }
+    
+    .faq-help-content h3 {
+        font-size: 1.9rem;
+        margin-bottom: 14px;
+    }
+    
+    .faq-help-content p {
+        font-size: 1.05rem;
+    }
+    
+    .faq-help-actions {
+        gap: 12px;
+    }
+    
+    .btn-faq-primary,
+    .btn-faq-secondary {
+        padding: 16px 32px;
+        font-size: 1rem;
+    }
+}
+
+/* Mobile - 480px */
+@media (max-width: 480px) {
+    .faq-hero {
+        padding: 70px 0 50px;
+    }
+    
+    .faq-hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .faq-hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .faq-trust-section {
+        padding: 40px 0;
+    }
+    
+    .faq-trust-content {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .faq-trust-item {
+        padding: 24px 16px;
+        border-radius: 14px;
+    }
+    
+    .faq-trust-icon {
+        width: 56px;
+        height: 56px;
+        margin-bottom: 14px;
+    }
+    
+    .faq-trust-icon i {
+        font-size: 1.5rem;
+    }
+    
+    .faq-trust-item h3 {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    
+    .faq-trust-item p {
+        font-size: 0.85rem;
+    }
+    
+    .faq-main-section {
+        padding: 50px 0 60px;
+    }
+    
+    .faq-filter-header {
+        margin-bottom: 28px;
+    }
+    
+    .faq-filter-title {
+        font-size: 1.4rem;
+    }
+    
+    .faq-filter-subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .faq-filter-container {
+        margin-bottom: 40px;
+    }
+    
+    .faq-filter-tab {
+        padding: 16px 18px;
+        gap: 12px;
+        border-radius: 14px;
+    }
+    
+    .faq-filter-tab-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+    }
+    
+    .faq-filter-tab-icon i {
+        font-size: 1.3rem;
+    }
+    
+    .faq-filter-tab-name {
+        font-size: 0.95rem;
+        margin-bottom: 2px;
+    }
+    
+    .faq-filter-tab-desc {
+        font-size: 0.8rem;
+    }
+    
+    .faq-filter-tab-badge {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+    
+    .faq-section-header {
+        margin-bottom: 36px;
+        padding: 0 10px;
+    }
+    
+    .faq-section-title {
+        font-size: 1.4rem;
+    }
+    
+    .faq-section-subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .faq-accordion-item {
+        margin-bottom: 12px;
+        border-radius: 12px;
+    }
+    
+    .faq-accordion-question {
+        padding: 18px 18px;
+        gap: 12px;
+    }
+    
+    .faq-question-number {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+    }
+    
+    .faq-question-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    
+    .faq-chevron {
+        font-size: 0.95rem;
+    }
+    
+    .faq-answer-content {
+        padding: 20px;
+        font-size: 0.9rem;
+    }
+    
+    .faq-answer-content p {
+        font-size: 0.9rem;
+        line-height: 1.7;
+        margin-bottom: 10px;
+    }
+    
+    .faq-help-cta {
+        padding: 40px 24px;
+        margin-top: 50px;
+        border-radius: 18px;
+        gap: 24px;
+    }
+    
+    .faq-help-icon {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 20px;
+    }
+    
+    .faq-help-icon i {
+        font-size: 2.6rem;
+    }
+    
+    .faq-help-content h3 {
+        font-size: 1.7rem;
+        margin-bottom: 12px;
+    }
+    
+    .faq-help-content p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .faq-help-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+    
+    .btn-faq-primary,
+    .btn-faq-secondary {
+        width: 100%;
+        justify-content: center;
+        padding: 15px 28px;
+        font-size: 0.95rem;
+    }
 }
 
 .faq-no-results i {
@@ -11783,76 +12881,108 @@ select:focus {
 
 /* FAQ Contact CTA */
 .faq-contact-cta {
-    background: linear-gradient(135deg, var(--warna-kedua) 0%, #2980b9 100%);
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
     border-radius: 20px;
-    padding: 50px;
+    padding: 60px 50px;
     text-align: center;
     margin-top: 60px;
     color: white;
-    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.faq-contact-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="20" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="90" r="2.5" fill="rgba(255,255,255,0.1)"/></svg>');
+    opacity: 0.3;
+}
+
+.faq-cta-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.faq-cta-icon i {
+    font-size: 2.5rem;
+    color: white;
 }
 
 .faq-contact-cta h3 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 15px;
     color: white;
+    font-weight: 700;
+    position: relative;
 }
 
 .faq-contact-cta p {
     font-size: 1.1rem;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
     opacity: 0.95;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
 }
 
 .faq-cta-buttons {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     justify-content: center;
     flex-wrap: wrap;
+    position: relative;
 }
 
 .btn-faq-wa {
-    padding: 14px 28px;
-    background: #25D366;
-    color: white;
+    padding: 16px 40px;
+    background: white;
+    color: #128C7E;
     border: none;
     border-radius: 10px;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
+    display: inline-block;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .btn-faq-wa:hover {
-    background: #128C7E;
+    background: #f0f9ff;
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .btn-faq-contact {
-    padding: 14px 28px;
-    background: rgba(255, 255, 255, 0.2);
+    padding: 16px 40px;
+    background: transparent;
     color: white;
     border: 2px solid white;
     border-radius: 10px;
-    font-weight: 700;
-    font-size: 1.1rem;
+    font-weight: 600;
+    font-size: 1.05rem;
     text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
+    display: inline-block;
     transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
 }
 
 .btn-faq-contact:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.15);
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
 }
 
 /* Responsive FAQ */
@@ -11905,1223 +13035,106 @@ select:focus {
     }
 }
 
-
 /**
- * ============================================
- * DARK MODE - STYLING LENGKAP UNTUK SEMUA ELEMEN
- * ============================================
- * Pastikan semua elemen berubah warna dengan konsisten
+ *  * DARK MODE - STYLING LENGKAP UNTUK SEMUA ELEMEN
+ *  * Pastikan semua elemen berubah warna dengan konsisten
  * Transisi smooth biar gak kaget pas ganti mode
  */
 
-/* ===== CARD & CONTAINER - SEMUA YANG PUTIH JADI GELAP ===== */
 /* Ganti warna latar biar gak silau pas dark mode */
-body.dark-mode .service-card,
-body.dark-mode .transport-card,
-body.dark-mode .partner-card,
-body.dark-mode .gallery-item,
-body.dark-mode .faq-item,
-body.dark-mode .nav-card,
-body.dark-mode .stat-card,
-body.dark-mode .contact-info-box,
-body.dark-mode .contact-info-card,
-body.dark-mode .form-card,
-body.dark-mode .booking-modal,
-body.dark-mode .transport-booking-card,
-body.dark-mode .admin-card,
-body.dark-mode .admin-table {
-    background: #2d3748 !important;
-    border-color: #4a5568 !important;
-    color: #f1f5f9 !important;
-}
 
 /* Hover state untuk card di dark mode */
-body.dark-mode .service-card:hover,
-body.dark-mode .transport-card:hover,
-body.dark-mode .partner-card:hover,
-body.dark-mode .gallery-item:hover,
-body.dark-mode .contact-info-card:hover {
-    background: #374151 !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-}
-
-/* ===== SECTION BACKGROUNDS ===== */
-body.dark-mode .services,
-body.dark-mode .transport-types,
-body.dark-mode .gallery-section,
-body.dark-mode .faq-section,
-body.dark-mode .contact-section {
-    background: var(--bg-utama);
-}
 
 /* Section dengan background terang jadi gelap */
-body.dark-mode .professional-services,
-body.dark-mode .service-showcase {
-    background: linear-gradient(180deg, var(--bg-utama) 0%, var(--bg-kedua) 100%);
-}
-
-/* ===== TEXT & HEADINGS ===== */
-body.dark-mode h1,
-body.dark-mode h2,
-body.dark-mode h3,
-body.dark-mode h4,
-body.dark-mode h5,
-body.dark-mode h6 {
-    color: var(--teks-utama);
-}
-
-body.dark-mode p,
-body.dark-mode span,
-body.dark-mode li {
-    color: var(--teks-kedua);
-}
 
 /* Judul di card tetap jelas */
-body.dark-mode .service-card h3,
-body.dark-mode .transport-card h3,
-body.dark-mode .gallery-info h4,
-body.dark-mode .partner-info h4 {
-    color: var(--teks-utama);
-}
-
-/* ===== FOOTER ===== */
-body.dark-mode footer {
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: rgba(255, 255, 255, 0.9);
-}
-
-body.dark-mode footer h3 {
-    color: white;
-}
-
-body.dark-mode footer p,
-body.dark-mode footer li,
-body.dark-mode footer a {
-    color: rgba(255, 255, 255, 0.8);
-}
-
-body.dark-mode footer a:hover {
-    color: white;
-}
-
-body.dark-mode .footer-bottom {
-    border-top-color: rgba(255, 255, 255, 0.1);
-}
-
-/* ===== BUTTONS ===== */
-body.dark-mode .btn-transport,
-body.dark-mode .btn-wa-small {
-    background: var(--warna-kedua);
-    color: white;
-}
-
-body.dark-mode .btn-transport:hover,
-body.dark-mode .btn-wa-small:hover {
-    background: var(--warna-aksen);
-}
 
 /* Button secondary di dark mode */
-body.dark-mode .btn-hero-secondary {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.3);
-    color: white;
-}
 
-body.dark-mode .btn-hero-secondary:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
+/* Navigation styling di dark mode - konsisten dengan light mode */
 
-/* ===== FORMS & INPUTS ===== */
-body.dark-mode input,
-body.dark-mode textarea,
-body.dark-mode select {
-    background: var(--bg-kedua);
-    border-color: var(--warna-border);
-    color: var(--teks-utama);
-}
-
-body.dark-mode input:focus,
-body.dark-mode textarea:focus,
-body.dark-mode select:focus {
-    background: var(--bg-ketiga);
-    border-color: var(--warna-kedua);
-}
-
-body.dark-mode input::placeholder,
-body.dark-mode textarea::placeholder {
-    color: var(--teks-kedua);
-    opacity: 0.6;
-}
-
-/* ===== MODAL ===== */
-body.dark-mode .gallery-modal,
-body.dark-mode .booking-modal,
-body.dark-mode .admin-login-modal {
-    background: var(--bg-kedua);
-    color: var(--teks-utama);
-}
-
-body.dark-mode .gallery-modal-overlay,
-body.dark-mode .booking-modal-overlay,
-body.dark-mode .admin-login-overlay {
-    background: rgba(0, 0, 0, 0.85);
-}
-
-body.dark-mode .gallery-modal-info h3,
-body.dark-mode .booking-modal h3 {
-    color: var(--teks-utama);
-}
-
-body.dark-mode .gallery-modal-info p {
-    color: var(--teks-kedua);
-}
-
-/* ===== NAVIGATION ===== */
-body.dark-mode .nav-menu li a {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-body.dark-mode .nav-menu li a:hover {
-    color: white;
-    background: rgba(255, 255, 255, 0.15);
-}
-
-body.dark-mode .nav-menu li a.active {
-    background: rgba(96, 165, 250, 0.25);
-}
-
-/* ===== FAQ ACCORDION ===== */
-body.dark-mode .faq-item {
-    background: var(--bg-kedua);
-    border-color: var(--warna-border);
-}
-
-body.dark-mode .faq-question {
-    color: var(--teks-utama);
-}
-
-body.dark-mode .faq-answer {
-    color: var(--teks-kedua);
-    background: var(--bg-utama);
-}
-
-body.dark-mode .faq-item.active {
-    border-color: var(--warna-kedua);
-}
-
-/* ===== CONTACT INFO ===== */
-body.dark-mode .contact-info-card {
-    background: var(--bg-kedua);
-    border-color: var(--warna-border);
-}
-
-body.dark-mode .contact-info-card:hover {
-    background: var(--bg-ketiga);
-}
-
-body.dark-mode .contact-info-card h3 {
-    color: var(--teks-utama);
-}
-
-body.dark-mode .contact-info-card p,
-body.dark-mode .contact-info-card a {
-    color: var(--teks-kedua);
-}
-
-/* ===== ADMIN TABLES ===== */
-body.dark-mode .admin-table {
-    background: var(--bg-kedua);
-}
-
-body.dark-mode .admin-table thead {
-    background: linear-gradient(135deg, var(--warna-utama), var(--warna-kedua));
-}
-
-body.dark-mode .admin-table td {
-    border-bottom-color: var(--warna-border);
-    color: var(--teks-utama);
-}
-
-body.dark-mode .admin-table tbody tr:hover {
-    background: var(--bg-ketiga);
-}
-
-body.dark-mode .table-description {
-    color: var(--teks-kedua);
-}
-
-/* ===== TRANSPORT TABS ===== */
-body.dark-mode .transport-tab {
-    background: var(--bg-kedua);
-    border-color: var(--warna-border);
-    color: var(--teks-utama);
-}
-
-body.dark-mode .transport-tab:hover,
-body.dark-mode .transport-tab.active {
-    background: var(--warna-kedua);
-    color: white;
-    border-color: var(--warna-kedua);
-}
-
-/* ===== EMPTY STATE ===== */
-body.dark-mode .no-data,
-body.dark-mode .empty-gallery,
-body.dark-mode .empty-state {
-    background: var(--bg-kedua);
-    border-color: var(--warna-border);
-    color: var(--teks-kedua);
-}
-
-/* ===== PAGE HEADER ===== */
 /* Header tetap dengan gradient biru, gak perlu diubah */
-body.dark-mode .page-header {
-    background: linear-gradient(135deg, var(--warna-utama) 0%, var(--warna-kedua) 100%);
-}
 
-/* ===== HERO SECTION ===== */
 /* Hero tetap dengan background image, gak perlu diubah */
-body.dark-mode .hero {
-    background-attachment: fixed;
-}
 
-/* ===== GALLERY OVERLAY ===== */
 /* Overlay tetap gelap di kedua mode biar teks keliatan */
-body.dark-mode .gallery-overlay {
-    background: rgba(0, 0, 0, 0.7);
-}
-
-/* ===== BORDERS & DIVIDERS ===== */
-body.dark-mode hr {
-    border-color: var(--warna-border);
-}
-
-/* ===== SCROLLBAR (OPTIONAL) ===== */
-body.dark-mode::-webkit-scrollbar {
-    width: 12px;
-    background: var(--bg-utama);
-}
-
-body.dark-mode::-webkit-scrollbar-thumb {
-    background: var(--bg-ketiga);
-    border-radius: 6px;
-}
-
-body.dark-mode::-webkit-scrollbar-thumb:hover {
-    background: var(--warna-border);
-}
-
-/* ===== ADMIN DASHBOARD ===== */
-body.dark-mode .admin-container {
-    background: var(--bg-utama);
-}
-
-body.dark-mode .admin-header {
-    background: var(--bg-kedua);
-    border-bottom-color: var(--warna-border);
-}
-
-body.dark-mode .admin-nav a {
-    color: var(--teks-kedua);
-}
-
-body.dark-mode .admin-nav a:hover,
-body.dark-mode .admin-nav a.active {
-    color: var(--warna-kedua);
-    background: var(--bg-ketiga);
-}
-
-body.dark-mode .admin-card {
-    background: var(--bg-kedua);
-    border-color: var(--warna-border);
-}
-
-body.dark-mode .admin-card h3 {
-    color: var(--teks-utama);
-}
-
-/* ===== FORM LABELS ===== */
-body.dark-mode label {
-    color: var(--teks-utama);
-}
-
-/* ===== LINKS ===== */
-body.dark-mode a {
-    color: var(--warna-aksen);
-}
-
-body.dark-mode a:hover {
-    color: var(--warna-kedua);
-}
-
-/* ===== BADGES & TAGS ===== */
-body.dark-mode .badge,
-body.dark-mode .tag,
-body.dark-mode .table-badge {
-    background: var(--warna-kedua);
-    color: white;
-}
-
-/* ===== LOADING & SPINNER ===== */
-body.dark-mode .loading,
-body.dark-mode .spinner {
-    color: var(--teks-kedua);
-}
-
-/* ===== TOAST / NOTIFICATION ===== */
-body.dark-mode .toast,
-body.dark-mode .notification {
-    background: var(--bg-kedua);
-    border-color: var(--warna-border);
-    color: var(--teks-utama);
-}
-
-/* ===== DROPDOWN ===== */
-body.dark-mode .dropdown-menu {
-    background: var(--bg-kedua);
-    border-color: var(--warna-border);
-}
-
-body.dark-mode .dropdown-item {
-    color: var(--teks-utama);
-}
-
-body.dark-mode .dropdown-item:hover {
-    background: var(--bg-ketiga);
-}
-
-/* ===== TENTANG KAMI PAGE ===== */
-body.dark-mode .about-section {
-    background: var(--bg-utama);
-}
-
-body.dark-mode .about-content {
-    background: var(--bg-kedua);
-    color: var(--teks-utama);
-}
-
-body.dark-mode .about-content h2,
-body.dark-mode .about-content h3 {
-    color: var(--teks-utama);
-}
-
-body.dark-mode .about-content p {
-    color: var(--teks-kedua);
-}
-
-/* ===== PEMESANAN PAGE ===== */
-body.dark-mode .booking-form {
-    background: var(--bg-kedua);
-}
-
-body.dark-mode .booking-summary {
-    background: var(--bg-ketiga);
-    border-color: var(--warna-border);
-}
-
-/* ===== MAP OVERLAY ===== */
-body.dark-mode .map-overlay {
-    background: var(--bg-kedua);
-    color: var(--teks-utama);
-}
-
-body.dark-mode .map-overlay h4 {
-    color: var(--teks-utama);
-}
-
-/* ===== ICON COLORS ===== */
-body.dark-mode .icon {
-    color: var(--teks-kedua);
-}
 
 /* Icon di service card tetap dengan warna aksen */
-body.dark-mode .service-icon {
-    background: linear-gradient(135deg, var(--warna-kedua), var(--warna-aksen));
-}
 
-/* ===== SHADOW ADJUSTMENTS ===== */
 /* Shadow di dark mode lebih gelap biar keliatan */
-body.dark-mode .service-card,
-body.dark-mode .transport-card,
-body.dark-mode .gallery-item {
-    box-shadow: var(--bayangan-sedang);
-}
-
-body.dark-mode .service-card:hover,
-body.dark-mode .transport-card:hover,
-body.dark-mode .gallery-item:hover {
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
-}
 
 /**
- * ============================================
- * RESPONSIVE DARK MODE
- * ============================================
- */
+ *  * RESPONSIVE DARK MODE
+ *  */
 @media (max-width: 768px) {
     /* Pastikan dark mode tetap bagus di mobile */
-    body.dark-mode .container {
-        background: transparent;
-    }
-    
-    body.dark-mode .mobile-menu {
-        color: white;
-    }
+
 }
 
 /**
- * ============================================
- * PRINT MODE - TETAP TERANG
- * ============================================
- * Pas print, paksa mode terang biar gak buang tinta
+ *  * PRINT MODE - TETAP TERANG
+ *  * Pas print, paksa mode terang biar gak buang tinta
  */
 @media print {
-    body.dark-mode {
-        background: white !important;
-        color: black !important;
-    }
-    
-    body.dark-mode * {
-        background: white !important;
-        color: black !important;
-        border-color: #ccc !important;
-    }
+
 }
 
-
 /**
- * ============================================
- * DARK MODE - PERBAIKAN FINAL BACKGROUND PUTIH
- * ============================================
- * Ganti warna putih biar gak silau di dark mode
+ *  * DARK MODE - PERBAIKAN FINAL BACKGROUND PUTIH
+ *  * Ganti warna putih biar gak silau di dark mode
  * Pakai !important biar menang dari CSS default
  */
 
-/* === BODY & HTML === */
-/* Ini buat pastiin background bener-bener gelap pas toggle */
-body.dark-mode {
-    background-color: #1a202c !important;
-    color: #f1f5f9 !important;
-}
-
-html.dark-mode,
-html:has(body.dark-mode) {
-    background-color: #1a202c !important;
-}
-
-/* === SEMUA SECTION === */
+/* sections */
 /* Ganti background putih jadi gelap di semua section */
-body.dark-mode section {
-    background-color: #1a202c !important;
-    color: #f1f5f9 !important;
-}
 
-/* === CONTAINER & WRAPPER === */
 /* Container biasanya putih, ubah jadi transparan atau gelap */
-body.dark-mode .container,
-body.dark-mode .wrapper,
-body.dark-mode .content,
-body.dark-mode .main-content,
-body.dark-mode .page-content {
-    background-color: transparent !important;
-}
 
-/* === PROFESSIONAL SERVICES === */
 /* Section ini punya gradient putih, ubah jadi gelap */
-body.dark-mode .professional-services {
-    background: #1a202c !important;
-    background-image: none !important;
-}
 
-/* === SERVICES SECTION === */
-body.dark-mode .services {
-    background-color: #1a202c !important;
-}
-
-/* === TRANSPORT TYPES === */
-body.dark-mode .transport-types {
-    background-color: #1a202c !important;
-}
-
-/* === GALLERY SECTION === */
-body.dark-mode .gallery-section {
-    background-color: #1a202c !important;
-}
-
-/* === FAQ SECTION === */
-body.dark-mode .faq-section {
-    background-color: #1a202c !important;
-}
-
-/* === CONTACT SECTION === */
-body.dark-mode .contact-section,
-body.dark-mode .contact-main-section {
-    background-color: #1a202c !important;
-}
-
-/* === MAP SECTION === */
-body.dark-mode .map-section {
-    background-color: #1a202c !important;
-}
-
-/* === BOOKING SECTIONS === */
-body.dark-mode .booking-filter-section,
-body.dark-mode .booking-list-section {
-    background-color: #1a202c !important;
-}
-
-/* === ABOUT SECTION === */
-body.dark-mode .about-section {
-    background-color: #1a202c !important;
-}
-
-/* === SEMUA CARD === */
 /* Card yang putih jadi abu gelap */
-body.dark-mode .service-card,
-body.dark-mode .transport-card,
-body.dark-mode .partner-card,
-body.dark-mode .gallery-item,
-body.dark-mode .faq-item,
-body.dark-mode .nav-card,
-body.dark-mode .stat-card,
-body.dark-mode .contact-info-box,
-body.dark-mode .contact-info-card,
-body.dark-mode .form-card,
-body.dark-mode .transport-booking-card {
-    background-color: #2d3748 !important;
-    border-color: #4a5568 !important;
-    color: #f1f5f9 !important;
-}
 
-/* === CARD HOVER === */
-body.dark-mode .service-card:hover,
-body.dark-mode .transport-card:hover,
-body.dark-mode .partner-card:hover,
-body.dark-mode .gallery-item:hover,
-body.dark-mode .contact-info-card:hover {
-    background-color: #374151 !important;
-}
-
-/* === GALLERY INFO === */
-body.dark-mode .gallery-info {
-    background-color: #2d3748 !important;
-    color: #f1f5f9 !important;
-}
-
-/* === CONTACT INFO ITEM === */
-body.dark-mode .contact-info-item,
-body.dark-mode .contact-item {
-    background-color: #374151 !important;
-    border-color: #4a5568 !important;
-}
-
-body.dark-mode .contact-item:hover {
-    background-color: #4a5568 !important;
-    border-color: #60a5fa !important;
-}
-
-/* === FAQ ANSWER === */
-body.dark-mode .faq-answer {
-    background-color: #1f2937 !important;
-    color: #cbd5e1 !important;
-}
-
-/* === FORMS & INPUTS === */
 /* Input yang putih jadi abu gelap */
-body.dark-mode input,
-body.dark-mode textarea,
-body.dark-mode select {
-    background-color: #374151 !important;
-    border-color: #4a5568 !important;
-    color: #f1f5f9 !important;
-}
 
-body.dark-mode input:focus,
-body.dark-mode textarea:focus,
-body.dark-mode select:focus {
-    background-color: #4a5568 !important;
-    border-color: #3b82f6 !important;
-}
-
-body.dark-mode input::placeholder,
-body.dark-mode textarea::placeholder {
-    color: #9ca3af !important;
-}
-
-/* === MODAL === */
 /* Modal yang putih jadi gelap */
-body.dark-mode .gallery-modal,
-body.dark-mode .booking-modal,
-body.dark-mode .admin-login-modal {
-    background-color: #2d3748 !important;
-    color: #f1f5f9 !important;
-}
 
-body.dark-mode .gallery-modal-overlay,
-body.dark-mode .booking-modal-overlay,
-body.dark-mode .admin-login-overlay {
-    background-color: rgba(0, 0, 0, 0.9) !important;
-}
-
-/* === ADMIN TABLE === */
-body.dark-mode .admin-table {
-    background-color: #2d3748 !important;
-}
-
-body.dark-mode .admin-table td {
-    background-color: #2d3748 !important;
-    border-bottom-color: #4a5568 !important;
-    color: #f1f5f9 !important;
-}
-
-body.dark-mode .admin-table tbody tr:hover td {
-    background-color: #374151 !important;
-}
-
-/* === FILTER TABS === */
-body.dark-mode .filter-tab,
-body.dark-mode .transport-tab {
-    background-color: #2d3748 !important;
-    border-color: #4a5568 !important;
-    color: #f1f5f9 !important;
-}
-
-body.dark-mode .filter-tab:hover,
-body.dark-mode .filter-tab.active,
-body.dark-mode .transport-tab:hover,
-body.dark-mode .transport-tab.active {
-    background-color: #3b82f6 !important;
-    color: white !important;
-}
-
-/* === TEXT COLORS === */
 /* Pastiin semua teks keliatan jelas */
-body.dark-mode h1,
-body.dark-mode h2,
-body.dark-mode h3,
-body.dark-mode h4,
-body.dark-mode h5,
-body.dark-mode h6 {
-    color: #f1f5f9 !important;
-}
-
-body.dark-mode p,
-body.dark-mode span:not(.icon),
-body.dark-mode li,
-body.dark-mode label {
-    color: #cbd5e1 !important;
-}
-
-body.dark-mode a {
-    color: #60a5fa !important;
-}
-
-body.dark-mode a:hover {
-    color: #3b82f6 !important;
-}
-
-/* === ADMIN SECTIONS === */
-body.dark-mode .admin-container,
-body.dark-mode .admin-content {
-    background-color: #1a202c !important;
-}
-
-body.dark-mode .admin-header {
-    background-color: #2d3748 !important;
-    border-bottom-color: #4a5568 !important;
-}
-
-body.dark-mode .admin-card {
-    background-color: #2d3748 !important;
-    border-color: #4a5568 !important;
-}
-
-/* === EMPTY STATE === */
-body.dark-mode .no-data,
-body.dark-mode .empty-gallery,
-body.dark-mode .empty-state {
-    background-color: #2d3748 !important;
-    border-color: #4a5568 !important;
-    color: #cbd5e1 !important;
-}
-
-/* === DROPDOWN === */
-body.dark-mode .dropdown-menu {
-    background-color: #2d3748 !important;
-    border-color: #4a5568 !important;
-}
-
-body.dark-mode .dropdown-item {
-    color: #f1f5f9 !important;
-}
-
-body.dark-mode .dropdown-item:hover {
-    background-color: #374151 !important;
-}
-
-/* === ALERT === */
-body.dark-mode .alert {
-    background-color: #2d3748 !important;
-    border-color: #4a5568 !important;
-    color: #f1f5f9 !important;
-}
-
-/* === BREADCRUMB === */
-body.dark-mode .breadcrumb {
-    background-color: #2d3748 !important;
-    color: #cbd5e1 !important;
-}
-
-/* === PAGINATION === */
-body.dark-mode .pagination-item {
-    background-color: #374151 !important;
-    color: #f1f5f9 !important;
-    border-color: #4a5568 !important;
-}
-
-/* === SIDEBAR === */
-body.dark-mode .sidebar {
-    background-color: #2d3748 !important;
-    border-right-color: #4a5568 !important;
-}
-
-/* === ACCORDION === */
-body.dark-mode .accordion-header {
-    background-color: #374151 !important;
-    color: #f1f5f9 !important;
-}
-
-body.dark-mode .accordion-body {
-    background-color: #2d3748 !important;
-    color: #cbd5e1 !important;
-}
-
-/* === SEARCH BOX === */
-body.dark-mode .search-box,
-body.dark-mode .search-input {
-    background-color: #374151 !important;
-    border-color: #4a5568 !important;
-    color: #f1f5f9 !important;
-}
-
-/* === BUTTON SECONDARY === */
-body.dark-mode .btn-secondary {
-    background-color: #374151 !important;
-    color: #f1f5f9 !important;
-    border-color: #4a5568 !important;
-}
-
-/* === LIST GROUP === */
-body.dark-mode .list-group-item {
-    background-color: #374151 !important;
-    border-color: #4a5568 !important;
-    color: #f1f5f9 !important;
-}
-
-/* === CODE & PRE === */
-body.dark-mode code,
-body.dark-mode pre {
-    background-color: #1f2937 !important;
-    color: #f1f5f9 !important;
-}
-
-/* === BLOCKQUOTE === */
-body.dark-mode blockquote {
-    background-color: #2d3748 !important;
-    border-left-color: #3b82f6 !important;
-    color: #cbd5e1 !important;
-}
-
-/* === HR / DIVIDER === */
-body.dark-mode hr,
-body.dark-mode .divider {
-    border-color: #4a5568 !important;
-    background-color: #4a5568 !important;
-}
-
-/* === TOOLTIP === */
-body.dark-mode .tooltip {
-    background-color: #1f2937 !important;
-    color: #f1f5f9 !important;
-}
-
-/* === BADGE === */
-body.dark-mode .badge {
-    background-color: #374151 !important;
-    color: #f1f5f9 !important;
-}
-
-/* === CALENDAR === */
-body.dark-mode .calendar {
-    background-color: #2d3748 !important;
-    border-color: #4a5568 !important;
-}
-
-body.dark-mode .calendar-day {
-    color: #f1f5f9 !important;
-}
-
-body.dark-mode .calendar-day:hover {
-    background-color: #374151 !important;
-}
-
-/* === CHIP / TAG === */
-body.dark-mode .chip,
-body.dark-mode .tag {
-    background-color: #374151 !important;
-    color: #f1f5f9 !important;
-}
-
-/* === AVATAR === */
-body.dark-mode .avatar {
-    background-color: #374151 !important;
-    border-color: #4a5568 !important;
-}
-
-/* === PROGRESS BAR === */
-body.dark-mode .progress-bar {
-    background-color: #374151 !important;
-}
-
-/* === STEPPER === */
-body.dark-mode .step {
-    background-color: #374151 !important;
-    color: #cbd5e1 !important;
-}
-
-/* === TIMELINE === */
-body.dark-mode .timeline-item {
-    background-color: #2d3748 !important;
-    border-color: #4a5568 !important;
-}
-
-/* === CHECKBOX & RADIO === */
-body.dark-mode input[type="checkbox"],
-body.dark-mode input[type="radio"] {
-    background-color: #374151 !important;
-    border-color: #4a5568 !important;
-}
-
-/* === FILE UPLOAD === */
-body.dark-mode input[type="file"] {
-    background-color: #374151 !important;
-    color: #f1f5f9 !important;
-}
-
-/* === RANGE SLIDER === */
-body.dark-mode input[type="range"] {
-    background-color: #374151 !important;
-}
-
-/* === SWITCH === */
-body.dark-mode .switch {
-    background-color: #374151 !important;
-}
 
 /**
- * ============================================
- * DARK MODE - ELEMEN YANG TETAP TERANG
- * ============================================
- * Beberapa elemen tetap dengan warna aslinya
+ *  * DARK MODE - ELEMEN YANG TETAP TERANG
+ *  * Beberapa elemen tetap dengan warna aslinya
  */
 
 /* Header tetap dengan gradient biru */
-body.dark-mode header {
-    background: linear-gradient(135deg, #0f172a, #1e293b) !important;
-}
 
 /* Page header tetap dengan gradient biru */
-body.dark-mode .page-header {
-    background: linear-gradient(135deg, #0f2942, #2563eb) !important;
-}
 
 /* Hero duplikat dihapus - sudah ada di atas */
 
 /* Footer tetap gelap */
-body.dark-mode footer {
-    background: linear-gradient(135deg, #0f172a, #1e293b) !important;
-}
 
 /* Service icon tetap dengan gradient biru */
-body.dark-mode .service-icon {
-    background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
-}
 
 /* WhatsApp button tetap hijau */
-body.dark-mode .wa-header-btn,
-body.dark-mode .wa-float a,
-body.dark-mode .btn-wa-small {
-    background: #25D366 !important;
-    color: white !important;
-}
+/* Tombol WhatsApp di mode gelap - SAMA PERSIS dengan mode terang */
 
-body.dark-mode .wa-header-btn:hover,
-body.dark-mode .wa-float a:hover,
-body.dark-mode .btn-wa-small:hover {
-    background: #128C7E !important;
-}
+/* Ikon WhatsApp float button - putih bersih di semua mode */
+
+/* Ikon WhatsApp di 
 
 /* Button primary tetap biru */
-body.dark-mode .btn-hero-primary,
-body.dark-mode .btn-transport {
-    background: #2563eb !important;
-    color: white !important;
-}
-
-body.dark-mode .btn-hero-primary:hover,
-body.dark-mode .btn-transport:hover {
-    background: #1d4ed8 !important;
-}
 
 /**
- * ============================================
- * DARK MODE - TRANSISI SMOOTH
- * ============================================
- * Biar pergantian gak kaget di mata
+ *  * DARK MODE - TRANSISI SMOOTH
+ *  * Biar pergantian gak kaget di mata
  */
-body.dark-mode,
-body.dark-mode *:not(.hero-title):not(.gallery-item):not(img) {
-    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease !important;
-}
 
 /**
- * ============================================
- * ADMIN PANEL DARK MODE - COMPREHENSIVE
- * ============================================
- * Implementasi dark mode untuk seluruh admin panel
+ *  * ADMIN PANEL DARK MODE - COMPREHENSIVE
+ *  * Implementasi dark mode untuk seluruh admin panel
  */
 
-/* === ADMIN BODY & LAYOUT === */
-body.dark-mode .admin-body {
-    background-color: var(--bg-utama) !important;
-    color: var(--teks-utama) !important;
-}
-
-body.dark-mode .admin-sidebar {
-    background-color: var(--bg-sidebar) !important;
-    border-right-color: var(--warna-border) !important;
-}
-
-body.dark-mode .admin-sidebar .nav-link {
-    color: var(--teks-kedua) !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-body.dark-mode .admin-sidebar .nav-link:hover,
-body.dark-mode .admin-sidebar .nav-link.active {
-    background-color: var(--warna-utama) !important;
-    color: #ffffff !important;
-}
-
-/* === ADMIN CARDS & SECTIONS === */
-body.dark-mode .admin-section {
-    background-color: var(--bg-card) !important;
-    border-color: var(--warna-border) !important;
-}
-
-body.dark-mode .section-header h3 {
-    color: var(--teks-utama) !important;
-}
-
-/* === ADMIN FORMS === */
-body.dark-mode .admin-form .form-group label {
-    color: var(--teks-utama) !important;
-}
-
-body.dark-mode .admin-form .form-control {
-    background-color: var(--bg-kedua) !important;
-    border-color: var(--warna-border) !important;
-    color: var(--teks-utama) !important;
-}
-
-body.dark-mode .admin-form .form-control:focus {
-    background-color: var(--bg-kedua) !important;
-    border-color: var(--warna-utama) !important;
-    box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25) !important;
-}
-
-body.dark-mode .admin-form .form-control::placeholder {
-    color: var(--teks-kedua) !important;
-}
-
-/* === ADMIN TABLES === */
-body.dark-mode .admin-table {
-    background-color: var(--bg-card) !important;
-    border-color: var(--warna-border) !important;
-}
-
-body.dark-mode .admin-table thead {
-    background-color: var(--bg-kedua) !important;
-}
-
-body.dark-mode .admin-table th {
-    color: var(--teks-utama) !important;
-    border-color: var(--warna-border) !important;
-}
-
-body.dark-mode .admin-table td {
-    color: var(--teks-kedua) !important;
-    border-color: var(--warna-border) !important;
-}
-
-body.dark-mode .admin-table tbody tr:hover {
-    background-color: var(--bg-kedua) !important;
-}
-
-/* === ADMIN ACTION BUTTONS === */
-body.dark-mode .btn-action {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-body.dark-mode .btn-edit {
-    background-color: #f59e0b !important;
-    border-color: #f59e0b !important;
-}
-
-body.dark-mode .btn-edit:hover {
-    background-color: #d97706 !important;
-    border-color: #d97706 !important;
-}
-
-body.dark-mode .btn-delete {
-    background-color: #ef4444 !important;
-    border-color: #ef4444 !important;
-}
-
-body.dark-mode .btn-delete:hover {
-    background-color: #dc2626 !important;
-    border-color: #dc2626 !important;
-}
-
-/* === ADMIN STATISTICS CARDS === */
-body.dark-mode .stat-card {
-    background-color: var(--bg-card) !important;
-    border-color: var(--warna-border) !important;
-}
-
-body.dark-mode .stat-card .stat-number {
-    color: var(--warna-utama) !important;
-}
-
-body.dark-mode .stat-card .stat-label {
-    color: rgba(255, 255, 255, 0.8) !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-}
-
-/* === HERO SECTION TEXT - DARK MODE === */
-body.dark-mode .hero-title {
-    color: #ffffff !important;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
-}
-
-body.dark-mode .hero-description {
-    color: rgba(255, 255, 255, 0.8) !important;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
-}
-
-body.dark-mode .hero-company {
-    color: #ffffff !important;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
-}
-
-/* === ADMIN MODAL === */
-body.dark-mode .modal-content {
-    background-color: var(--bg-card) !important;
-    border-color: var(--warna-border) !important;
-}
-
-body.dark-mode .modal-header {
-    background-color: var(--bg-kedua) !important;
-    border-bottom-color: var(--warna-border) !important;
-}
-
-body.dark-mode .modal-title {
-    color: var(--teks-utama) !important;
-}
-
-body.dark-mode .modal-body {
-    color: var(--teks-kedua) !important;
-}
-
-body.dark-mode .modal-footer {
-    background-color: var(--bg-kedua) !important;
-    border-top-color: var(--warna-border) !important;
-}
-
-/* === DARK MODE TOGGLE === */
-body.dark-mode .dark-mode-toggle {
-    background-color: var(--warna-utama) !important;
-}
-
-body.dark-mode .dark-mode-toggle::before {
-    background-color: #ffffff !important;
-}
-
-/* === SHOWCASE & HERO BUTTONS - DARK MODE === */
-body.dark-mode .btn-showcase {
-    background: rgba(59, 130, 246, 0.8) !important;
-    color: #ffffff !important;
-    border: 1px solid rgba(59, 130, 246, 0.9) !important;
-    font-weight: 600 !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-}
-
-body.dark-mode .btn-showcase:hover {
-    background: rgba(37, 99, 235, 0.9) !important;
-    color: #ffffff !important;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
-    transform: translateY(-3px) !important;
-}
-
-/* Tombol Pesan Sekarang - transparan seperti mode terang dengan hover putih */
-body.dark-mode .btn-showcase-order {
-    background: rgba(255, 255, 255, 0.15) !important;
-    color: white !important;
-    border: 2px solid rgba(255, 255, 255, 0.3) !important;
-    padding: 14px 28px !important;
-    border-radius: 12px !important;
-    font-weight: 600 !important;
-    backdrop-filter: blur(10px) !important;
-    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1) !important;
-}
-
-body.dark-mode .btn-showcase-order:hover {
-    background: white !important;
-    color: var(--warna-kedua) !important;
-    border: 2px solid white !important;
-    text-shadow: none !important;
-    transform: translateY(-3px) !important;
-    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3) !important;
-}
-
-/* Icon dalam tombol Pesan Sekarang juga berubah warna saat hover */
-body.dark-mode .btn-showcase-order:hover i {
-    color: var(--warna-kedua) !important;
-}
-
-/* === CONTACT BUTTON - DARK MODE === */
-body.dark-mode .btn-contact-wa {
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important;
-    border: 2px solid rgba(37, 211, 102, 0.4) !important;
-    box-shadow: 
-        0 6px 16px rgba(37, 211, 102, 0.5),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
-    color: #ffffff !important;
-    font-weight: 700 !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
-}
-
-body.dark-mode .btn-contact-wa:hover {
-    background: linear-gradient(135deg, #128C7E 0%, #075E54 100%) !important;
-    box-shadow: 
-        0 10px 24px rgba(37, 211, 102, 0.6),
-        inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
-    transform: translateY(-2px) scale(1.02) !important;
-}
-
-/* ============================================
- * FAQ BOOKING SECTION
- * ============================================ */
+/* faq booking section */
 .faq-booking-section {
     padding: 80px 0;
     background: #f8fafc;
@@ -13260,25 +13273,6 @@ body.dark-mode .btn-contact-wa:hover {
 }
 
 /* Dark Mode Support for FAQ Booking */
-[data-theme="dark"] .faq-booking-section {
-    background: var(--bg-kedua);
-}
-
-[data-theme="dark"] .faq-booking-item {
-    background: var(--bg-card);
-    border-color: var(--warna-border);
-}
-
-[data-theme="dark"] .faq-booking-item:hover {
-    border-color: #3b82f6;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
-}
-
-[data-theme="dark"] .faq-booking-cta {
-    background: var(--bg-card);
-    border-color: var(--warna-border);
-}
-
 /* Responsive Design for Tablet */
 @media (min-width: 768px) and (max-width: 1024px) {
     .trust-content {
@@ -13297,4 +13291,91 @@ body.dark-mode .btn-contact-wa:hover {
     .faq-booking-header h2 {
         font-size: 2.2rem;
     }
+    
+    .faq-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .faq-filter-tabs {
+        gap: 10px;
+    }
+    
+    .faq-tab {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+    }
 }
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .faq-hero {
+        padding: 80px 0 60px;
+    }
+    
+    .faq-hero-title {
+        font-size: 2rem;
+    }
+    
+    .faq-hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .faq-filter-tabs {
+        gap: 8px;
+        margin: -20px auto 40px;
+    }
+    
+    .faq-tab {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .faq-item {
+        margin-bottom: 12px;
+    }
+    
+    .faq-question {
+        padding: 16px 18px;
+    }
+    
+    .faq-question-text {
+        font-size: 1rem;
+    }
+    
+    .faq-answer-content {
+        padding: 16px 18px;
+        font-size: 0.95rem;
+    }
+    
+    .faq-contact-cta {
+        padding: 40px 30px;
+    }
+    
+    .faq-contact-cta h3 {
+        font-size: 1.8rem;
+    }
+    
+    .faq-cta-icon {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .faq-cta-icon i {
+        font-size: 2rem;
+    }
+    
+    .faq-cta-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .btn-faq-wa,
+    .btn-faq-contact {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Dark Mode for FAQ */
+
+

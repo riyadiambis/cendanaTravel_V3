@@ -185,6 +185,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
     }
+    
+    // ============================================
+    // HANDLE TRANSPORT OPERATIONS
+    // ============================================
+    elseif ($module === 'transport') {
+        if ($action === 'add') {
+            $logoPath = null;
+            if (isset($_FILES['logo']) && $_FILES['logo']['error'] === UPLOAD_ERR_OK) {
+                $logoPath = uploadImage($_FILES['logo'], 'uploads/' . $_POST['transport_type'] . '/');
+            }
+            
+            if (addTransportService($_POST, $logoPath)) {
+                $_SESSION['admin_message'] = 'Layanan transportasi berhasil ditambahkan!';
+                $_SESSION['admin_message_type'] = 'success';
+            } else {
+                $_SESSION['admin_message'] = 'Gagal menambahkan layanan transportasi!';
+                $_SESSION['admin_message_type'] = 'error';
+            }
+            header('Location: admin.php#transportasi');
+            exit();
+        }
+        elseif ($action === 'update') {
+            $logoPath = null;
+            if (isset($_FILES['logo']) && $_FILES['logo']['error'] === UPLOAD_ERR_OK) {
+                $logoPath = uploadImage($_FILES['logo'], 'uploads/' . $_POST['transport_type'] . '/');
+            }
+            
+            if (updateTransportService($_POST['id'], $_POST, $logoPath)) {
+                $_SESSION['admin_message'] = 'Layanan transportasi berhasil diperbarui!';
+                $_SESSION['admin_message_type'] = 'success';
+            } else {
+                $_SESSION['admin_message'] = 'Gagal memperbarui layanan transportasi!';
+                $_SESSION['admin_message_type'] = 'error';
+            }
+            header('Location: admin.php#transportasi');
+            exit();
+        }
+        elseif ($action === 'delete') {
+            if (deleteTransportService($_POST['id'])) {
+                $_SESSION['admin_message'] = 'Layanan transportasi berhasil dihapus!';
+                $_SESSION['admin_message_type'] = 'success';
+            } else {
+                $_SESSION['admin_message'] = 'Gagal menghapus layanan transportasi!';
+                $_SESSION['admin_message_type'] = 'error';
+            }
+            header('Location: admin.php#transportasi');
+            exit();
+        }
+    }
 
 }
 
@@ -192,6 +241,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $stats = getDashboardStats();
 $companyInfo = getCompanyInfo();
 $contactInfo = getContactInfo();
+$transportServices = getAllTransportServices();
+$transportTypes = getAllTransportTypes();
+$galleries = getAllGallery();
+$faqs = getAllFAQ();
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -251,28 +304,7 @@ $contactInfo = getContactInfo();
             --admin-info: #06b6d4;
         }
 
-        /* Dark mode variables */
-        body.dark-mode {
-            --admin-bg-main: #0f172a;
-            --admin-bg-secondary: #1e293b;
-            --admin-bg-tertiary: #334155;
-            --admin-bg-card: #1e293b;
-            
-            --admin-text-primary: #f1f5f9;
-            --admin-text-secondary: #cbd5e1;
-            --admin-text-muted: #94a3b8;
-            
-            --admin-border: #334155;
-            --admin-border-light: #475569;
-            --admin-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-            --admin-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-            --admin-shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.5);
-            
-            --admin-gradient-header: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #2563eb 100%);
-            --admin-gradient-sidebar: linear-gradient(180deg, #1e293b 0%, #334155 100%);
-        }
-
-        /* Reset dan Base Styles */
+        /* Dark mode variables *//* Reset dan Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -645,14 +677,7 @@ $contactInfo = getContactInfo();
             border: 2px dashed var(--admin-border);
             border-radius: 8px;
             background: transparent;
-        }
-
-        body.dark-mode .form-group input[type="file"] {
-            border-color: #475569;
-            color: #e2e8f0;
-        }
-
-        .form-group label {
+        }.form-group label {
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
@@ -1059,165 +1084,7 @@ $contactInfo = getContactInfo();
             transform: scale(0.95);
         }
 
-        /* Dark Mode Comprehensive Styling */
-        body.dark-mode {
-            background-color: var(--admin-bg-secondary);
-        }
-
-        body.dark-mode .admin-header {
-            background: var(--admin-gradient-header);
-            border-bottom-color: rgba(255, 255, 255, 0.1);
-        }
-
-        body.dark-mode .sidebar {
-            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
-            border-right-color: rgba(255, 255, 255, 0.1);
-        }
-
-        body.dark-mode .nav-link {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        body.dark-mode .nav-link:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-        }
-
-        body.dark-mode .nav-link.active {
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        body.dark-mode .section-card {
-            background: #1e293b;
-            border-color: #334155;
-            color: #e2e8f0;
-        }
-
-        body.dark-mode .section-header {
-            background: linear-gradient(135deg, var(--admin-bg-secondary) 0%, var(--admin-bg-tertiary) 100%);
-            border-bottom-color: var(--admin-border-light);
-        }
-
-        body.dark-mode .form-group input,
-        body.dark-mode .form-group textarea,
-        body.dark-mode .form-group select {
-            background: #1e293b;
-            border-color: #475569;
-            color: #e2e8f0;
-        }
-
-        body.dark-mode .form-group label {
-            color: #cbd5e1;
-        }
-
-        body.dark-mode .section-header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: #f1f5f9;
-        }
-
-        body.dark-mode .section-header h2 {
-            color: #f1f5f9;
-        }
-
-        body.dark-mode .content-section h1 {
-            color: #f8fafc;
-        }
-
-        body.dark-mode .content-section p {
-            color: #cbd5e1;
-        }
-
-        /* Dark mode for transport components */
-        body.dark-mode .tab-btn {
-            background: #1e293b;
-            border-color: #475569;
-            color: #e2e8f0;
-        }
-
-        body.dark-mode .tab-btn:hover {
-            background: #334155;
-        }
-
-        body.dark-mode .transport-card {
-            background: #1e293b;
-            border-color: #475569;
-        }
-
-        body.dark-mode .transport-card:hover {
-            border-color: #3b82f6;
-        }
-
-        body.dark-mode .transport-info h3 {
-            color: #f1f5f9;
-        }
-
-        body.dark-mode .transport-info p {
-            color: #94a3b8;
-        }
-
-        body.dark-mode .transport-price {
-            color: #60a5fa;
-        }
-
-        body.dark-mode .modal-content {
-            background: #1e293b;
-            border-color: #475569;
-        }
-
-        body.dark-mode .modal-header {
-            background: #0f172a;
-            border-color: #334155;
-        }
-
-        body.dark-mode .modal-header h3 {
-            color: #f1f5f9;
-        }
-
-        body.dark-mode .form-group input:focus,
-        body.dark-mode .form-group textarea:focus,
-        body.dark-mode .form-group select:focus {
-            border-color: var(--admin-primary);
-        }
-
-        body.dark-mode .table {
-            background: #1e293b;
-            color: #e2e8f0;
-        }
-
-        body.dark-mode .table th {
-            background: #0f172a;
-            color: #f1f5f9;
-        }
-
-        body.dark-mode .table td {
-            color: #e2e8f0;
-            border-bottom-color: #334155;
-        }
-
-        body.dark-mode .table tbody tr:hover {
-            background: #334155;
-        }
-
-        body.dark-mode .table tbody tr:hover {
-            background: var(--admin-bg-secondary);
-        }
-
-        body.dark-mode .gallery-item {
-            background: var(--admin-bg-card);
-        }
-
-        body.dark-mode .faq-item {
-            background: var(--admin-bg-card);
-        }
-
-        body.dark-mode .faq-header {
-            background: var(--admin-bg-secondary);
-            border-bottom-color: var(--admin-border);
-        }
-
-        /* Responsive Design - Lebih Komprehensif */
+        /* Dark Mode Comprehensive Styling *//* Dark mode for transport components *//* Responsive Design - Lebih Komprehensif */
         @media (max-width: 1200px) {
             .admin-content {
                 margin-left: 280px;
@@ -1394,21 +1261,7 @@ $contactInfo = getContactInfo();
             background: rgba(255, 255, 255, 0.2);
             transform: scale(1.1) rotate(10deg);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        body.dark-mode .dark-mode-toggle {
-            background: rgba(59, 130, 246, 0.2);
-            border-color: rgba(59, 130, 246, 0.3);
-            color: #60a5fa;
-        }
-
-        body.dark-mode .dark-mode-toggle:hover {
-            background: rgba(59, 130, 246, 0.3);
-            transform: scale(1.1) rotate(-10deg);
-            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
-        }
-
-        @media (max-width: 768px) {
+        }@media (max-width: 768px) {
             .dark-mode-toggle-container {
                 margin-right: 10px;
             }
@@ -1622,63 +1475,7 @@ $contactInfo = getContactInfo();
             border-top: 1px solid var(--admin-border-light);
         }
 
-        /* Dark mode for transport components */
-        body.dark-mode .tab-btn {
-            background: #1e293b;
-            border-color: #475569;
-            color: #e2e8f0;
-        }
-
-        body.dark-mode .tab-btn:hover {
-            background: #334155;
-        }
-
-        body.dark-mode .transport-card {
-            background: #1e293b;
-            border-color: #475569;
-        }
-
-        body.dark-mode .transport-card:hover {
-            border-color: #3b82f6;
-        }
-
-        body.dark-mode .transport-info h3 {
-            color: #f1f5f9;
-        }
-
-        body.dark-mode .transport-info p {
-            color: #94a3b8;
-        }
-
-        body.dark-mode .transport-price {
-            color: #60a5fa;
-        }
-
-        body.dark-mode .modal-content {
-            background: #1e293b;
-            border-color: #475569;
-        }
-
-        body.dark-mode .modal-header {
-            background: #0f172a;
-            border-color: #334155;
-        }
-
-        body.dark-mode .modal-header h3 {
-            color: #f1f5f9;
-        }
-
-        /* Professional Tab Icon Styling */
-        body.dark-mode .tab-btn i {
-            color: #cbd5e1;
-        }
-
-        body.dark-mode .tab-btn:hover i,
-        body.dark-mode .tab-btn.active i {
-            color: #f1f5f9;
-        }
-
-        /* Mobile responsive icon adjustments */
+        /* Dark mode for transport components *//* Professional Tab Icon Styling *//* Mobile responsive icon adjustments */
         @media (max-width: 768px) {
             .tab-btn {
                 gap: 8px;
@@ -1885,17 +1682,17 @@ $contactInfo = getContactInfo();
             <div class="stats-grid">
                 <div class="stat-card">
                     <h3>Total Layanan</h3>
-                    <div class="number" id="total-services">0</div>
+                    <div class="number"><?= $stats['total_services'] ?? 0 ?></div>
                     <small>Layanan transportasi aktif</small>
                 </div>
                 <div class="stat-card">
                     <h3>Galeri Aktif</h3>
-                    <div class="number"><?= $stats['total_galeri'] ?></div>
+                    <div class="number"><?= $stats['total_gallery'] ?? 0 ?></div>
                     <small>Foto dalam galeri</small>
                 </div>
                 <div class="stat-card">
                     <h3>FAQ Aktif</h3>
-                    <div class="number"><?= $stats['total_faq'] ?></div>
+                    <div class="number"><?= $stats['total_faq'] ?? 0 ?></div>
                     <small>Pertanyaan tersedia</small>
                 </div>
                 <div class="stat-card">
@@ -2577,6 +2374,142 @@ $contactInfo = getContactInfo();
             </div>
         </div>
         
+        <!-- ============================================ -->
+        <!-- KELOLA TRANSPORTASI SECTION -->
+        <!-- ============================================ -->
+        <div id="transportasi-section" class="content-section">
+            <h1>Kelola Jenis Transportasi</h1>
+            <p>Tambah, edit, atau hapus layanan transportasi (Pesawat, Kapal, Bus)</p>
+            
+            <!-- Form Tambah Layanan -->
+            <div class="section-card">
+                <div class="section-header">
+                    <h2>Tambah Layanan Transportasi Baru</h2>
+                </div>
+                <div class="section-content">
+                    <form method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="action" value="add">
+                        <input type="hidden" name="module" value="transport">
+                        
+                        <div class="form-group">
+                            <label>Jenis Transportasi</label>
+                            <select name="transport_type" required>
+                                <option value="">-- Pilih Jenis --</option>
+                                <?php foreach ($transportTypes as $type): ?>
+                                <option value="<?= $type['type_key'] ?>"><?= $type['type_name'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Nama Layanan</label>
+                            <input type="text" name="name" required placeholder="Contoh: Lion Air, KM. Kelud, Bus Pariwisata">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Logo/Gambar</label>
+                            <input type="file" name="logo" accept="image/*">
+                            <small>Upload logo maskapai/operator (opsional)</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Rute/Deskripsi</label>
+                            <textarea name="route" required placeholder="Contoh: Penerbangan domestik terpercaya"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Harga</label>
+                            <input type="text" name="price" required placeholder="Contoh: Rp 450.000 - Rp 850.000">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Urutan Tampil</label>
+                            <input type="number" name="display_order" value="0" min="0">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" name="is_active" checked> Aktif
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Tambah Layanan
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Daftar Layanan per Jenis Transportasi -->
+            <?php 
+            $servicesByType = [];
+            foreach ($transportServices as $service) {
+                $servicesByType[$service['transport_type']][] = $service;
+            }
+            ?>
+            
+            <?php foreach ($transportTypes as $type): ?>
+            <div class="section-card">
+                <div class="section-header">
+                    <h2><?= $type['type_name'] ?> (<?= $type['type_key'] ?>)</h2>
+                </div>
+                <div class="section-content">
+                    <?php if (empty($servicesByType[$type['type_key']])): ?>
+                    <div style="text-align: center; padding: 2rem; color: var(--admin-text-muted);">
+                        <i class="fas fa-box-open" style="font-size: 3rem; margin-bottom: 15px; display: block; opacity: 0.3;"></i>
+                        Belum ada layanan <?= $type['type_name'] ?>
+                    </div>
+                    <?php else: ?>
+                    <div style="display: grid; gap: 1rem;">
+                        <?php foreach ($servicesByType[$type['type_key']] as $service): ?>
+                        <div style="padding: 1.25rem; background: var(--admin-bg-secondary); border-radius: 12px; border: 1px solid var(--admin-border); display: flex; align-items: center; gap: 1rem;">
+                            <?php if ($service['logo']): ?>
+                            <img src="<?= $service['logo'] ?>" alt="<?= $service['name'] ?>" 
+                                 style="width: 60px; height: 60px; object-fit: contain; border-radius: 8px; background: white; padding: 5px;">
+                            <?php else: ?>
+                            <div style="width: 60px; height: 60px; background: var(--admin-primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                                <i class="fas fa-image"></i>
+                            </div>
+                            <?php endif; ?>
+                            
+                            <div style="flex: 1;">
+                                <h4 style="margin: 0 0 0.5rem 0; color: var(--admin-text-primary); font-size: 1.1rem;">
+                                    <?= htmlspecialchars($service['name']) ?>
+                                    <?php if (!$service['is_active']): ?>
+                                    <span class="badge badge-warning">Tidak Aktif</span>
+                                    <?php endif; ?>
+                                </h4>
+                                <p style="margin: 0 0 0.5rem 0; color: var(--admin-text-secondary); font-size: 0.9rem;">
+                                    <?= htmlspecialchars($service['route']) ?>
+                                </p>
+                                <strong style="color: var(--admin-success); font-size: 1rem;">
+                                    <?= htmlspecialchars($service['price']) ?>
+                                </strong>
+                            </div>
+                            
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button onclick="editTransport(<?= $service['id'] ?>)" class="btn btn-secondary" style="padding: 8px 12px; font-size: 0.85rem;">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <form method="POST" style="display: inline;" 
+                                      onsubmit="return confirm('Yakin ingin menghapus layanan ini?')">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="module" value="transport">
+                                    <input type="hidden" name="id" value="<?= $service['id'] ?>">
+                                    <button type="submit" class="btn btn-danger" style="padding: 8px 12px; font-size: 0.85rem;">
+                                        <i class="fas fa-trash"></i> Hapus
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+        
     </div>
 
     <!-- Mobile Menu Toggle -->
@@ -2611,6 +2544,11 @@ $contactInfo = getContactInfo();
         // Function untuk edit FAQ
         function editFAQ(id) {
             alert('Edit FAQ ID: ' + id + '\nFitur edit akan dibuat di form terpisah.');
+        }
+        
+        // Function untuk edit Transport
+        function editTransport(id) {
+            alert('Edit Transportasi ID: ' + id + '\nFitur edit akan dibuat di form terpisah.');
         }
         
         // Enhanced Mobile Menu with Overlay

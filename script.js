@@ -131,10 +131,8 @@ Mohon informasi jadwal, harga, dan ketersediaan tiket. Terima kasih!`;
 
 
 /**
- * ============================================
- * FUNGSI: MUAT DAN TAMPILKAN FASILITAS
- * ============================================
- * Fungsi ini menampilkan semua fasilitas ke halaman website
+ *  * FUNGSI: MUAT DAN TAMPILKAN FASILITAS
+ *  * Fungsi ini menampilkan semua fasilitas ke halaman website
  * Data diambil dari variabel global dataFasilitas
  */
 function muatDanTampilkanFasilitas() {
@@ -176,10 +174,8 @@ function muatDanTampilkanFasilitas() {
 
 
 /**
- * ============================================
- * FUNGSI: MUAT DAN TAMPILKAN JENIS TRANSPORTASI
- * ============================================
- * Fungsi ini menampilkan card untuk setiap jenis transportasi (Pesawat, Kapal, Bus)
+ *  * FUNGSI: MUAT DAN TAMPILKAN JENIS TRANSPORTASI
+ *  * Fungsi ini menampilkan card untuk setiap jenis transportasi (Pesawat, Kapal, Bus)
  * dengan gambar yang berbeda untuk mode terang dan gelap
  */
 function muatDanTampilkanJenisTransportasi() {
@@ -258,10 +254,8 @@ function muatDanTampilkanJenisTransportasi() {
 }
 
 /**
- * ============================================
- * FUNGSI: MUAT TAB FILTER TRANSPORTASI
- * ============================================
- * Fungsi ini membuat tab-tab untuk filter layanan berdasarkan jenis transportasi
+ *  * FUNGSI: MUAT TAB FILTER TRANSPORTASI
+ *  * Fungsi ini membuat tab-tab untuk filter layanan berdasarkan jenis transportasi
  * Tab "Semua Layanan" akan menampilkan semua layanan
  */
 function muatTabFilterTransportasi() {
@@ -334,10 +328,8 @@ function muatTabFilterTransportasi() {
 }
 
 /**
- * ============================================
- * FUNGSI: SETEL TAB AKTIF
- * ============================================
- * Fungsi ini mengatur tab mana yang aktif (terpilih)
+ *  * FUNGSI: SETEL TAB AKTIF
+ *  * Fungsi ini mengatur tab mana yang aktif (terpilih)
  * @param {HTMLElement} tabAktif - Elemen tab yang akan diaktifkan
  */
 function setelTabAktif(tabAktif) {
@@ -350,10 +342,8 @@ function setelTabAktif(tabAktif) {
 }
 
 /**
- * ============================================
- * FUNGSI: MUAT DAN TAMPILKAN SEMUA LAYANAN
- * ============================================
- * Fungsi ini menampilkan semua layanan dari semua jenis transportasi
+ *  * FUNGSI: MUAT DAN TAMPILKAN SEMUA LAYANAN
+ *  * Fungsi ini menampilkan semua layanan dari semua jenis transportasi
  * Digunakan ketika user mengklik tab "Semua Layanan"
  */
 function muatDanTampilkanSemuaLayanan() {
@@ -403,10 +393,8 @@ function muatDanTampilkanSemuaLayanan() {
 }
 
 /**
- * ============================================
- * FUNGSI: FILTER KONTEN BERDASARKAN JENIS TRANSPORTASI
- * ============================================
- * Fungsi ini menampilkan hanya layanan dari jenis transportasi tertentu
+ *  * FUNGSI: FILTER KONTEN BERDASARKAN JENIS TRANSPORTASI
+ *  * Fungsi ini menampilkan hanya layanan dari jenis transportasi tertentu
  * @param {string} jenisTransportasi - Key jenis transportasi (pesawat, kapal, bus)
  */
 function filterKontenBerdasarkanJenisTransportasi(jenisTransportasi) {
@@ -472,10 +460,8 @@ function filterKontenBerdasarkanJenisTransportasi(jenisTransportasi) {
 }
 
 /**
- * ============================================
- * FUNGSI: TANGANI KLIK JENIS TRANSPORTASI
- * ============================================
- * Fungsi ini dipanggil ketika user mengklik card jenis transportasi
+ *  * FUNGSI: TANGANI KLIK JENIS TRANSPORTASI
+ *  * Fungsi ini dipanggil ketika user mengklik card jenis transportasi
  * @param {string} jenisTransportasi - Key jenis transportasi (pesawat, kapal, bus)
  */
 function tanganiKlikJenisTransportasi(jenisTransportasi) {
@@ -484,10 +470,8 @@ function tanganiKlikJenisTransportasi(jenisTransportasi) {
 }
 
 /**
- * ============================================
- * FUNGSI: GULUNG KE BAGIAN TERTENTU
- * ============================================
- * Fungsi ini melakukan scroll halus ke bagian tertentu di halaman
+ *  * FUNGSI: GULUNG KE BAGIAN TERTENTU
+ *  * Fungsi ini melakukan scroll halus ke bagian tertentu di halaman
  * @param {string} idBagian - ID dari elemen yang ingin dituju
  */
 function gulungKeBagian(idBagian) {
@@ -514,10 +498,8 @@ function gulungKeBagian(idBagian) {
 }
 
 /**
- * ============================================
- * SCROLL YANG LEBIH SEDERHANA
- * ============================================
- */
+ *  * SCROLL YANG LEBIH SEDERHANA
+ *  */
 function gulungHalusKePosisi(posisiTarget, durasi = 800) {
     window.scrollTo({
         top: posisiTarget,
@@ -529,101 +511,7 @@ function gulungHalusKePosisi(posisiTarget, durasi = 800) {
 window.smoothScrollTo = gulungHalusKePosisi;
 
 
-/**
- * ============================================
- * FUNGSI: UBAH MODE GELAP/TERANG
- * ============================================
- * Toggle antara dark mode dan light mode dengan smooth
- * Preferensi disimpan di localStorage biar gak reset tiap reload
- */
-function ubahModeGelap() {
-    const body = document.body;
-    const html = document.documentElement;
-    const tombolMode = document.querySelector('.dark-mode-toggle');
-    const ikonMode = document.querySelector('.dark-mode-toggle i');
-    
-    // Cek mode sekarang
-    const isDarkMode = body.classList.contains('dark-mode');
-    
-    if (isDarkMode) {
-        // Ubah ke mode terang
-        body.classList.remove('dark-mode');
-        html.classList.remove('dark-mode');
-        body.removeAttribute('data-theme');
-        html.removeAttribute('data-theme');
-        if (ikonMode) ikonMode.className = 'icon icon-moon';
-        localStorage.setItem('theme', 'light');
-        console.log('☀️ Mode terang aktif');
-        
-        // Animasi tombol yang halus
-        if (tombolMode) {
-            tombolMode.style.transform = 'rotate(180deg) scale(1.05)';
-            setTimeout(() => {
-                tombolMode.style.transform = 'scale(1)';
-            }, 200);
-        }
-    } else {
-        // Ubah ke mode gelap
-        body.classList.add('dark-mode');
-        html.classList.add('dark-mode');
-        body.setAttribute('data-theme', 'dark');
-        html.setAttribute('data-theme', 'dark');
-        if (ikonMode) ikonMode.className = 'icon icon-sun';
-        localStorage.setItem('theme', 'dark');
-        console.log('🌙 Mode gelap aktif');
-        
-        // Animasi tombol yang halus
-        if (tombolMode) {
-            tombolMode.style.transform = 'rotate(-180deg) scale(1.05)';
-            setTimeout(() => {
-                tombolMode.style.transform = 'scale(1)';
-            }, 200);
-        }
-    }
-    
-    // Update gambar transportasi kalau ada
-    setTimeout(() => {
-        if (typeof muatDanTampilkanJenisTransportasi === 'function') {
-            muatDanTampilkanJenisTransportasi();
-        }
-        if (typeof muatTabFilterTransportasi === 'function') {
-            muatTabFilterTransportasi();
-        }
-    }, 100);
-}
-
-/**
- * ============================================
- * FUNGSI: ATUR MODE GELAP SAAT HALAMAN DIMUAT
- * ============================================
- * Baca preferensi dari localStorage dan terapkan
- * Jalan otomatis pas halaman load pertama kali
- */
-function aturModeGelapSaatDimuat() {
-    const savedTheme = localStorage.getItem('theme');
-    const body = document.body;
-    const html = document.documentElement;
-    const ikonMode = document.querySelector('.dark-mode-toggle i');
-    
-    // Terapkan tema yang tersimpan atau default ke light mode
-    if (savedTheme === 'dark') {
-        body.classList.add('dark-mode');
-        html.classList.add('dark-mode');
-        body.setAttribute('data-theme', 'dark');
-        html.setAttribute('data-theme', 'dark');
-        if (ikonMode) ikonMode.className = 'icon icon-sun';
-        console.log('🌙 Mode gelap dimuat dari preferensi');
-    } else {
-        body.classList.remove('dark-mode');
-        html.classList.remove('dark-mode');
-        body.removeAttribute('data-theme');
-        html.removeAttribute('data-theme');
-        if (ikonMode) ikonMode.className = 'icon icon-moon';
-        console.log('☀️ Mode terang dimuat');
-    }
-}
-
-//  Konfigurasi sederhana untuk akses admin panel
+// konfigurasi admin panel
 const ADMIN_CONFIG = {
     password: 'cendana123'
 };
@@ -744,21 +632,16 @@ function loginFailed(message) {
 
 
 /**
- * ============================================
- * INISIALISASI SAAT HALAMAN DIMUAT
- * ============================================
- * Kode ini akan dijalankan setelah halaman selesai dimuat
+ *  * INISIALISASI SAAT HALAMAN DIMUAT
+ *  * Kode ini akan dijalankan setelah halaman selesai dimuat
  */
 document.addEventListener('DOMContentLoaded', function () {
     console.log('🚀 Memulai inisialisasi website...');
     
-    // 1. Muat data dari localStorage atau config default
+    // muat data dari localStorage
     muatDataDariPenyimpanan();
 
-    // 2. Atur tema berdasarkan preferensi user
-    aturModeGelapSaatDimuat();
-
-    // Form WhatsApp booking sudah dihapus, tidak perlu event listener
+    // form whatsapp booking sudah dihapus
     
     // Set minimum date untuk input date (hari ini)
     const today = new Date().toISOString().split('T')[0];
@@ -1382,9 +1265,7 @@ function removeFacilityImagePreview() {
     }
 }
 
-// ===== TRANSPORT TYPES ADMIN FUNCTIONS =====
-
-// Load Transport Types Admin
+// ===== TRANSPORT TYPES ADMIN FUNCTIONS // Load Transport Types Admin
 function loadTransportTypesAdmin() {
     console.log('🚌 Loading transport types admin...');
     const container = document.getElementById('transport-types-list');
@@ -2248,10 +2129,8 @@ function removeTicketLogoPreview() {
 }
 
 /**
- * ============================================
- * EKSPOR FUNGSI KE WINDOW OBJECT
- * ============================================
- * Fungsi-fungsi ini diekspor agar bisa dipanggil dari HTML (onclick, dll)
+ *  * EKSPOR FUNGSI KE WINDOW OBJECT
+ *  * Fungsi-fungsi ini diekspor agar bisa dipanggil dari HTML (onclick, dll)
  * Kami juga menyediakan alias untuk kompatibilitas dengan kode lama
  */
 
@@ -2269,7 +2148,7 @@ window.attemptAdminLogin = attemptAdminLogin;
 window.pesanViaWhatsApp = pesanViaWhatsApp;
 window.tanganiKlikJenisTransportasi = tanganiKlikJenisTransportasi;
 window.filterKontenBerdasarkanJenisTransportasi = filterKontenBerdasarkanJenisTransportasi;
-window.ubahModeGelap = ubahModeGelap;
+
 window.gulungKeBagian = gulungKeBagian;
 
 // Alias untuk kompatibilitas dengan kode lama
@@ -2320,10 +2199,8 @@ function backToWebsite() {
 
 
 /**
- * ============================================
- * FUNGSI: MUAT INFORMASI PERUSAHAAN
- * ============================================
- * Fungsi ini memperbarui informasi perusahaan di halaman website
+ *  * FUNGSI: MUAT INFORMASI PERUSAHAAN
+ *  * Fungsi ini memperbarui informasi perusahaan di halaman website
  * Informasi diambil dari variabel global companyInfoData
  */
 function muatInformasiPerusahaan() {
@@ -2559,10 +2436,8 @@ function updateHeroBackground() {
 }
 
 /**
- * ============================================
- * HANDLE FORM PENCARIAN JADWAL
- * ============================================
- */
+ *  * HANDLE FORM PENCARIAN JADWAL
+ *  */
 function handleScheduleSearch(event) {
     event.preventDefault();
     
@@ -2623,3 +2498,4 @@ window.forceRefreshCompanyData = forceRefreshCompanyData;
 window.handleScheduleSearch = handleScheduleSearch;
 
 console.log('🎉 Cv. Cendana Travel Script Loaded Successfully!');
+

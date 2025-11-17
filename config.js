@@ -130,44 +130,65 @@ const DATA_FASILITAS_DEFAULT = [
     {
         id: 1,
         name: 'Ruang Tunggu VIP',
-        image: 'cendana/Screenshot 2025-10-28 014436.png',
-        description: 'Ruang tunggu yang nyaman dengan AC, WiFi gratis, dan refreshment untuk kenyamanan Anda sebelum keberangkatan.'
+        image: 'gallery/Screenshot 2025-10-28 014436.png',
+        description: 'Ruang tunggu yang nyaman dengan AC, WiFi gratis, dan refreshment untuk kenyamanan Anda sebelum keberangkatan.',
+        category: 'kantor',
+        uploadDate: '2024-10-28',
+        location: 'Kantor Pusat Samarinda'
     },
     {
         id: 2,
         name: 'Layanan Antar Jemput',
-        image: 'cendana/Screenshot 2025-10-28 014729.png',
-        description: 'Layanan antar jemput dari rumah ke terminal/bandara dengan kendaraan yang nyaman dan sopir berpengalaman.'
+        image: 'gallery/Screenshot 2025-10-28 014729.png',
+        description: 'Layanan antar jemput dari rumah ke terminal/bandara dengan kendaraan yang nyaman dan sopir berpengalaman.',
+        category: 'layanan',
+        uploadDate: '2024-10-28',
+        location: 'Layanan Antar Jemput'
     },
     {
         id: 3,
         name: 'Customer Service 24/7',
-        image: 'cendana/Screenshot 2025-10-28 014745.png',
-        description: 'Tim customer service yang siap membantu Anda 24 jam sehari, 7 hari seminggu melalui WhatsApp dan telepon.'
+        image: 'gallery/Screenshot 2025-10-28 014745.png',
+        description: 'Tim customer service yang siap membantu Anda 24 jam sehari, 7 hari seminggu melalui WhatsApp dan telepon.',
+        category: 'kantor',
+        uploadDate: '2024-10-28',
+        location: 'Kantor Pusat'
     },
     {
         id: 4,
         name: 'Fasilitas Premium',
-        image: 'cendana/Screenshot 2025-10-28 014806.png',
-        description: 'Fasilitas premium dengan berbagai kemudahan untuk memberikan pengalaman perjalanan yang tak terlupakan.'
+        image: 'gallery/Screenshot 2025-10-28 014806.png',
+        description: 'Fasilitas premium dengan berbagai kemudahan untuk memberikan pengalaman perjalanan yang tak terlupakan.',
+        category: 'layanan',
+        uploadDate: '2024-10-28',
+        location: 'Armada Premium'
     },
     {
         id: 5,
         name: 'Layanan Konsultasi',
-        image: 'cendana/Screenshot 2025-10-28 014817.png',
-        description: 'Konsultasi perjalanan dengan tim ahli kami untuk merencanakan perjalanan impian Anda.'
+        image: 'gallery/Screenshot 2025-10-28 014817.png',
+        description: 'Konsultasi perjalanan dengan tim ahli kami untuk merencanakan perjalanan impian Anda.',
+        category: 'layanan',
+        uploadDate: '2024-10-28',
+        location: 'Kantor Cabang'
     },
     {
         id: 6,
         name: 'Booking Online',
-        image: 'cendana/Screenshot 2025-10-28 014829.png',
-        description: 'Sistem booking online yang mudah dan cepat untuk kemudahan pemesanan tiket perjalanan Anda.'
+        image: 'gallery/Screenshot 2025-10-28 014829.png',
+        description: 'Sistem booking online yang mudah dan cepat untuk kemudahan pemesanan tiket perjalanan Anda.',
+        category: 'sistem',
+        uploadDate: '2024-10-28',
+        location: 'Platform Digital'
     },
     {
         id: 7,
         name: 'Travel Insurance',
-        image: 'cendana/Screenshot 2025-10-28 014853.png',
-        description: 'Asuransi perjalanan komprehensif untuk melindungi Anda selama bepergian dengan tenang.'
+        image: 'gallery/Screenshot 2025-10-28 014853.png',
+        description: 'Asuransi perjalanan komprehensif untuk melindungi Anda selama bepergian dengan tenang.',
+        category: 'sistem',
+        uploadDate: '2024-10-28',
+        location: 'Layanan Asuransi'
     }
 ];
 
