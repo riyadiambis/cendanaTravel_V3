@@ -1,4 +1,5 @@
 
+-- test
 DROP DATABASE IF EXISTS cendana_travel;
 CREATE DATABASE cendana_travel CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
