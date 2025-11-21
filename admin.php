@@ -326,86 +326,94 @@ $faqs = getAllFAQ();
             top: 0;
             left: 0;
             right: 0;
-            height: 70px;
-            background: var(--admin-gradient-header);
-            backdrop-filter: blur(12px);
-            box-shadow: var(--admin-shadow-lg);
+            height: 75px;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 20%, #4a5568 100%);
+            backdrop-filter: blur(20px) saturate(180%);
+            box-shadow: 0 4px 32px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0 2.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
         }
 
         .admin-logo {
-            color: white;
-            font-weight: 700;
-            font-size: 1.3rem;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 1.375rem;
             display: flex;
             align-items: center;
-            gap: 12px;
-            letter-spacing: -0.02em;
+            gap: 14px;
+            letter-spacing: -0.025em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .admin-logo i {
-            font-size: 1.6rem;
+            font-size: 1.75rem;
             color: #60a5fa;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            filter: drop-shadow(0 2px 8px rgba(96, 165, 250, 0.4));
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { filter: drop-shadow(0 2px 8px rgba(96, 165, 250, 0.4)); }
+            50% { filter: drop-shadow(0 4px 16px rgba(96, 165, 250, 0.6)); }
         }
 
         .admin-user {
             color: white;
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
         }
 
         .admin-user span {
-            font-size: 0.95rem;
-            font-weight: 500;
-            padding: 8px 16px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9375rem;
+            font-weight: 600;
+            padding: 10px 18px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 30px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            letter-spacing: -0.01em;
         }
 
         .logout-btn {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(239, 68, 68, 0.9);
             color: white;
-            border: 2px solid rgba(255, 255, 255, 0.2);
             padding: 10px 18px;
             border-radius: 12px;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.9375rem;
             font-weight: 500;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             gap: 8px;
+            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.2);
         }
 
         .logout-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(220, 38, 38, 0.95);
             color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
         }
 
         /* Sidebar Styles - Lebih Bersih dan Modern */
         .sidebar {
             position: fixed;
-            top: 70px;
+            top: 75px;
             left: 0;
-            width: 280px;
-            height: calc(100vh - 70px);
-            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 24px 0;
+            width: 290px;
+            height: calc(100vh - 75px);
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 50%, #6B73FF 100%);
+            border-right: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 32px 0;
             overflow-y: auto;
             z-index: 999;
-            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.2);
+            box-shadow: 0 12px 48px rgba(102, 126, 234, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
         .sidebar-nav {
@@ -416,71 +424,55 @@ $faqs = getAllFAQ();
             display: flex;
             align-items: center;
             padding: 16px 20px;
-            margin: 6px 16px;
-            color: rgba(255, 255, 255, 0.8);
+            margin: 4px 16px;
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             border-radius: 12px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.9375rem;
             position: relative;
-            border: 1px solid transparent;
         }
 
         .nav-link i {
-            width: 20px;
-            margin-right: 16px;
+            width: 18px;
+            margin-right: 14px;
             text-align: center;
             opacity: 0.9;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
+            font-size: 1rem;
+            transition: color 0.3s ease;
         }
 
         .nav-link:hover {
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            transform: translateX(4px);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            transform: translateX(2px);
         }
 
         .nav-link:hover i {
-            transform: scale(1.1);
-            opacity: 1;
+            color: #60a5fa;
         }
 
         .nav-link.active i {
             opacity: 1;
+            color: #ffffff;
         }
 
         .nav-link.active {
-            background: rgba(255, 255, 255, 0.25);
-            color: white;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
             font-weight: 600;
-            transform: translateX(4px);
         }
 
-        .nav-link.active::before {
-            content: '';
-            position: absolute;
-            left: -20px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 24px;
-            background: #60a5fa;
-            border-radius: 0 4px 4px 0;
-        }
+
 
         /* Main Content - Layout yang Lebih Baik */
         .admin-content {
-            margin-left: 280px;
-            margin-top: 70px;
-            padding: 40px 36px;
-            min-height: calc(100vh - 70px);
-            background: var(--admin-bg-secondary);
+            margin-left: 290px;
+            margin-top: 75px;
+            padding: 48px 40px;
+            min-height: calc(100vh - 75px);
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
             position: relative;
             overflow: auto;
         }
@@ -523,37 +515,43 @@ $faqs = getAllFAQ();
 
         /* Page Headers - Typography yang Lebih Profesional */
         .content-section h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--admin-text-primary);
-            margin-bottom: 12px;
-            letter-spacing: -0.03em;
-            line-height: 1.2;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #1e293b;
+            margin-bottom: 16px;
+            letter-spacing: -0.035em;
+            line-height: 1.15;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .content-section > p {
-            color: var(--admin-text-secondary);
-            margin-bottom: 32px;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            max-width: 600px;
+            color: #64748b;
+            margin-bottom: 40px;
+            font-size: 1.125rem;
+            line-height: 1.7;
+            max-width: 650px;
+            font-weight: 500;
         }
 
         /* Stats Grid - Desain yang Lebih Menarik */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+            margin-bottom: 48px;
         }
 
         .stat-card {
-            background: var(--admin-bg-card);
-            padding: 32px 28px;
-            border-radius: 20px;
-            box-shadow: var(--admin-shadow-md);
-            border: 2px solid var(--admin-border);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            padding: 36px 32px;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
@@ -564,8 +562,9 @@ $faqs = getAllFAQ();
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: var(--admin-gradient-primary);
+            height: 5px;
+            background: linear-gradient(90deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%);
+            border-radius: 24px 24px 0 0;
         }
 
         .stat-card::after {
@@ -573,17 +572,17 @@ $faqs = getAllFAQ();
             position: absolute;
             top: -50%;
             right: -50%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.5s ease;
         }
 
         .stat-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--admin-shadow-lg);
-            border-color: var(--admin-primary);
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 16px 48px rgba(37, 99, 235, 0.15), 0 8px 24px rgba(0, 0, 0, 0.08);
+            border-color: rgba(37, 99, 235, 0.3);
         }
 
         .stat-card:hover::after {
@@ -591,48 +590,56 @@ $faqs = getAllFAQ();
         }
 
         .stat-card h3 {
-            color: var(--admin-text-muted);
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 12px;
+            color: #64748b;
+            font-size: 0.8125rem;
+            font-weight: 700;
+            margin-bottom: 16px;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
+            opacity: 0.9;
         }
 
         .stat-card .number {
-            color: var(--admin-primary);
-            font-size: 2.4rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-            letter-spacing: -0.02em;
+            color: #2563eb;
+            font-size: 2.75rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .stat-card small {
-            color: var(--admin-text-secondary);
-            font-size: 0.9rem;
-            font-weight: 500;
+            color: #475569;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            opacity: 0.8;
         }
 
         /* Section Cards - Desain yang Lebih Modern */
         .section-card {
-            background: var(--admin-bg-card);
-            border-radius: 20px;
-            box-shadow: var(--admin-shadow-md);
-            margin-bottom: 32px;
+            background: linear-gradient(135deg, #ffffff 0%, #fefefe 100%);
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.03);
+            margin-bottom: 40px;
             overflow: hidden;
-            border: 2px solid var(--admin-border);
-            transition: all 0.3s ease;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .section-card:hover {
-            box-shadow: var(--admin-shadow-lg);
-            border-color: var(--admin-primary);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1), 0 8px 32px rgba(37, 99, 235, 0.08);
+            border-color: rgba(37, 99, 235, 0.2);
+            transform: translateY(-2px);
         }
 
         .section-header {
-            padding: 24px 32px;
-            border-bottom: 2px solid var(--admin-border-light);
-            background: linear-gradient(135deg, var(--admin-bg-secondary) 0%, var(--admin-bg-tertiary) 100%);
+            padding: 28px 36px;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -645,10 +652,11 @@ $faqs = getAllFAQ();
             bottom: 0;
             left: 0;
             right: 0;
-            height: 2px;
-            background: var(--admin-gradient-primary);
+            height: 3px;
+            background: linear-gradient(90deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%);
             transform: scaleX(0);
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease;
+            border-radius: 0 0 24px 24px;
         }
 
         .section-card:hover .section-header::before {
@@ -656,33 +664,45 @@ $faqs = getAllFAQ();
         }
 
         .section-header h2 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--admin-text-primary);
-            letter-spacing: -0.01em;
+            font-size: 1.375rem;
+            font-weight: 800;
+            color: #1e293b;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .section-content {
-            padding: 32px 36px;
+            padding: 36px 40px;
         }
 
         /* Form Styles - Lebih Konsisten dan Modern */
         .form-group {
-            margin-bottom: 24px;
+            margin-bottom: 28px;
             position: relative;
         }
 
         .form-group input[type="file"] {
-            padding: 10px;
-            border: 2px dashed var(--admin-border);
-            border-radius: 8px;
-            background: transparent;
-        }.form-group label {
+            padding: 16px 18px;
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            background: #f8fafc;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input[type="file"]:hover {
+            border-color: #2563eb;
+            background: #f1f5f9;
+        }
+
+        .form-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--admin-text-primary);
-            font-size: 0.95rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #1e293b;
+            font-size: 0.9375rem;
             letter-spacing: -0.01em;
         }
 
@@ -690,70 +710,68 @@ $faqs = getAllFAQ();
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 16px 18px;
-            border: 2px solid var(--admin-border);
-            border-radius: 12px;
-            font-size: 0.95rem;
-            background: var(--admin-bg-main);
-            color: var(--admin-text-primary);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 18px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 14px;
+            font-size: 0.9375rem;
+            background: #ffffff;
+            color: #1e293b;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             font-family: inherit;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
         }
 
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: var(--admin-primary);
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
-            transform: translateY(-2px);
+            border-color: #2563eb;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12), 0 4px 16px rgba(37, 99, 235, 0.08);
+            transform: translateY(-3px);
+            background: #fefefe;
         }
 
         .form-group textarea {
-            min-height: 120px;
+            min-height: 140px;
             resize: vertical;
-            line-height: 1.6;
-        }
-
-        .form-group input[type="file"] {
-            padding: 12px 16px;
-            background: var(--admin-bg-secondary);
-            border-style: dashed;
+            line-height: 1.7;
         }
 
         .form-group input[type="checkbox"] {
             width: auto;
-            margin-right: 12px;
-            transform: scale(1.2);
-            accent-color: var(--admin-primary);
+            margin-right: 14px;
+            transform: scale(1.3);
+            accent-color: #2563eb;
         }
 
         .form-group small {
-            color: var(--admin-text-muted);
-            font-size: 0.85rem;
+            color: #64748b;
+            font-size: 0.8125rem;
             display: block;
-            margin-top: 6px;
-            line-height: 1.4;
+            margin-top: 8px;
+            line-height: 1.5;
+            font-weight: 500;
         }
 
         /* Button Styles - Lebih Menarik dan Konsisten */
         .btn {
-            padding: 14px 28px;
+            padding: 16px 32px;
             border: none;
-            border-radius: 12px;
-            font-weight: 600;
+            border-radius: 14px;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            font-size: 0.9rem;
+            gap: 10px;
+            font-size: 0.9375rem;
             font-family: inherit;
             letter-spacing: -0.01em;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         }
 
         .btn::before {
@@ -775,75 +793,75 @@ $faqs = getAllFAQ();
         }
 
         .btn-primary {
-            background: var(--admin-gradient-primary);
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
             color: white;
-            box-shadow: var(--admin-shadow-primary);
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.4);
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
         .btn-secondary {
-            background: linear-gradient(135deg, var(--admin-text-muted) 0%, var(--admin-text-secondary) 100%);
+            background: linear-gradient(135deg, #6b7280, #4b5563);
             color: white;
-            box-shadow: 0 4px 15px rgba(100, 116, 139, 0.3);
+            box-shadow: 0 2px 8px rgba(107, 114, 128, 0.2);
         }
 
         .btn-secondary:hover {
-            background: linear-gradient(135deg, var(--admin-text-secondary) 0%, var(--admin-text-primary) 100%);
-            transform: translateY(-2px);
+            background: linear-gradient(135deg, #4b5563, #374151);
+            box-shadow: 0 4px 12px rgba(107, 114, 128, 0.3);
         }
 
         .btn-success {
-            background: linear-gradient(135deg, var(--admin-success) 0%, #34d399 100%);
+            background: linear-gradient(135deg, #10b981, #059669);
             color: white;
-            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
         }
 
         .btn-success:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+            background: linear-gradient(135deg, #059669, #047857);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
         }
 
         .btn-danger {
-            background: linear-gradient(135deg, var(--admin-danger) 0%, #f87171 100%);
+            background: linear-gradient(135deg, #ef4444, #dc2626);
             color: white;
-            box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
+            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.2);
         }
 
         .btn-danger:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(239, 68, 68, 0.4);
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
         }
 
         /* Table Styles - Lebih Modern */
         .table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
-            background: var(--admin-bg-card);
-            border-radius: 16px;
+            margin-top: 24px;
+            background: #ffffff;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: var(--admin-shadow-md);
-            border: 2px solid var(--admin-border);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(226, 232, 240, 0.8);
         }
 
         .table th,
         .table td {
-            padding: 16px 20px;
+            padding: 20px 24px;
             text-align: left;
-            border-bottom: 1px solid var(--admin-border-light);
+            border-bottom: 1px solid rgba(241, 245, 249, 0.8);
         }
 
         .table th {
-            font-weight: 700;
-            color: var(--admin-text-primary);
-            background: linear-gradient(135deg, var(--admin-bg-secondary) 0%, var(--admin-bg-tertiary) 100%);
-            font-size: 0.9rem;
+            font-weight: 800;
+            color: #1e293b;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            font-size: 0.875rem;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
             position: relative;
         }
 
@@ -853,87 +871,93 @@ $faqs = getAllFAQ();
             bottom: 0;
             left: 0;
             right: 0;
-            height: 2px;
-            background: var(--admin-gradient-primary);
-            opacity: 0.6;
+            height: 3px;
+            background: linear-gradient(90deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%);
+            opacity: 0.8;
         }
 
         .table tbody tr {
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
 
         .table tbody tr:hover {
-            background: var(--admin-bg-secondary);
-            transform: scale(1.01);
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            transform: translateX(4px);
+            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.08);
         }
 
         .table tbody tr:nth-child(even) {
-            background: var(--admin-bg-main);
+            background: rgba(248, 250, 252, 0.5);
         }
 
         .table td {
-            color: var(--admin-text-primary);
+            color: #334155;
+            font-weight: 500;
         }
 
         /* Badge Styles - Lebih Menarik */
         .badge {
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-size: 0.75rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.6px;
             display: inline-flex;
             align-items: center;
-            gap: 4px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             border: 2px solid transparent;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
 
         .badge:hover {
-            transform: scale(1.05);
+            transform: scale(1.08) translateY(-1px);
         }
 
         .badge-success { 
-            background: linear-gradient(135deg, #10b981, #34d399);
+            background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #059669 100%);
             color: white;
-            border-color: rgba(16, 185, 129, 0.2);
+            border-color: rgba(16, 185, 129, 0.3);
+            box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
         }
         
         .badge-warning { 
-            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #d97706 100%);
             color: white;
-            border-color: rgba(245, 158, 11, 0.2);
+            border-color: rgba(245, 158, 11, 0.3);
+            box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
         }
         
         .badge-danger { 
-            background: linear-gradient(135deg, #ef4444, #f87171);
+            background: linear-gradient(135deg, #ef4444 0%, #f87171 50%, #dc2626 100%);
             color: white;
-            border-color: rgba(239, 68, 68, 0.2);
+            border-color: rgba(239, 68, 68, 0.3);
+            box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
         }
         
         .badge-info { 
-            background: linear-gradient(135deg, #06b6d4, #22d3ee);
+            background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 50%, #0891b2 100%);
             color: white;
-            border-color: rgba(6, 182, 212, 0.2);
+            border-color: rgba(6, 182, 212, 0.3);
+            box-shadow: 0 4px 16px rgba(6, 182, 212, 0.3);
         }
 
         /* Gallery Grid - Lebih Modern */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 24px;
-            margin-top: 24px;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 28px;
+            margin-top: 28px;
         }
 
         .gallery-item {
-            background: var(--admin-bg-card);
-            border-radius: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #fefefe 100%);
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: var(--admin-shadow-md);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid var(--admin-border);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(226, 232, 240, 0.8);
             position: relative;
         }
 
@@ -943,16 +967,17 @@ $faqs = getAllFAQ();
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: var(--admin-gradient-primary);
+            height: 5px;
+            background: linear-gradient(90deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%);
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
+            border-radius: 24px 24px 0 0;
         }
 
         .gallery-item:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--admin-shadow-lg);
-            border-color: var(--admin-primary);
+            transform: translateY(-12px) scale(1.025);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), 0 8px 32px rgba(37, 99, 235, 0.1);
+            border-color: rgba(37, 99, 235, 0.3);
         }
 
         .gallery-item:hover::before {
@@ -961,40 +986,45 @@ $faqs = getAllFAQ();
 
         .gallery-item img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease;
         }
 
         .gallery-item:hover img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         .gallery-info {
-            padding: 20px;
+            padding: 24px;
         }
 
         .gallery-info h4 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--admin-text-primary);
-            margin-bottom: 12px;
-            letter-spacing: -0.01em;
+            font-size: 1.125rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 14px;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .gallery-info p {
-            font-size: 0.9rem;
-            color: var(--admin-text-secondary);
-            margin-bottom: 16px;
-            line-height: 1.5;
+            font-size: 0.9375rem;
+            color: #64748b;
+            margin-bottom: 18px;
+            line-height: 1.6;
+            font-weight: 500;
         }
 
         .gallery-actions {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 12px;
-            border-top: 1px solid var(--admin-border-light);
+            padding-top: 16px;
+            border-top: 1px solid rgba(226, 232, 240, 0.8);
         }
 
         /* FAQ Styles - Lebih Modern */
@@ -1055,45 +1085,50 @@ $faqs = getAllFAQ();
             float: right;
         }
 
-        /* Mobile Menu Toggle */
+        /* Mobile Menu Toggle - Modern Design */
         .mobile-menu-toggle {
             display: none;
             position: fixed;
-            top: 80px;
-            left: 20px;
+            top: 90px;
+            left: 24px;
             z-index: 1001;
-            background: var(--admin-gradient-primary);
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #1d4ed8 100%);
             color: white;
             border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 15px;
+            width: 56px;
+            height: 56px;
+            border-radius: 18px;
             cursor: pointer;
-            font-size: 18px;
-            box-shadow: var(--admin-shadow-lg);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(8px);
+            font-size: 20px;
+            box-shadow: 0 8px 32px rgba(37, 99, 235, 0.3), 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
         }
 
         .mobile-menu-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.4);
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.25);
         }
 
         .mobile-menu-toggle:active {
-            transform: scale(0.95);
+            transform: scale(0.96);
         }
 
-        /* Dark Mode Comprehensive Styling *//* Dark mode for transport components *//* Responsive Design - Lebih Komprehensif */
+        /* Responsive Design - Modern dan Comprehensive */
         @media (max-width: 1200px) {
             .admin-content {
-                margin-left: 280px;
-                padding: 32px 24px;
+                margin-left: 290px;
+                padding: 40px 32px;
             }
 
             .stats-grid {
-                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-                gap: 20px;
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 24px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             }
         }
 
@@ -1108,38 +1143,99 @@ $faqs = getAllFAQ();
                 transform: translateX(-100%);
                 transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                 box-shadow: none;
+                width: 280px;
+                top: 75px;
             }
 
             .sidebar.active {
                 transform: translateX(0);
-                box-shadow: var(--admin-shadow-lg);
+                box-shadow: 0 16px 64px rgba(102, 126, 234, 0.35);
             }
 
             .admin-content {
                 margin-left: 0;
-                padding: 24px 20px;
-                margin-top: 70px;
+                padding: 32px 24px;
+                margin-top: 75px;
             }
 
+            .admin-header {
+                padding: 0 1.5rem;
+                height: 75px;
+            }
+
+            .admin-logo {
+                font-size: 1.25rem;
+            }
+
+            .admin-user span {
+                padding: 8px 14px;
+                font-size: 0.875rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .stat-card {
+                padding: 28px 24px;
+            }
+
+            .section-header {
+                padding: 24px 28px;
+            }
+
+            .section-content {
+                padding: 28px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .table {
+                font-size: 0.875rem;
+            }
+
+            .table th,
+            .table td {
+                padding: 14px 16px;
+            }
+
+            .btn {
+                padding: 14px 24px;
+                font-size: 0.875rem;
+            }
+
+            .content-section h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
             .admin-header {
                 padding: 0 1rem;
             }
 
             .admin-logo {
-                font-size: 1.1rem;
+                font-size: 1.125rem;
             }
 
             .admin-user span {
-                padding: 6px 12px;
-                font-size: 0.85rem;
+                display: none;
             }
 
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
+            .logout-btn {
+                padding: 10px 14px;
+                font-size: 0.8125rem;
             }
 
-            .stat-card {
+            .admin-content {
+                padding: 24px 16px;
+            }
+
+            .section-content {
                 padding: 24px 20px;
             }
 
@@ -1147,130 +1243,39 @@ $faqs = getAllFAQ();
                 padding: 20px 24px;
             }
 
-            .section-content {
-                padding: 24px;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-
-            .table {
-                font-size: 0.85rem;
-            }
-
-            .table th,
-            .table td {
-                padding: 10px 12px;
+            .section-header h2 {
+                font-size: 1.1875rem;
             }
 
             .btn {
                 padding: 12px 20px;
-                font-size: 0.85rem;
-            }
-
-            .content-section h1 {
-                font-size: 1.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .admin-header {
-                padding: 0 0.75rem;
-            }
-
-            .admin-logo {
-                font-size: 1rem;
-            }
-
-            .admin-user span {
-                display: none;
-            }
-
-            .dark-mode-toggle {
-                width: 38px;
-                height: 38px;
-                font-size: 14px;
-            }
-
-            .logout-btn {
-                padding: 8px 12px;
-                font-size: 0.8rem;
-            }
-
-            .admin-content {
-                padding: 16px;
-            }
-
-            .section-content {
-                padding: 20px 16px;
-            }
-
-            .section-header {
-                padding: 16px 20px;
-            }
-
-            .section-header h2 {
-                font-size: 1.1rem;
-            }
-
-            .btn {
-                padding: 10px 16px;
-                font-size: 0.8rem;
+                font-size: 0.8125rem;
             }
 
             .form-group input,
             .form-group textarea,
             .form-group select {
-                padding: 12px 14px;
+                padding: 14px 16px;
             }
 
             .content-section h1 {
-                font-size: 1.6rem;
+                font-size: 1.875rem;
             }
 
             .content-section > p {
-                font-size: 1rem;
+                font-size: 1.0625rem;
+            }
+
+            .stats-grid {
+                gap: 16px;
+            }
+
+            .stat-card {
+                padding: 24px 20px;
             }
         }
 
-        /* Dark Mode Toggle - Lebih Modern */
-        .dark-mode-toggle-container {
-            margin-right: 20px;
-        }
 
-        .dark-mode-toggle {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-            padding: 10px 14px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 16px;
-            backdrop-filter: blur(8px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-        }
-
-        .dark-mode-toggle:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1) rotate(10deg);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }@media (max-width: 768px) {
-            .dark-mode-toggle-container {
-                margin-right: 10px;
-            }
-            
-            .dark-mode-toggle {
-                padding: 6px 10px;
-                font-size: 12px;
-            }
-        }
 
         /* ============================================
          * TRANSPORT MANAGEMENT STYLING
@@ -1408,23 +1413,23 @@ $faqs = getAllFAQ();
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.75);
             z-index: 9999;
             display: flex;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(12px) saturate(180%);
         }
 
         .modal-content {
-            background: var(--admin-bg-card);
-            border-radius: 16px;
+            background: linear-gradient(135deg, #ffffff 0%, #fefefe 100%);
+            border-radius: 24px;
             width: 90%;
-            max-width: 600px;
+            max-width: 650px;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: var(--admin-shadow-lg);
-            border: 2px solid var(--admin-border);
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.25), 0 8px 32px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.8);
         }
 
         .modal-header {
@@ -1592,6 +1597,104 @@ $faqs = getAllFAQ();
                 max-width: none;
             }
         }
+
+        /* Enhanced Page Transitions */
+        .page-transition {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .content-area {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Scroll Behavior Enhancement */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar for Better UX */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #94a3b8, #64748b);
+            border-radius: 20px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #64748b, #475569);
+        }
+
+        /* Loading State for Interactive Elements */
+        .btn-loading {
+            position: relative;
+            color: transparent !important;
+        }
+
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: 50%;
+            left: 50%;
+            margin-left: -8px;
+            margin-top: -8px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 0.8s linear infinite;
+        }
+
+        /* Enhanced Focus States for Accessibility */
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible,
+        textarea:focus-visible {
+            outline: 3px solid rgba(59, 130, 246, 0.3);
+            outline-offset: 2px;
+        }
+
+        /* Glassmorphism Elements */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Professional Tooltip System */
+        .tooltip {
+            position: relative;
+            cursor: help;
+        }
+
+        .tooltip::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+        }
+
+        .tooltip:hover::before {
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="admin-body">
@@ -1619,11 +1722,6 @@ $faqs = getAllFAQ();
             Cendana Travel Admin
         </div>
         <div class="admin-user">
-            <div class="dark-mode-toggle-container">
-                <button class="dark-mode-toggle" onclick="ubahModeGelap()" title="Toggle Dark Mode">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </div>
             <span>Selamat datang, Admin</span>
             <a href="auth.php?action=logout" class="logout-btn">
                 <i class="fas fa-sign-out-alt"></i> Logout
@@ -2621,80 +2719,7 @@ $faqs = getAllFAQ();
             });
         }, 4000);
 
-        // Enhanced Dark Mode Functions
-        function ubahModeGelap() {
-            const body = document.body;
-            const html = document.documentElement;
-            const toggleBtn = document.querySelector('.dark-mode-toggle');
-            const isCurrentlyDark = body.classList.contains('dark-mode');
-            
-            // Add loading animation
-            toggleBtn.style.transform = 'scale(0.8)';
-            toggleBtn.style.opacity = '0.7';
-            
-            // Smooth transition
-            body.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-            
-            setTimeout(() => {
-                if (isCurrentlyDark) {
-                    // Switch to light mode
-                    body.classList.remove('dark-mode');
-                    html.classList.remove('dark-mode');
-                    localStorage.setItem('darkMode', 'false');
-                    
-                    const toggleIcon = document.querySelector('.dark-mode-toggle i');
-                    if (toggleIcon) {
-                        toggleIcon.className = 'fas fa-moon';
-                    }
-                } else {
-                    // Switch to dark mode
-                    body.classList.add('dark-mode');
-                    html.classList.add('dark-mode');
-                    localStorage.setItem('darkMode', 'true');
-                    
-                    const toggleIcon = document.querySelector('.dark-mode-toggle i');
-                    if (toggleIcon) {
-                        toggleIcon.className = 'fas fa-sun';
-                    }
-                }
-                
-                // Reset button animation
-                setTimeout(() => {
-                    toggleBtn.style.transform = 'scale(1)';
-                    toggleBtn.style.opacity = '1';
-                    body.style.transition = '';
-                }, 100);
-            }, 150);
-        }
 
-        // Enhanced Dark Mode Initialization
-        function aturModeGelapSaatDimuat() {
-            const savedDarkMode = localStorage.getItem('darkMode');
-            const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const body = document.body;
-            const html = document.documentElement;
-            
-            // Use saved preference or system preference
-            const shouldBeDark = savedDarkMode === 'true' || (savedDarkMode === null && systemDarkMode);
-            
-            if (shouldBeDark) {
-                body.classList.add('dark-mode');
-                html.classList.add('dark-mode');
-                
-                const toggleIcon = document.querySelector('.dark-mode-toggle i');
-                if (toggleIcon) {
-                    toggleIcon.className = 'fas fa-sun';
-                }
-            } else {
-                body.classList.remove('dark-mode');
-                html.classList.remove('dark-mode');
-                
-                const toggleIcon = document.querySelector('.dark-mode-toggle i');
-                if (toggleIcon) {
-                    toggleIcon.className = 'fas fa-moon';
-                }
-            }
-        }
 
         // Enhanced Section Navigation with Smooth Transitions
         function showSection(sectionName) {
@@ -2763,7 +2788,7 @@ $faqs = getAllFAQ();
         // Enhanced Initialization
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize dark mode
-            aturModeGelapSaatDimuat();
+
             
             // Ensure dashboard is active by default
             const dashboardSection = document.getElementById('dashboard-section');
@@ -2778,7 +2803,7 @@ $faqs = getAllFAQ();
             }
             
             // Add ripple effects
-            document.querySelectorAll('.btn, .nav-link, .dark-mode-toggle').forEach(addRippleEffect);
+            document.querySelectorAll('.btn, .nav-link').forEach(addRippleEffect);
             
             // Smooth page load
             setTimeout(() => {
@@ -2821,7 +2846,7 @@ $faqs = getAllFAQ();
         document.head.appendChild(enhancedStyles);
 
         // Initialize immediately
-        aturModeGelapSaatDimuat();
+
 
         /* ============================================
          * TRANSPORT MANAGEMENT FUNCTIONS
@@ -3119,6 +3144,52 @@ $faqs = getAllFAQ();
                     closeFlashNotification();
                 }, 5000);
             }
+
+            // Add smooth animations to stats cards
+            const statsCards = document.querySelectorAll('.stats-card');
+            statsCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.classList.add('fade-in-up');
+            });
+
+            // Enhanced form validation feedback
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    if (submitBtn) {
+                        submitBtn.classList.add('btn-loading');
+                        setTimeout(() => {
+                            submitBtn.classList.remove('btn-loading');
+                        }, 2000);
+                    }
+                });
+            });
+
+            // Smooth scroll for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add subtle hover effects to interactive elements
+            document.querySelectorAll('.card, .btn').forEach(element => {
+                element.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-1px)';
+                });
+                
+                element.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
         });
     </script>
 </body>
