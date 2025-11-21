@@ -1,0 +1,36 @@
+/**
+ * ============================================
+ * ADMIN DASHBOARD STYLES - MODERN & PROFESSIONAL
+ * ============================================
+ * Stylesheet khusus untuk halaman admin
+ * Dibuat dengan gaya mahasiswa yang lagi belajar bikin dashboard
+ * Tanpa framework, cuma HTML CSS JS murni
+ */
+
+/* Import font yang bersih dan modern */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ============================================
+   VARIABEL WARNA ADMIN
+   ============================================ */
+:root {
+    /* Warna sidebar - abu tua biar keliatan profesional */
+    --admin-sidebar-bg: #2c3e50;
+    --admin-sidebar-hover: #34495e;
+    --admin-sidebar-active: #3498db;
+    
+    /* Warna konten utama - terang dan bersih */
+    --admin-content-bg: #f8f9fa;
+    --admin-card-bg: #ffffff;
+    --admin-border: #e0e0e0;
+    
+    /* Warna teks */
+    --admin-text-dark: #2c3e50;
+    --admin-text-light: #7f8c8d;
+    --admin-text-white: #ffffff;
+    
+    /* Warna aksen */
+    --admin-primary: #3498db;
+    --admin-success: #27ae60;
+    --admin-warning: #f39c12;
+    --admin-danger: #e74c
